@@ -90,7 +90,9 @@ class CategoryTableViewCell: UITableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        if (self.isSelected == selected) {return}
+        
+        if (self.isSelected == selected) {
+           return}
         
         super.setSelected(selected, animated: animated)
         if(selected == false){
@@ -98,14 +100,16 @@ class CategoryTableViewCell: UITableViewCell {
              self.accessoryType = selected ? .checkmark : .none
             return
         }
-        self.accessoryType = selected ? .checkmark : .none
-        fillCircle = CircleFillView.init(frame: self.cellView.bounds, color: color ?? UIColor.clear)
-        self.cellView.addSubview(fillCircle!)
+      //  self.accessoryType = selected ? .checkmark : .none
+       // fillCircle = CircleFillView.init(frame: self.cellView.bounds, color: color ?? UIColor.clear)
+        //self.cellView.addSubview(fillCircle!)
+        fillCircle?.isHidden = false
         
         
         
         // Configure the view for the selected state
     }
+    
     
    
 }

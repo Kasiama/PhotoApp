@@ -9,11 +9,13 @@
 import UIKit
 
   struct CategoryModel {
+    var id: String 
     var name: String
     var fred: Float
     var fgreen: Float
     var fblue: Float
     var falpha: Float
+    var isSelected: Int
     
 }
 
@@ -22,6 +24,7 @@ class TimeLineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Category", style:UIBarButtonItem.Style.done, target: self, action: #selector(addTapped))
         self.navigationItem.hidesBackButton = true
         let searchBar = UISearchBar()
@@ -29,13 +32,12 @@ class TimeLineViewController: UIViewController {
         searchBar.placeholder = ""
         self.navigationController?.navigationBar.topItem?.titleView = searchBar
         
-      //  let a = CirkleView.init(frame: CGRect.init(x: 100, y: 100, width: 100, height: 100))
-      //  a.layer.cornerRadius = 25
-       // self.view.addSubview(a)
+      
       
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+          self.tabBarController?.tabBar.isHidden = false
          self.navigationController?.navigationBar.isHidden = false
          self.navigationItem.hidesBackButton = true
 

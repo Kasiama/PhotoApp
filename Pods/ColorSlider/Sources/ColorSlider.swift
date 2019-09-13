@@ -178,6 +178,7 @@ extension ColorSlider {
 				} else {
 					// Set preview center from `internalColor`
 					let sliderProgress = gradientView.calculateSliderProgress(for: internalColor)
+                    
 					centerPreview(at: CGPoint(x: sliderProgress * bounds.width, y: sliderProgress * bounds.height))
 				}
 				

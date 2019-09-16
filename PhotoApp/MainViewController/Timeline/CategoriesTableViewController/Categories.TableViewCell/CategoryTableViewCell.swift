@@ -16,10 +16,6 @@ import UIKit
 
 class CirkleView : UIView {
     
-    
-   
-    
-    
     var circlePath: UIBezierPath?
     var color: UIColor?
     
@@ -78,7 +74,9 @@ class CategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var cellTextLabel: UILabel!
     
     var fillCircle : UIView?
+    var cirkleView : UIView?
     var color: UIColor?
+    var normalIsSelect  = false
     
     
     
@@ -91,25 +89,38 @@ class CategoryTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         
-        if (self.isSelected == selected) {
-           return}
-        
+   //    if (self.isSelected == selected) {return}
+       
         super.setSelected(selected, animated: animated)
-        if(selected == false){
-            fillCircle?.isHidden = true
-             self.accessoryType = selected ? .checkmark : .none
-            return
-        }
+        
+        
+//        if(selected == false){
+//            fillCircle?.isHidden = true
+//             self.accessoryType = selected ? .checkmark : .none
+//            return
+//        }
       //  self.accessoryType = selected ? .checkmark : .none
        // fillCircle = CircleFillView.init(frame: self.cellView.bounds, color: color ?? UIColor.clear)
         //self.cellView.addSubview(fillCircle!)
-        fillCircle?.isHidden = false
+       // fillCircle?.isHidden = false
         
         
         
         // Configure the view for the selected state
     }
     
-    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if self.normalIsSelect{
+//            self.normalIsSelect = false
+//            self.fillCircle?.isHidden = true
+//        }
+//        else{
+//            self.normalIsSelect = true
+//            self.fillCircle?.isHidden = false
+//        }
+
+       // setSelected(!isSelected, animated: true)
+        super.touchesEnded(touches, with: event)
+    }
    
 }

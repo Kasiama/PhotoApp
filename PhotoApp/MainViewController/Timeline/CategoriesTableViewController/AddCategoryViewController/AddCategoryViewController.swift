@@ -86,17 +86,17 @@ class AddCategoryViewController: UIViewController {
     }
     @IBAction func addTapped(_ sender: Any) {
         let category = CategoryModel.init(id: "", name: self.nameCategoryTextField.text!, fred: Float(fRed), fgreen: Float(fGreen), fblue: Float(fBlue), falpha: Float(fAlpha),isSelected: 0)
-            guard let key = ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").childByAutoId().key else { return }
-            //ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").childByAutoId().setValue(category.name)
-        let categorysend = ["name":category.name,
-                        "fred": category.fred,
-                          "fgreen": category.fgreen,
-                            "fblue": category.fblue,
-                            "falpha": category.falpha,
-                            "isSelected":category.isSelected      ] as [String : Any]
-        let childUpdates = ["/\(String(describing: Auth.auth().currentUser!.uid))/categories/\(key)": categorysend]
-        
-        ref.updateChildValues(childUpdates)
+//            guard let key = ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").childByAutoId().key else { return }
+//            //ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").childByAutoId().setValue(category.name)
+//        let categorysend = ["name":category.name,
+//                        "fred": category.fred,
+//                          "fgreen": category.fgreen,
+//                            "fblue": category.fblue,
+//                            "falpha": category.falpha,
+//                            "isSelected":category.isSelected      ] as [String : Any]
+//        let childUpdates = ["/\(String(describing: Auth.auth().currentUser!.uid))/categories/\(key)": categorysend]
+//        
+//        ref.updateChildValues(childUpdates)
         
         
       delegate?.addCategory(category: category)

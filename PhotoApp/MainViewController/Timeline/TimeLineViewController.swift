@@ -11,10 +11,10 @@ import UIKit
   struct CategoryModel {
     var id: String 
     var name: String
-    var fred: Float
-    var fgreen: Float
-    var fblue: Float
-    var falpha: Float
+    var fred: CGFloat
+    var fgreen: CGFloat
+    var fblue: CGFloat
+    var falpha: CGFloat
     var isSelected: Int
     
 }

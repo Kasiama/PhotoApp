@@ -229,6 +229,7 @@
 		7602D4DD2327DC8200FA9A05 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				760DC926233208340000894A /* PhotAnnotation */,
 				7602D4E72327E50600FA9A05 /* Timeline */,
 				7602D4E62327E4E500FA9A05 /* Other */,
 				7602D50C2327EC8700FA9A05 /* MainViewController.swift */,
@@ -254,6 +255,13 @@
 				7602D4E92327E54900FA9A05 /* TimeLineViewController.xib */,
 			);
 			path = Timeline;
+			sourceTree = "<group>";
+		};
+		760DC926233208340000894A /* PhotAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PhotAnnotation;
 			sourceTree = "<group>";
 		};
 		76143130232A2F04001756A9 /* CategoriesTableViewController */ = {

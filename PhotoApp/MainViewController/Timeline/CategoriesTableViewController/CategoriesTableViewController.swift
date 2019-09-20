@@ -11,6 +11,7 @@ import Firebase
 
 protocol AddCategoryDelegate:AnyObject{
     func addCategory(category:CategoryModel)
+    func editCategory(category:CategoryModel,row: Int)
 }
 
 
@@ -24,13 +25,14 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
          ref = Database.database().reference()
         downloadCategories()
         self.tabBarController?.tabBar.isHidden = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Category", style:UIBarButtonItem.Style.done, target: self, action: #selector(addTapped))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Add", style:UIBarButtonItem.Style.done, target: self, action: #selector(addTapped))
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
+        let newBackButton = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
         self.navigationItem.leftBarButtonItem = newBackButton
        
         //self.navigationItem.rightBarButtonItem 
@@ -46,7 +48,7 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         tableView.register(nib, forCellReuseIdentifier: cellId)
         
           let userID = Auth.auth().currentUser!.uid
-        ref.child(userID).child("categories").observe(DataEventType.value) { (snapshot) in
+            ref.child(userID).child("categories").observe(DataEventType.value) { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
            // postDict.
         }
@@ -126,7 +128,18 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction.init(style: UIContextualAction.Style.normal, title: "Delete") { (UIContextualAction, UIView, (Bool) -> Void) in
+       
+        let edit = UIContextualAction.init(style: .normal, title: "Edit") { (UIContextualAction, UIView, (Bool) -> Void) in
+            let category = self.categoriesArray[indexPath.row]
+             let editVC = AddCategoryViewController()
+          //  editVC.addButton.setTitle("Edit", for: .normal)
+           editVC.category = category
+            editVC.row = indexPath.row
+            editVC.delegate = self
+            self.navigationController?.pushViewController(editVC, animated: true)
+            
+        }
+            let delete = UIContextualAction.init(style: UIContextualAction.Style.normal, title: "Delete") { (UIContextualAction, UIView, (Bool) -> Void) in
             let category = self.categoriesArray[indexPath.row]
             if (category.id != ""){
             self.ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").child(category.id).removeValue()
@@ -144,15 +157,25 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
             tableView.reloadData()
             
         }
-        return UISwipeActionsConfiguration.init(actions: [delete])
+        edit.backgroundColor = UIColor.blue
+        delete.backgroundColor = UIColor.red
+        return UISwipeActionsConfiguration.init(actions: [delete ,edit])
     }
     
     
     func addCategory(category: CategoryModel) {
         categoriesArray.append(category)
-      // downloadCategories()
         tableView.reloadData()
     }
+    
+    func editCategory(category: CategoryModel, row: Int){
+        categoriesArray[row] = category
+        let cell = tableView.cellForRow(at: IndexPath.init(item: row, section: 0)) as! CategoryTableViewCell
+        cell.cellView.subviews.map({ $0.removeFromSuperview() })
+        cell.cirkleView = nil
+        cell.fillCircle = nil
+        tableView.reloadData()
+        }
 
 
     func downloadCategories()  {
@@ -166,10 +189,10 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
                 let categoryIn = categoryInfo as! NSDictionary
                 let catid = categoryID as! String
                 let name = categoryIn["name"] as! String
-                let fred = categoryIn["fred"] as! Float
-                let fblue = categoryIn["fblue"] as! Float
-                let fgreen = categoryIn["fgreen"] as! Float
-                let falpha = categoryIn["falpha"] as! Float
+                let fred = categoryIn["fred"] as! CGFloat
+                let fblue = categoryIn["fblue"] as! CGFloat
+                let fgreen = categoryIn["fgreen"] as! CGFloat
+                let falpha = categoryIn["falpha"] as! CGFloat
                 let isSelected = categoryIn["isSelected"] as! Int
                 let category = CategoryModel.init(id: catid  , name: name , fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha,isSelected:isSelected)
                 self.categoriesArray.append(category)
@@ -224,6 +247,7 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     
     @objc func addTapped()  {
         let catecoriesTableVC = AddCategoryViewController()
+       // catecoriesTableVC.addButton.setTitle("Add", for: .normal)
         catecoriesTableVC.delegate = self
         self.navigationController?.pushViewController(catecoriesTableVC, animated: true)
     }

@@ -46,6 +46,21 @@
 		7602D5112327EC8700FA9A05 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7602D50D2327EC8700FA9A05 /* MainViewController.xib */; };
 		7602D5122327EC8700FA9A05 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7602D50D2327EC8700FA9A05 /* MainViewController.xib */; };
 		7602D5132327EC8700FA9A05 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7602D50D2327EC8700FA9A05 /* MainViewController.xib */; };
+		7605D2BF233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
+		7605D2C0233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
+		7605D2C1233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
+		761023E72334E4E500650754 /* PhotoAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023E62334E4E500650754 /* PhotoAnnotation.swift */; };
+		761023E82334E4E500650754 /* PhotoAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023E62334E4E500650754 /* PhotoAnnotation.swift */; };
+		761023E92334E4E500650754 /* PhotoAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023E62334E4E500650754 /* PhotoAnnotation.swift */; };
+		761023EB2334E88F00650754 /* PhotoAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023EA2334E88F00650754 /* PhotoAnnotationView.swift */; };
+		761023EC2334E88F00650754 /* PhotoAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023EA2334E88F00650754 /* PhotoAnnotationView.swift */; };
+		761023ED2334E88F00650754 /* PhotoAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023EA2334E88F00650754 /* PhotoAnnotationView.swift */; };
+		761023EF2334E8FA00650754 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023EE2334E8FA00650754 /* CalloutView.swift */; };
+		761023F02334E8FA00650754 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023EE2334E8FA00650754 /* CalloutView.swift */; };
+		761023F12334E8FA00650754 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761023EE2334E8FA00650754 /* CalloutView.swift */; };
+		761023F32334E91000650754 /* calloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761023F22334E91000650754 /* calloutView.xib */; };
+		761023F42334E91000650754 /* calloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761023F22334E91000650754 /* calloutView.xib */; };
+		761023F52334E91000650754 /* calloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761023F22334E91000650754 /* calloutView.xib */; };
 		76143133232A2F4F001756A9 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76143131232A2F4F001756A9 /* CategoriesTableViewController.swift */; };
 		76143134232A2F4F001756A9 /* CategoriesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76143132232A2F4F001756A9 /* CategoriesTableViewController.xib */; };
 		76143138232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76143136232A30D7001756A9 /* CategoryTableViewCell.swift */; };
@@ -60,6 +75,15 @@
 		76143144232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76143140232A6C5E001756A9 /* AddCategoryViewController.xib */; };
 		76143145232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76143140232A6C5E001756A9 /* AddCategoryViewController.xib */; };
 		76143146232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76143140232A6C5E001756A9 /* AddCategoryViewController.xib */; };
+		769927902338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
+		769927912338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
+		769927922338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
+		769927932338B190002F056E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7699278F2338B190002F056E /* PopupViewController.xib */; };
+		769927942338B190002F056E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7699278F2338B190002F056E /* PopupViewController.xib */; };
+		769927952338B190002F056E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7699278F2338B190002F056E /* PopupViewController.xib */; };
+		7699279723392528002F056E /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699279623392528002F056E /* Custom.swift */; };
+		7699279823392528002F056E /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699279623392528002F056E /* Custom.swift */; };
+		7699279923392528002F056E /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699279623392528002F056E /* Custom.swift */; };
 		A8A82B55B469EAAFF7100421 /* Pods_PhotoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163D246806C650ECB53D00D8 /* Pods_PhotoAppUITests.framework */; };
 		D958507611BE3409BF79B616 /* Pods_PhotoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0C0F2B1A650411C307382FB /* Pods_PhotoAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -110,12 +134,20 @@
 		7602D4F52327E56B00FA9A05 /* OtherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherViewController.xib; sourceTree = "<group>"; };
 		7602D50C2327EC8700FA9A05 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7602D50D2327EC8700FA9A05 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		7605D2BE233B62290054031C /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
+		761023E62334E4E500650754 /* PhotoAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnnotation.swift; sourceTree = "<group>"; };
+		761023EA2334E88F00650754 /* PhotoAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnnotationView.swift; sourceTree = "<group>"; };
+		761023EE2334E8FA00650754 /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
+		761023F22334E91000650754 /* calloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = calloutView.xib; sourceTree = "<group>"; };
 		76143131232A2F4F001756A9 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		76143132232A2F4F001756A9 /* CategoriesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesTableViewController.xib; sourceTree = "<group>"; };
 		76143136232A30D7001756A9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		76143137232A30D7001756A9 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		7614313F232A6C5E001756A9 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		76143140232A6C5E001756A9 /* AddCategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCategoryViewController.xib; sourceTree = "<group>"; };
+		7699278E2338B190002F056E /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		7699278F2338B190002F056E /* PopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
+		7699279623392528002F056E /* Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
 		7FDD900F66D7BD652996FF5F /* Pods-PhotoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoAppUITests.release.xcconfig"; path = "Target Support Files/Pods-PhotoAppUITests/Pods-PhotoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B22CAD5C11C7CA7D0C5BAA7 /* Pods-PhotoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoAppTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoAppTests/Pods-PhotoAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B377815364385429E93D2270 /* Pods-PhotoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PhotoAppUITests/Pods-PhotoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -229,11 +261,18 @@
 		7602D4DD2327DC8200FA9A05 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				760DC926233208340000894A /* PhotAnnotation */,
+				7605D2BD233B58EC0054031C /* CashImages */,
 				7602D4E72327E50600FA9A05 /* Timeline */,
 				7602D4E62327E4E500FA9A05 /* Other */,
 				7602D50C2327EC8700FA9A05 /* MainViewController.swift */,
 				7602D50D2327EC8700FA9A05 /* MainViewController.xib */,
+				761023EA2334E88F00650754 /* PhotoAnnotationView.swift */,
+				761023EE2334E8FA00650754 /* CalloutView.swift */,
+				761023F22334E91000650754 /* calloutView.xib */,
+				760DC926233208340000894A /* PhotAnnotation */,
+				7699278E2338B190002F056E /* PopupViewController.swift */,
+				7699278F2338B190002F056E /* PopupViewController.xib */,
+				7699279623392528002F056E /* Custom.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -257,9 +296,18 @@
 			path = Timeline;
 			sourceTree = "<group>";
 		};
+		7605D2BD233B58EC0054031C /* CashImages */ = {
+			isa = PBXGroup;
+			children = (
+				7605D2BE233B62290054031C /* CachedImageView.swift */,
+			);
+			path = CashImages;
+			sourceTree = "<group>";
+		};
 		760DC926233208340000894A /* PhotAnnotation */ = {
 			isa = PBXGroup;
 			children = (
+				761023E62334E4E500650754 /* PhotoAnnotation.swift */,
 			);
 			path = PhotAnnotation;
 			sourceTree = "<group>";
@@ -424,8 +472,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				761023F32334E91000650754 /* calloutView.xib in Resources */,
 				7614313B232A30D7001756A9 /* CategoryTableViewCell.xib in Resources */,
 				7602D4D02327BC3400FA9A05 /* LoginViewController.xib in Resources */,
+				769927932338B190002F056E /* PopupViewController.xib in Resources */,
 				7602D4ED2327E54900FA9A05 /* TimeLineViewController.xib in Resources */,
 				7602D48F2327A3D300FA9A05 /* LaunchScreen.storyboard in Resources */,
 				76143134232A2F4F001756A9 /* CategoriesTableViewController.xib in Resources */,
@@ -450,7 +500,9 @@
 				76143145232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */,
 				7602D4C12327AD2A00FA9A05 /* GoogleService-Info.plist in Resources */,
 				7602D4DB2327C95400FA9A05 /* CreateAccountViewController.xib in Resources */,
+				769927942338B190002F056E /* PopupViewController.xib in Resources */,
 				7602D4EE2327E54900FA9A05 /* TimeLineViewController.xib in Resources */,
+				761023F42334E91000650754 /* calloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +517,9 @@
 				76143146232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */,
 				7602D4C22327AD2A00FA9A05 /* GoogleService-Info.plist in Resources */,
 				7602D4DC2327C95400FA9A05 /* CreateAccountViewController.xib in Resources */,
+				769927952338B190002F056E /* PopupViewController.xib in Resources */,
 				7602D4EF2327E54900FA9A05 /* TimeLineViewController.xib in Resources */,
+				761023F52334E91000650754 /* calloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,13 +619,19 @@
 				7602D50E2327EC8700FA9A05 /* MainViewController.swift in Sources */,
 				7602D4D72327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				7602D4CD2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
+				761023E72334E4E500650754 /* PhotoAnnotation.swift in Sources */,
 				76143133232A2F4F001756A9 /* CategoriesTableViewController.swift in Sources */,
 				7602D4F62327E56B00FA9A05 /* OtherViewController.swift in Sources */,
+				7605D2BF233B62290054031C /* CachedImageView.swift in Sources */,
 				7602D4872327A3D100FA9A05 /* ViewController.swift in Sources */,
 				76143141232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
+				761023EB2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
 				7602D4852327A3D100FA9A05 /* AppDelegate.swift in Sources */,
 				7602D4EA2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
+				761023EF2334E8FA00650754 /* CalloutView.swift in Sources */,
 				76143138232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
+				769927902338B190002F056E /* PopupViewController.swift in Sources */,
+				7699279723392528002F056E /* Custom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,11 +639,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769927912338B190002F056E /* PopupViewController.swift in Sources */,
 				7602D4D82327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
+				7699279823392528002F056E /* Custom.swift in Sources */,
 				7602D4CE2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				7602D50F2327EC8700FA9A05 /* MainViewController.swift in Sources */,
+				761023F02334E8FA00650754 /* CalloutView.swift in Sources */,
 				7602D49A2327A3D300FA9A05 /* PhotoAppTests.swift in Sources */,
 				7602D4EB2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
+				761023EC2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
+				7605D2C0233B62290054031C /* CachedImageView.swift in Sources */,
+				761023E82334E4E500650754 /* PhotoAnnotation.swift in Sources */,
 				76143142232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
 				76143139232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
 			);
@@ -593,11 +659,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769927922338B190002F056E /* PopupViewController.swift in Sources */,
 				7602D4D92327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
+				7699279923392528002F056E /* Custom.swift in Sources */,
 				7602D4CF2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				7602D5102327EC8700FA9A05 /* MainViewController.swift in Sources */,
+				761023F12334E8FA00650754 /* CalloutView.swift in Sources */,
 				7602D4A52327A3D300FA9A05 /* PhotoAppUITests.swift in Sources */,
 				7602D4EC2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
+				761023ED2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
+				7605D2C1233B62290054031C /* CachedImageView.swift in Sources */,
+				761023E92334E4E500650754 /* PhotoAnnotation.swift in Sources */,
 				76143143232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
 				7614313A232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
 			);

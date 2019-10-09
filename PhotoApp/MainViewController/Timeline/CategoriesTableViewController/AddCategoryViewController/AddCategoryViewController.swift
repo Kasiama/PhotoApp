@@ -23,8 +23,7 @@ class AddCategoryViewController: UIViewController {
     
     var row : Int?
     var category: CategoryModel?
-    
-     var ref: DatabaseReference!
+    var ref: DatabaseReference!
     
     var fRed : CGFloat = 0
     var fGreen : CGFloat = 0
@@ -60,45 +59,18 @@ class AddCategoryViewController: UIViewController {
         colorSlider.backgroundColor = UIColor.white
         colorSlider.addTarget(self, action: #selector(changedColor(_:)), for: .valueChanged)
         
-        
-        
-       // colorSlider.frame = self.colorSlideView.frame
-        
-        
-      
-        
-        
-        
-       
-        
-        
         let vview =  UIView.init(frame: CGRect.init(x: 0, y: 0, width: 25, height: colorSlider.bounds.height+10))
         previewView.frame = vview.frame
         view.addSubview(colorSlider)
-       // view.addSubview(previewView)
-       
-//        let trailinglConstraint = colorSlider.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 70)
-//        let leadingConstraint = colorSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70)
-//        let topConstraint = topAnchor.constraint(equalTo: self.colorView, constant: 80)
-//        let bottomConstraint = vc!.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 200)
+      
 
-       
-        
         colorSlider.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([])
-    let trailing =  colorSlider.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50)
-       
-      let leading =   colorSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50)
-       
-       let top = colorSlider.topAnchor.constraint(equalTo: self.colorView.bottomAnchor,constant: 65)
-       let bottom =  colorSlider.bottomAnchor.constraint(equalTo: self.addButton.topAnchor,constant: -20)
+        let trailing =  colorSlider.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50)
+        let leading =   colorSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50)
+        let top = colorSlider.topAnchor.constraint(equalTo: self.colorView.bottomAnchor,constant: 65)
+        let bottom =  colorSlider.bottomAnchor.constraint(equalTo: self.addButton.topAnchor,constant: -20)
         let height = colorSlider.heightAnchor.constraint(equalToConstant: 10)
-        let width = colorSlider.widthAnchor.constraint(equalToConstant: 200)
-       
-        
         NSLayoutConstraint.activate([leading,trailing,top,height,bottom])
-        
-        
         colorView.backgroundColor = UIColor.white
         
         if self.row != nil{
@@ -107,41 +79,32 @@ class AddCategoryViewController: UIViewController {
             self.fBlue = category?.fblue ?? 0
             self.fGreen = category?.fgreen ?? 0
             self.fRed = category?.fred ?? 0
-            colorView.backgroundColor = UIColor.init(red: CGFloat(self.category?.fred ?? 255), green: CGFloat(category?.fgreen ?? 255), blue: CGFloat(category?.fblue ?? 255), alpha: CGFloat(Float(category?.falpha ?? 1)))
+            colorView.backgroundColor = UIColor.init(red: CGFloat(self.fRed ), green: CGFloat(fGreen), blue: CGFloat(fBlue), alpha: CGFloat(Float(fAlpha)))
             self.addButton.setTitle("Edit", for: .normal)
             }
         else{
         self.addButton.setTitle("Add", for: .normal)
         }
-        
     }
+    
     @objc func keyboardWillShow(notification: Notification) {
-        // return
         let keyboardSize = (notification.userInfo?  [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-        
         let keyboardHeight = keyboardSize?.height
-        
         if (keyboardHeight!-5 > self.bottomConstraint.constant){
             self.bottomConstraint.constant = keyboardHeight! - view.safeAreaInsets.bottom+10
         }
         UIView.animate(withDuration: 0.5){
             self.view.layoutIfNeeded()
         }
-        
-        
     }
     
     @objc func keyboardWillHide(notification: Notification){
-        //return
-        self.bottomConstraint.constant =  UIScreen.main.bounds.height / 3 // or change according to your logic
-        
+        self.bottomConstraint.constant =  UIScreen.main.bounds.height / 3
         UIView.animate(withDuration: 0.5){
-            
             self.view.layoutIfNeeded()
-            
         }
-        
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         if touch?.view == self.view{
@@ -155,21 +118,14 @@ class AddCategoryViewController: UIViewController {
     @objc func textFieldDidChange(textField : UITextField){
         self.alertLabel.text = ""
         self.nameCategoryTextField.layer.borderWidth = 0;
-       
     }
 
     @objc func changedColor(_ slider: ColorSlider) {
-        let a = slider
-        var color = slider.color as UIColor
+        let color = slider.color as UIColor
         color.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha)
-        
         colorView.backgroundColor = UIColor.init(red: fRed, green: fGreen, blue: fBlue, alpha: fAlpha)
-     
-    
-        
-        
-        
     }
+    
     @IBAction func addTapped(_ sender: Any) {
         if (self.nameCategoryTextField.text == ""){
             self.alertLabel.text = "Enter the name of Category"
@@ -177,19 +133,8 @@ class AddCategoryViewController: UIViewController {
             self.nameCategoryTextField.layer.borderWidth = 1
             return
         }
-        let category = CategoryModel.init(id: "", name: self.nameCategoryTextField.text!, fred: fRed, fgreen: fGreen, fblue: fBlue, falpha: fAlpha,isSelected: 0)
-//            guard let key = ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").childByAutoId().key else { return }
-//            //ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").childByAutoId().setValue(category.name)
-//        let categorysend = ["name":category.name,
-//                        "fred": category.fred,
-//                          "fgreen": category.fgreen,
-//                            "fblue": category.fblue,
-//                            "falpha": category.falpha,
-//                            "isSelected":category.isSelected      ] as [String : Any]
-//        let childUpdates = ["/\(String(describing: Auth.auth().currentUser!.uid))/categories/\(key)": categorysend]
-//        
-//        ref.updateChildValues(childUpdates)
         
+        let category = CategoryModel.init(id: "", name: self.nameCategoryTextField.text!, fred: fRed, fgreen: fGreen, fblue: fBlue, falpha: fAlpha,isSelected: 0)
         if self.row == nil{
       delegate?.addCategory(category: category)
         }
@@ -205,14 +150,4 @@ class AddCategoryViewController: UIViewController {
         }
         self.navigationController?.popViewController(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

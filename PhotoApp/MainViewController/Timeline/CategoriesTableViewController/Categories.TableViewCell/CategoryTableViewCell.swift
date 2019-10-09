@@ -30,7 +30,7 @@ class CirkleView : UIView {
     
   override  func draw(_ rect: CGRect) {
     let halfSize:CGFloat = min( bounds.size.width/2, bounds.size.height/2)
-    let desiredLineWidth:CGFloat = 1    // your desired value
+    let desiredLineWidth:CGFloat = 1    
     
      circlePath = UIBezierPath(
         arcCenter: CGPoint(x:halfSize,y:halfSize),
@@ -82,44 +82,14 @@ class CategoryTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //let a = CirkleView.init(frame: self.cellView.bounds, color: color ?? UIColor.clear)
-         //self.cellView.addSubview(a)
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        
-   //    if (self.isSelected == selected) {return}
-       
         super.setSelected(selected, animated: animated)
         
-        
-//        if(selected == false){
-//            fillCircle?.isHidden = true
-//             self.accessoryType = selected ? .checkmark : .none
-//            return
-//        }
-      //  self.accessoryType = selected ? .checkmark : .none
-       // fillCircle = CircleFillView.init(frame: self.cellView.bounds, color: color ?? UIColor.clear)
-        //self.cellView.addSubview(fillCircle!)
-       // fillCircle?.isHidden = false
-        
-        
-        
-        // Configure the view for the selected state
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if self.normalIsSelect{
-//            self.normalIsSelect = false
-//            self.fillCircle?.isHidden = true
-//        }
-//        else{
-//            self.normalIsSelect = true
-//            self.fillCircle?.isHidden = false
-//        }
-
-       // setSelected(!isSelected, animated: true)
         super.touchesEnded(touches, with: event)
     }
    

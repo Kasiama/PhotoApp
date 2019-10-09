@@ -17,44 +17,30 @@ protocol AddCategoryDelegate:AnyObject{
 
 class CategoriesTableViewController: UITableViewController, AddCategoryDelegate {
         let cellId = "cellId"
-        let names = ["red","green","blue"]
         var categoriesArray = [CategoryModel]()
-        let colors = [UIColor.red, UIColor.green, UIColor.blue]
-    
-         var ref: DatabaseReference!
+        var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
          ref = Database.database().reference()
         downloadCategories()
+        
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Add", style:UIBarButtonItem.Style.done, target: self, action: #selector(addTapped))
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
+        let newBackButton = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveTaped))
         self.navigationItem.leftBarButtonItem = newBackButton
-       
-        //self.navigationItem.rightBarButtonItem 
-        // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        
         
         let nib = UINib.init(nibName: "CategoryTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
         
-          let userID = Auth.auth().currentUser!.uid
-            ref.child(userID).child("categories").observe(DataEventType.value) { (snapshot) in
-            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-           // postDict.
-        }
     }
-
-    // MARK: - Table view data source
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -66,7 +52,6 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         return categoriesArray.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let r = categoriesArray[indexPath.row].fred
@@ -76,46 +61,31 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         let color = UIColor.init(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: CGFloat(a))
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CategoryTableViewCell
-        
         cell.color = color
         cell.cellTextLabel.textColor = color
-        
-        
         
         if(cell.cirkleView == nil){
         cell.cirkleView = CirkleView.init(frame: cell.cellView.bounds, color:color )
         cell.cellView.addSubview(cell.cirkleView!)
-        
         cell.fillCircle = CircleFillView.init(frame: cell.cellView.bounds, color: color )
-        
         if (categoriesArray[indexPath.row].isSelected == 1){
-        
-            cell.cellView.addSubview(cell.fillCircle!)
-           
+        cell.cellView.addSubview(cell.fillCircle!)
         }
         else{
             cell.cellView.addSubview(cell.fillCircle!)
             cell.fillCircle?.isHidden = true
-            
-        }
+            }
         }
         cell.cellTextLabel.text = categoriesArray[indexPath.row].name
-        
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        // Configure the cell...
         return cell
     }
-    
-
-    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
-        let a = categoriesArray[indexPath.row].isSelected
         if  (self.categoriesArray[indexPath.row].isSelected == 1){
             self.categoriesArray[indexPath.row].isSelected = 0
             cell.fillCircle?.isHidden = true
@@ -132,7 +102,6 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         let edit = UIContextualAction.init(style: .normal, title: "Edit") { (UIContextualAction, UIView, (Bool) -> Void) in
             let category = self.categoriesArray[indexPath.row]
              let editVC = AddCategoryViewController()
-          //  editVC.addButton.setTitle("Edit", for: .normal)
            editVC.category = category
             editVC.row = indexPath.row
             editVC.delegate = self
@@ -147,21 +116,18 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
              self.categoriesArray.remove(at: indexPath.row)
             
             let cell = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
-            cell.cellView.subviews.map({ $0.removeFromSuperview() })
+                cell.cellView.removeFromSuperview()
+       //     cell.cellView.subviews.map({ $0.removeFromSuperview() })
             cell.cirkleView = nil
             cell.fillCircle = nil
-            
-            
             tableView.deleteRows(at: [indexPath], with: .none)
-        
-            tableView.reloadData()
+        tableView.reloadData()
             
         }
         edit.backgroundColor = UIColor.blue
         delete.backgroundColor = UIColor.red
         return UISwipeActionsConfiguration.init(actions: [delete ,edit])
     }
-    
     
     func addCategory(category: CategoryModel) {
         categoriesArray.append(category)
@@ -171,7 +137,8 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     func editCategory(category: CategoryModel, row: Int){
         categoriesArray[row] = category
         let cell = tableView.cellForRow(at: IndexPath.init(item: row, section: 0)) as! CategoryTableViewCell
-        cell.cellView.subviews.map({ $0.removeFromSuperview() })
+        cell.cellView.removeFromSuperview()
+       // cell.cellView.subviews.map({ $0.removeFromSuperview() })
         cell.cirkleView = nil
         cell.fillCircle = nil
         tableView.reloadData()
@@ -181,78 +148,36 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     func downloadCategories()  {
         let userID = Auth.auth().currentUser!.uid
         ref.child(userID).child("categories").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-    
-        let value = snapshot.value as? NSDictionary
-            
+          let value = snapshot.value as? NSDictionary
             for (categoryID, categoryInfo) in value ?? [:]{
-                let categoryIn = categoryInfo as! NSDictionary
-                let catid = categoryID as! String
-                let name = categoryIn["name"] as! String
-                let fred = categoryIn["fred"] as! CGFloat
-                let fblue = categoryIn["fblue"] as! CGFloat
-                let fgreen = categoryIn["fgreen"] as! CGFloat
-                let falpha = categoryIn["falpha"] as! CGFloat
-                let isSelected = categoryIn["isSelected"] as! Int
-                let category = CategoryModel.init(id: catid  , name: name , fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha,isSelected:isSelected)
+                if  let categoryIn = categoryInfo as? NSDictionary{
+                let catid = categoryID as? String
+                let name = categoryIn["name"] as? String
+                let fred = categoryIn["fred"] as? CGFloat
+                let fblue = categoryIn["fblue"] as? CGFloat
+                let fgreen = categoryIn["fgreen"] as? CGFloat
+                let falpha = categoryIn["falpha"] as? CGFloat
+                let isSelected = categoryIn["isSelected"] as? Int
+                    if (catid != nil &&  name != nil && fred != nil && fblue != nil && fgreen != nil && falpha != nil && isSelected != nil)    {            let category = CategoryModel.init(id: catid!  , name: name! , fred: fred!, fgreen: fgreen!, fblue: fblue!, falpha: falpha!, isSelected:isSelected!)
                 self.categoriesArray.append(category)
+                    }
             }
-            
-            
-            
+        }
             self.tableView.reloadData()
-            // ...
+        
         }) { (error) in
             print(error.localizedDescription)
         }
         
     }
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @objc func addTapped()  {
         let catecoriesTableVC = AddCategoryViewController()
-       // catecoriesTableVC.addButton.setTitle("Add", for: .normal)
         catecoriesTableVC.delegate = self
         self.navigationController?.pushViewController(catecoriesTableVC, animated: true)
     }
     
-    @objc func back()  {
+    @objc func saveTaped()  {
         
         for category in self.categoriesArray{
             if (category.id == ""){

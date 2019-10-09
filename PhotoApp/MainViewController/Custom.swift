@@ -16,9 +16,7 @@ class Custom: NSObject, MKAnnotation {
     var color  = UIColor.clear
     
     init(coordinate: CLLocationCoordinate2D) {
-        
         self.coordinate = coordinate
-        
         super.init()
     }
 }

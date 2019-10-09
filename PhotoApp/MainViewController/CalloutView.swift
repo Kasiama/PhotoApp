@@ -27,14 +27,11 @@ class CalloutView: UIView {
         commonInit()
     }
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //commonInit()
     }
     private func commonInit(){
         Bundle.main.loadNibNamed("calloutView", owner: self, options: nil)
@@ -42,11 +39,14 @@ class CalloutView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addBackgroundButton(to: contentView)
-     //   self.imageView = CachedImageView()
         self.imageView.loadImage(idString: model!.id)
+        self.descriptionLabel.text = self.model!.description
+        let formater = DateFormatter()
+        formater.dateFormat = "yyyy:MM:dd HH:mm:ss"
+        let date = formater.date(from: self.model?.date ?? "")
+        formater.dateFormat = "yyyy-MM-dd"
+        self.dateLabel.text = formater.string(from: date ?? Date.init())
         
-        
-          let a = self.imageView.image
         
     }
     fileprivate func addBackgroundButton(to view: UIView) {
@@ -63,27 +63,15 @@ class CalloutView: UIView {
     }
     @objc func didTouchUpInCallout(_ sender: Any) {
         if imageView.image != nil {
-       self.calloutDelegate?.addPopupVC(whithImage: imageView.image!,model: self.model)
+       self.calloutDelegate?.addPopupVC(whithImage: imageView.image!,model: self.model, date: nil)
         }
     
     }
     func add(to annotationView: MKAnnotationView) {
-        annotationView.addSubview(self)
+        annotationView.insertSubview(self, aboveSubview: annotationView)
         
-        // constraints for this callout with respect to its superview
-        
-        //        NSLayoutConstraint.activate([
-        //            bottomAnchor.constraint(equalTo: annotationView.topAnchor, constant: annotationView.calloutOffset.y),
-        //            centerXAnchor.constraint(equalTo: annotationView.centerXAnchor, constant: annotationView.calloutOffset.x)
-        //            ])
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    
     
 
 }

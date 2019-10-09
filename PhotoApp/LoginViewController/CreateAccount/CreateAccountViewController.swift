@@ -29,16 +29,12 @@ class CreateAccountViewController: UIViewController {
         passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
          repeatPasswordTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         
-        // Do any additional setup after loading the view.
     }
     
     
     @objc func keyboardWillShow(notification: Notification) {
-        //  return
         let keyboardSize = (notification.userInfo?  [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-        
         let keyboardHeight = keyboardSize?.height
-        
         if (keyboardHeight!-5 > self.bottomConstraint.constant){
             self.bottomConstraint.constant = keyboardHeight! - view.safeAreaInsets.bottom + 15
         }
@@ -50,8 +46,7 @@ class CreateAccountViewController: UIViewController {
     }
     
     @objc func keyboardWillHide(notification: Notification){
-        
-        self.bottomConstraint.constant = UIScreen.main.bounds.height / 3  // or change according to your logic
+        self.bottomConstraint.constant = UIScreen.main.bounds.height / 3
         UIView.animate(withDuration: 0.5){
         self.view.layoutIfNeeded()
             
@@ -59,6 +54,12 @@ class CreateAccountViewController: UIViewController {
         
     }
     
+    @objc func textFieldDidChange(textField : UITextField){
+           self.alertLabel.text = ""
+           self.passwordTextField.layer.borderWidth = 0;
+           self.emailTextfield.layer.borderWidth = 0;
+           self.repeatPasswordTextField.layer.borderWidth = 0;
+       }
 
     @IBAction func createBtnTapped(_ sender: Any) {
         
@@ -105,21 +106,7 @@ class CreateAccountViewController: UIViewController {
             return
         }
     }
-    @objc func textFieldDidChange(textField : UITextField){
-        self.alertLabel.text = ""
-        self.passwordTextField.layer.borderWidth = 0;
-        self.emailTextfield.layer.borderWidth = 0;
-        self.repeatPasswordTextField.layer.borderWidth = 0;
-    }
+   
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

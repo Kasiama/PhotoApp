@@ -863,7 +863,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
             endingLineNumber = "141"
-            landmarkName = "longPressed(sender:)"
+            landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -880,7 +880,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
             endingLineNumber = "110"
-            landmarkName = "zoomToLatestLocation(with:)"
+            landmarkName = "addAnnotation(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -897,7 +897,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
             endingLineNumber = "260"
-            landmarkName = "openCamera()"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -914,8 +914,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "338"
             endingLineNumber = "338"
-            landmarkName = "MainViewController"
-            landmarkType = "21">
+            landmarkName = "movePopupVC()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -931,7 +931,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "348"
             endingLineNumber = "348"
-            landmarkName = "addAnnotation(model:image:)"
+            landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -948,8 +948,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
-            landmarkName = "MainViewController"
-            landmarkType = "3">
+            landmarkName = "currentLocationTapped(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -965,7 +965,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "344"
             endingLineNumber = "344"
-            landmarkName = "addAnnotation(model:image:)"
+            landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -982,7 +982,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "351"
             endingLineNumber = "351"
-            landmarkName = "addAnnotation(model:image:)"
+            landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -999,7 +999,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "327"
             endingLineNumber = "327"
-            landmarkName = "addPopupVC(whithImage:model:)"
+            landmarkName = "addAnnotation(model:image:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1016,7 +1016,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
             endingLineNumber = "177"
-            landmarkName = "downloadCategories()"
+            landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1033,7 +1033,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
             endingLineNumber = "160"
-            landmarkName = "longPressed(sender:)"
+            landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1050,7 +1050,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "346"
             endingLineNumber = "346"
-            landmarkName = "addAnnotation(model:image:)"
+            landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1237,7 +1237,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
-            landmarkName = "downloadCategories()"
+            landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1254,7 +1254,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
             endingLineNumber = "172"
-            landmarkName = "downloadCategories()"
+            landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1271,7 +1271,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
             endingLineNumber = "174"
-            landmarkName = "downloadCategories()"
+            landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1288,7 +1288,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
-            landmarkName = "downloadCategories()"
+            landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1305,7 +1305,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "263"
             endingLineNumber = "263"
-            landmarkName = "openCamera()"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1322,7 +1322,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "openCamera()"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1356,7 +1356,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
             endingLineNumber = "180"
-            landmarkName = "downloadCategories()"
+            landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1424,7 +1424,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "284"
             endingLineNumber = "284"
-            landmarkName = "openGallery()"
+            landmarkName = "addPopupVC(whithImage:model:date:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1441,7 +1441,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "291"
             endingLineNumber = "291"
-            landmarkName = "imagePickerControllerDidCancel(_:)"
+            landmarkName = "addPopupVC(whithImage:model:date:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1543,7 +1543,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "longPressed(sender:)"
+            landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1961,8 +1961,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
             endingLineNumber = "94"
-            landmarkName = "MainViewController"
-            landmarkType = "3">
+            landmarkName = "currentLocationTapped(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -117,7 +117,6 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
             
             let cell = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
                 cell.cellView.removeFromSuperview()
-       //     cell.cellView.subviews.map({ $0.removeFromSuperview() })
             cell.cirkleView = nil
             cell.fillCircle = nil
             tableView.deleteRows(at: [indexPath], with: .none)
@@ -138,7 +137,6 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         categoriesArray[row] = category
         let cell = tableView.cellForRow(at: IndexPath.init(item: row, section: 0)) as! CategoryTableViewCell
         cell.cellView.removeFromSuperview()
-       // cell.cellView.subviews.map({ $0.removeFromSuperview() })
         cell.cirkleView = nil
         cell.fillCircle = nil
         tableView.reloadData()
@@ -146,21 +144,22 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
 
 
     func downloadCategories()  {
-        let userID = Auth.auth().currentUser!.uid
+        if let user  = Auth.auth().currentUser{
+        let userID = user.uid
         ref.child(userID).child("categories").observeSingleEvent(of: .value, with: { (snapshot) in
           let value = snapshot.value as? NSDictionary
             for (categoryID, categoryInfo) in value ?? [:]{
-                if  let categoryIn = categoryInfo as? NSDictionary{
-                let catid = categoryID as? String
-                let name = categoryIn["name"] as? String
-                let fred = categoryIn["fred"] as? CGFloat
-                let fblue = categoryIn["fblue"] as? CGFloat
-                let fgreen = categoryIn["fgreen"] as? CGFloat
-                let falpha = categoryIn["falpha"] as? CGFloat
-                let isSelected = categoryIn["isSelected"] as? Int
-                    if (catid != nil &&  name != nil && fred != nil && fblue != nil && fgreen != nil && falpha != nil && isSelected != nil)    {            let category = CategoryModel.init(id: catid!  , name: name! , fred: fred!, fgreen: fgreen!, fblue: fblue!, falpha: falpha!, isSelected:isSelected!)
+                if  let categoryIn = categoryInfo as? NSDictionary,
+                let catid = categoryID as? String,
+                let name = categoryIn["name"] as? String,
+                let fred = categoryIn["fred"] as? CGFloat,
+                let fblue = categoryIn["fblue"] as? CGFloat,
+                let fgreen = categoryIn["fgreen"] as? CGFloat,
+                let falpha = categoryIn["falpha"] as? CGFloat,
+                let isSelected = categoryIn["isSelected"] as? Int{
+                    
+                let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected:isSelected)
                 self.categoriesArray.append(category)
-                    }
             }
         }
             self.tableView.reloadData()
@@ -168,7 +167,7 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         }) { (error) in
             print(error.localizedDescription)
         }
-        
+     }
     }
     
     @objc func addTapped()  {
@@ -178,29 +177,30 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     }
     
     @objc func saveTaped()  {
-        
+        if let user  = Auth.auth().currentUser{
+        let userID = user.uid
         for category in self.categoriesArray{
             if (category.id == ""){
-            guard let key = ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").childByAutoId().key else { return }
+            guard let key = ref.child("\(String(describing: userID))/categories").childByAutoId().key else { return }
                 let categorysend = ["name":category.name,
                                     "fred": category.fred,
                                     "fgreen": category.fgreen,
                                     "fblue": category.fblue,
                                     "falpha": category.falpha,
                                     "isSelected":category.isSelected      ] as [String : Any]
-                let childUpdates = ["/\(String(describing: Auth.auth().currentUser!.uid))/categories/\(key)": categorysend]
+                let childUpdates = ["/\(String(describing: userID))/categories/\(key)": categorysend]
                 
                 ref.updateChildValues(childUpdates)
                 }
             else{
-                 guard let key = ref.child("\(String(describing: Auth.auth().currentUser!.uid))/categories").child(category.id).key else { return }
+                 guard let key = ref.child("\(String(describing: userID))/categories").child(category.id).key else { return }
                 let categorysend = ["name":category.name,
                                     "fred": category.fred,
                                     "fgreen": category.fgreen,
                                     "fblue": category.fblue,
                                     "falpha": category.falpha,
                                     "isSelected":category.isSelected      ] as [String : Any]
-                let childUpdates = ["/\(String(describing: Auth.auth().currentUser!.uid))/categories/\(key)": categorysend]
+                let childUpdates = ["/\(String(describing: userID))/categories/\(key)": categorysend]
                 
                 ref.updateChildValues(childUpdates)
             }
@@ -210,6 +210,8 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         
         
        self.navigationController?.popViewController(animated: true)
+        }
     }
+
     
 }

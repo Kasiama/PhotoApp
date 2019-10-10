@@ -134,7 +134,7 @@ class AddCategoryViewController: UIViewController {
             return
         }
         
-        let category = CategoryModel.init(id: "", name: self.nameCategoryTextField.text!, fred: fRed, fgreen: fGreen, fblue: fBlue, falpha: fAlpha,isSelected: 0)
+        let category = CategoryModel.init(id: "", name: self.nameCategoryTextField.text ?? "", fred: fRed, fgreen: fGreen, fblue: fBlue, falpha: fAlpha,isSelected: 0)
         if self.row == nil{
       delegate?.addCategory(category: category)
         }
@@ -145,7 +145,9 @@ class AddCategoryViewController: UIViewController {
                 cat.fgreen = fGreen
                 cat.fblue = fBlue
                 cat.falpha = fAlpha
-            delegate?.editCategory(category: cat, row: self.row!)
+                if let row = self.row {
+            delegate?.editCategory(category: cat, row: row)
+                }
             }
         }
         self.navigationController?.popViewController(animated: true)

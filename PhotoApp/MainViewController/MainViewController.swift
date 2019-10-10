@@ -139,24 +139,23 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
     
     
     func downloadCategories()  {
-        let userID = Auth.auth().currentUser!.uid
+       if let user  = Auth.auth().currentUser{
+               let userID = user.uid
         let selectedCategories = ref?.child(userID).child("categories") .queryOrdered(byChild: "isSelected").queryEqual(toValue: 1);
         selectedCategories?.observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.selectedCategoriesArray.removeAll()
             for (categoryID, categoryInfo) in value ?? [:]{
-                if let categoryIn = categoryInfo as? NSDictionary {
-                let catid = categoryID as? String
-                let name = categoryIn["name"] as? String
-                let fred = categoryIn["fred"] as? CGFloat
-                let fblue = categoryIn["fblue"] as? CGFloat
-                let fgreen = categoryIn["fgreen"] as? CGFloat
-                let falpha = categoryIn["falpha"] as? CGFloat
-                let isSelected = categoryIn["isSelected"] as? Int
-                     if (catid != nil &&  name != nil && fred != nil && fblue != nil && fgreen != nil && falpha != nil && isSelected != nil){
-                let category = CategoryModel.init(id: catid!  , name: name! , fred: fred!, fgreen: fgreen!, fblue: fblue!, falpha: falpha!,isSelected:isSelected!)
+                if let categoryIn = categoryInfo as? NSDictionary,
+                    let catid = categoryID as? String,
+                    let name = categoryIn["name"] as? String,
+                    let fred = categoryIn["fred"] as? CGFloat,
+                    let fblue = categoryIn["fblue"] as? CGFloat,
+                    let fgreen = categoryIn["fgreen"] as? CGFloat,
+                    let falpha = categoryIn["falpha"] as? CGFloat,
+                    let isSelected = categoryIn["isSelected"] as? Int {
+               let category = CategoryModel.init(id: catid, name: name , fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha,isSelected:isSelected)
                         self.selectedCategoriesArray.append(category)
-                    }
             }
         }
             self.downloadPhotoModels()
@@ -165,49 +164,40 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
         }) { (error) in
             print(error.localizedDescription)
         }
-        
+    }
     }
     
     func downloadPhotoModels(){
-        let userID = Auth.auth().currentUser!.uid
+        if let user  = Auth.auth().currentUser{
+        let userID = user.uid
         self.ref?.child(userID).child("photomodels").observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.mapView.removeAnnotations(self.mapView.annotations)
             for (photomodelID, photomodelInfo) in value ?? [:]{
-                if  let photoIn = photomodelInfo as? NSDictionary {
-                //let catid = photomodelID as! String
-                let catid = photoIn["categoryID"] as? String
-                let date = photoIn["date"] as? String
-                let hastags = photoIn["hashtags"] as? [String]
-                let latitude = photoIn["latitude"] as? CLLocationDegrees
-                let longitude = photoIn["longitude"] as? CLLocationDegrees
-                let photoID = photoIn["photoID"] as? String
-                let description = photoIn["description"] as? String
-                
-                
-                
-                var cat:CategoryModel?
+                if  let photoIn = photomodelInfo as? NSDictionary,
+                    let latitude = photoIn["latitude"] as? CLLocationDegrees,
+                    let longitude = photoIn["longitude"] as? CLLocationDegrees,
+                    let catid = photoIn["categoryID"] as? String,
+                    let date = photoIn["date"] as? String,
+                    let photoID = photoIn["photoID"] as? String{
+                    
+                    
+                    let hastags = photoIn["hashtags"] as? [String]
+                    let description = photoIn["description"] as? String
                 for category in self.selectedCategoriesArray{
                     if category.id == catid{
-                     cat = category
-                    }
-                }
-                if (cat != nil && photoID != nil && latitude != nil && longitude != nil && date != nil){
-                    
-
-                    let model = Photomodel.init(id: photoID!, latitude: latitude!, longitude: longitude!, category:cat!, date: date!, hashtags: hastags ?? [""], description: description ?? "", image: UIImage.init())
-                
-                let a = Custom(coordinate: CLLocationCoordinate2D.init(latitude: latitude!, longitude: longitude!))
-                a.color = UIColor.init(red: cat!.fred, green: cat!.fgreen, blue: cat!.fblue, alpha: cat!.falpha)
+                    let model = Photomodel.init(id: photoID, latitude: latitude, longitude: longitude, category:category, date: date, hashtags: hastags ?? [""], description: description ?? "", image: UIImage.init())
+                let a = Custom(coordinate: CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude))
+                a.color = UIColor.init(red: category.fred, green: category.fgreen, blue: category.fblue, alpha: category.falpha)
                 a.photoModel = model
                 self.mapView.addAnnotation(a)
+                    }
                 }
-            
             }
           }
         })
         
-        
+        }
     }
     
     func moveMap(zoomRegion: MKCoordinateRegion) {

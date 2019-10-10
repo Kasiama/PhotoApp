@@ -185,8 +185,8 @@
             timestampString = "592303792.1358939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "addCategory(category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             timestampString = "592303792.136369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -287,8 +287,8 @@
             timestampString = "592303792.136472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
             <Locations>
@@ -674,8 +674,8 @@
             timestampString = "592303792.137439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
             <Locations>
@@ -895,8 +895,8 @@
             timestampString = "592144102.100103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -912,8 +912,8 @@
             timestampString = "592144102.100155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "movePopupVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -929,8 +929,8 @@
             timestampString = "592144102.100206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -963,8 +963,8 @@
             timestampString = "592144102.100305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -980,8 +980,8 @@
             timestampString = "592144102.100356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -997,8 +997,8 @@
             timestampString = "592144102.100504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "addAnnotation(model:image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1031,8 +1031,8 @@
             timestampString = "592144102.100611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1048,8 +1048,8 @@
             timestampString = "592144102.100709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1286,8 +1286,8 @@
             timestampString = "592144102.101329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1303,8 +1303,8 @@
             timestampString = "592144102.101377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1320,8 +1320,8 @@
             timestampString = "592144102.101474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1354,8 +1354,8 @@
             timestampString = "592144102.101653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1371,8 +1371,8 @@
             timestampString = "592217074.544137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1388,8 +1388,8 @@
             timestampString = "592217074.544178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "doneTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1405,8 +1405,8 @@
             timestampString = "592217074.544217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1422,8 +1422,8 @@
             timestampString = "592144102.101882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "addPopupVC(whithImage:model:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1439,8 +1439,8 @@
             timestampString = "592144102.101931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "addPopupVC(whithImage:model:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1456,8 +1456,8 @@
             timestampString = "592217074.544349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "addBackgroundButton()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1592,8 +1592,8 @@
             timestampString = "592303792.14332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "changeTable(whithSearchText:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1609,8 +1609,8 @@
             timestampString = "592303792.1433671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1626,8 +1626,8 @@
             timestampString = "592303792.143411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428">
+            startingLineNumber = "431"
+            endingLineNumber = "431">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1675,8 +1675,8 @@
             timestampString = "592303792.1436549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
             <Locations>
@@ -1726,8 +1726,8 @@
             timestampString = "592303792.143702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1743,8 +1743,8 @@
             timestampString = "592303792.143746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
             <Locations>
@@ -1794,8 +1794,8 @@
             timestampString = "592303792.143791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1895,8 +1895,8 @@
             filePath = "PhotoApp/MainViewController/Timeline/TimeLineViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "changeTable(whithSearchText:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1962,6 +1962,22 @@
             startingLineNumber = "94"
             endingLineNumber = "94"
             landmarkName = "currentLocationTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDF43C1F-4FBE-40A6-9828-B3A5AB770507"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Timeline/TimeLineViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "changeTable(whithSearchText:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -94,25 +94,25 @@ class TimeLineViewController: UIViewController {
 
     
     func downloadCategories(){
-        let userID = Auth.auth().currentUser!.uid
+        if let user  = Auth.auth().currentUser{
+        let userID = user.uid
         let selectedCategoriesRef = ref.child(userID).child("categories").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1);
        selectedCategoriesRef.observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.selectedCategoriesArray.removeAll()
             for (categoryID, categoryInfo) in value ?? [:]{
-                if let categoryData = categoryInfo as? NSDictionary{
-                let catid = categoryID as? String
-                let name = categoryData["name"] as? String
-                let fred = categoryData["fred"] as? CGFloat
-                let fblue = categoryData["fblue"] as? CGFloat
-                let fgreen = categoryData["fgreen"] as? CGFloat
-                let falpha = categoryData["falpha"] as? CGFloat
-                let isSelected = categoryData["isSelected"] as? Int
-                    if (catid != nil &&  name != nil && fred != nil && fblue != nil && fgreen != nil && falpha != nil && isSelected != nil){
-                let category = CategoryModel.init(id: catid!  , name: name! , fred: fred!, fgreen: fgreen!, fblue: fblue!, falpha: falpha!,isSelected:isSelected!)
+                if let categoryData = categoryInfo as? NSDictionary,
+                let catid = categoryID as? String,
+                let name = categoryData["name"] as? String,
+                let fred = categoryData["fred"] as? CGFloat,
+                let fblue = categoryData["fblue"] as? CGFloat,
+                let fgreen = categoryData["fgreen"] as? CGFloat,
+                let falpha = categoryData["falpha"] as? CGFloat,
+                let isSelected = categoryData["isSelected"] as? Int{
+                
+                    
+                let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha,isSelected:isSelected)
                 self.selectedCategoriesArray.append(category)
-                    }
-                    else {print("Found nil in items of Category") }
                 }
                 else {print("Cant make dictionary from dataCategory")}
             }
@@ -121,6 +121,7 @@ class TimeLineViewController: UIViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
     }
     
     
@@ -131,21 +132,21 @@ class TimeLineViewController: UIViewController {
         formater2.dateFormat = "MMMM-yyyy"
        
         
-        let userID = Auth.auth().currentUser!.uid
+       if let user  = Auth.auth().currentUser{
+        let userID = user.uid
         self.ref.child(userID).child("photomodels").observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.sections.removeAll()
             self.sortedSections.removeAll()
             for (photomodelID, photomodelInfo) in value ?? [:]{
-                if  let photomodelData = photomodelInfo as? NSDictionary{
-                let photomodelID = photomodelID as? String
-                let catid = photomodelData["categoryID"] as? String
-                let date = photomodelData["date"] as? String
+                if  let photomodelData = photomodelInfo as? NSDictionary,
+                    let photomodelID = photomodelID as? String,
+                    let catid = photomodelData["categoryID"] as? String,
+                    let date = photomodelData["date"] as? String {
+                
                 let hastags = photomodelData["hashtags"] as? [String]
                 let description = photomodelData["description"] as? String
                     
-                    
-                    if (photomodelID != nil && date != nil ){
                     for category in self.selectedCategoriesArray{
                     if category.id == catid{
                         if hastags != nil {
@@ -153,7 +154,7 @@ class TimeLineViewController: UIViewController {
                                 self.allHashtags.insert(hashtag)
                             }
                         }
-                        let photoModel:PhotoModellcell = (photomodelID!,category,description,date!,hastags)
+                        let photoModel:PhotoModellcell = (photomodelID,category,description,date,hastags)
                         let date = formater.date(from: photoModel.date)
                         let dateStr = formater2.string(from: date ?? Date.init())
                         if self.sections.index(forKey: dateStr) != nil {
@@ -162,24 +163,24 @@ class TimeLineViewController: UIViewController {
                         else{
                             self.sections[dateStr] = [photoModel]
                         }
-                        
-                        
                     }
                 }
-                }
-                    else {print("Found nil in photomodel items")}
-                
             }
                 else {print("Cant make dictionary from DataPhotomodel")}
             }
             
             // sortSections and get headers
             let sortSections = self.sections.sorted{
-                return formater2.date(from: $0.key)! > formater2.date(from: $1.key)!
+            if let a = formater2.date(from: $0.key),let b = formater2.date(from: $1.key){return a > b}
+            else {return true}
                 }
             self.headers.removeAll()
             for(key,value) in sortSections {
-                let b = value.sorted{formater.date(from: $0.date)! > formater.date(from: $1.date)!}
+                let b = value.sorted{
+                    if let a =  formater.date(from: $0.date), let b =  formater.date(from: $1.date){
+                        return a>b}
+                    else {return true}
+                }
                 self.headers.append(key)
                 self.sortedSections[key] = b
                 
@@ -195,7 +196,7 @@ class TimeLineViewController: UIViewController {
             print(error.localizedDescription)
         }
         
-        
+    }
     }
     
     func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {
@@ -298,6 +299,7 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate{
         }
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if searching{
@@ -421,6 +423,7 @@ extension TimeLineViewController: UISearchBarDelegate {
                 headers2.append(key)
             }
         }
+        headers2 = headers2.reversed()
         self.photoTableView.reloadData()
     }
     

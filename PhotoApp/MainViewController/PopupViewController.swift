@@ -74,16 +74,21 @@ class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             self.categoryTextField.text = model.category.name
             self.descriptionTextView.text = model.description
             self.circleView.backgroundColor = UIColor.init(red: model.category.fred, green: model.category.fgreen, blue: model.category.fblue, alpha: model.category.falpha)
-            
-            if let categories = PopupViewController.categories {
-                var i = 0
-                while(i<categories.count){
-                    if categories[i].id == model.category.id {
-                        self.row = i
-                    }
-                    i += 1
+            PopupViewController.categories?.enumerated().forEach({ (index, element) in
+                if element.id == model.category.id {
+                    self.row = index
                 }
-            }
+            })
+            
+//            if let categories = PopupViewController.categories {
+//                var i = 0
+//                while(i<categories.count){
+//                    if categories[i].id == model.category.id {
+//                        self.row = i
+//                    }
+//                    i += 1
+//                }
+//            }
             
         }
         
@@ -162,6 +167,8 @@ class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     }
     
     @IBAction func doneTapped(_ sender: Any) {
+        if let user  = Auth.auth().currentUser{
+               let userID = user.uid
         let hashtags = self.descriptionTextView.text.findMentionText()
         self.photoModel?.hashtags = hashtags
         self.photoModel?.description = self.descriptionTextView.text
@@ -174,36 +181,37 @@ class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                                    "hashtags": model.hashtags,
                                    "description": model.description,
                                    "categoryID": cat.id] as [String : Any]
-                let childUpdates = ["/\(String(describing: Auth.auth().currentUser!.uid))/photomodels/\(model.id)": photomodelsend]
+                let childUpdates = ["/\(String(describing:userID))/photomodels/\(model.id)": photomodelsend]
              ref.updateChildValues(childUpdates)
             }
             }
         else{
              if let cat = PopupViewController.categories?[row]{
-             guard let key = ref.child("\(String(describing: Auth.auth().currentUser!.uid))/photoModels").childByAutoId().key else { return }
+             guard let key = ref.child("\(String(describing: userID))/photoModels").childByAutoId().key else { return }
                 var stringDate = ""
                 if let date = self.date{
                 let dateformatter = DateFormatter()
                     dateformatter.dateFormat = "yyyy:MM:dd hh:mm:ss"
                  stringDate = dateformatter.string(from: date)
                 }
-                photoModel = Photomodel.init(id: key, latitude: self.annotation.coordinate.latitude, longitude:self.annotation.coordinate.longitude, category: cat, date: stringDate, hashtags: hashtags, description: self.descriptionTextView.text, image: UIImage.init())
-         
+                
+                let model = Photomodel.init(id: key, latitude: self.annotation.coordinate.latitude, longitude:self.annotation.coordinate.longitude, category: cat, date: stringDate, hashtags: hashtags, description: self.descriptionTextView.text, image: UIImage.init())
+                self.photoModel = model
                 let photomodelsend = [ "photoID":  key,
-                                   "latitude": photoModel!.latitude,
-                                   "longitude": photoModel!.longitude,
-                                   "date": photoModel!.date,
-                                   "hashtags": photoModel!.hashtags,
-                                   "description": photoModel!.description,
+                                   "latitude": model.latitude,
+                                   "longitude": model.longitude,
+                                   "date": model.date,
+                                   "hashtags": model.hashtags,
+                                   "description": model.description,
                                    "categoryID": cat.id] as [String : Any]
-                let childUpdates = ["/\(String(describing: Auth.auth().currentUser!.uid))/photomodels/\(key)": photomodelsend]
+                let childUpdates = ["/\(String(describing: userID))/photomodels/\(key)": photomodelsend]
                  ref.updateChildValues(childUpdates)
-                let ref = storageRef.child("\(String(describing: Auth.auth().currentUser!.uid))/\(key)")
+                let ref = storageRef.child("\(String(describing: userID))/\(key)")
                 
                 if let image = self.imageView.image{
-                let data = image.jpegData(compressionQuality: 0.7)
-                    CachedImageView.imageCashe.setObject(image, forKey: photoModel!.id as NSString)
-                let uploadTask = ref.putData(data!, metadata: nil) { (metadata, error) in
+                CachedImageView.imageCashe.setObject(image, forKey: photoModel!.id as NSString)
+                    if  let data = image.jpegData(compressionQuality: 0.7){
+                    let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in
                     guard let metadata = metadata else {
                         return
                     }
@@ -214,10 +222,14 @@ class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                         }
                     }
               }
+                }
             }
             }
         }
-        self.delegate?.addAnnotation(model: photoModel!,image:self.imageView.image ?? UIImage.init())
+            if let photoModel = self.photoModel{
+        self.delegate?.addAnnotation(model: photoModel,image:self.imageView.image ?? UIImage.init())
+            }
+        }
         }
     }
     

@@ -77,7 +77,6 @@ class CreateAccountViewController: UIViewController {
                 self.emailTextfield.layer.borderWidth = 1.0;
                 return
             }
-            print("\(user.email!) created")
             self.navigationController?.popViewController(animated: true)
         }
             }

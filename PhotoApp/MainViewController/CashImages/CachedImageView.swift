@@ -89,9 +89,10 @@ import Firebase
     }
     
     open func cancelTask(id: String){
+        
         self.idString = id
-        dict[id]??.cancel()
-        self.task?.cancel()
+        dict[id]??.pause()
+        self.task?.pause()
          dict[id] = self.task
         
 

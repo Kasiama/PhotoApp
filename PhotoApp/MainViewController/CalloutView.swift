@@ -68,10 +68,14 @@ class CalloutView: UIView {
     
     }
     func add(to annotationView: MKAnnotationView) {
-        annotationView.insertSubview(self, aboveSubview: annotationView)
+        annotationView.addSubview(self)
         
     }
-    
+    @IBAction func dgegrtgtrg(_ sender: Any) {
+        if imageView.image != nil {
+        self.calloutDelegate?.addPopupVC(whithImage: imageView.image!,model: self.model, date: nil)
+         }
+    }
     
 
 }

@@ -28,9 +28,6 @@ extension String {
     }
 }
 
-
-
-
 class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
    
     
@@ -47,7 +44,7 @@ class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     weak var delegate: PopupDelegate?
     var photoModel : Photomodel?
     var date: Date?
-   static var categories: [CategoryModel]?
+    static var categories: [CategoryModel]?
     var row = 0;
     var annotation = MKPointAnnotation()
     
@@ -63,13 +60,11 @@ class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.circleView.backgroundColor = .clear
         self.circleView.layer.cornerRadius = 10
         
-        
         let formater = DateFormatter()
         formater.dateFormat = "MMMM dd'th,' yyyy - hh:mm a"
         self.dateLabel.text = formater.string(from: date ?? Date.init())
         
         if let model = self.photoModel{
-            
             let formater = DateFormatter()
             formater.dateFormat = "yyyy:MM:dd HH:mm:ss"
             let date = formater.date(from:model.date )
@@ -193,7 +188,8 @@ class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                  stringDate = dateformatter.string(from: date)
                 }
                 photoModel = Photomodel.init(id: key, latitude: self.annotation.coordinate.latitude, longitude:self.annotation.coordinate.longitude, category: cat, date: stringDate, hashtags: hashtags, description: self.descriptionTextView.text, image: UIImage.init())
-            let photomodelsend = [ "photoID":  key,
+         
+                let photomodelsend = [ "photoID":  key,
                                    "latitude": photoModel!.latitude,
                                    "longitude": photoModel!.longitude,
                                    "date": photoModel!.date,
@@ -206,21 +202,14 @@ class PopupViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 
                 if let image = self.imageView.image{
                 let data = image.jpegData(compressionQuality: 0.7)
-                // Create a reference to the file you want to upload
                     CachedImageView.imageCashe.setObject(image, forKey: photoModel!.id as NSString)
-                
-                // Upload the file to the path "images/rivers.jpg"
                 let uploadTask = ref.putData(data!, metadata: nil) { (metadata, error) in
                     guard let metadata = metadata else {
-                        // Uh-oh, an error occurred!
                         return
                     }
-                    // Metadata contains file metadata such as size, content-type.
-                    let size = metadata.size
-                    // You can also access to download URL after upload.
                     ref.downloadURL { (url, error) in
                         guard let downloadURL = url else {
-                            // Uh-oh, an error occurred!
+                           
                             return
                         }
                     }

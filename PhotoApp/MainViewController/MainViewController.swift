@@ -117,8 +117,6 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
             addPhoto()
             let point = sender.location(in: self.mapView)
             let view = self.mapView.hitTest(point, with: nil)
-            
-            
             if (self.children.count != 0){
                 popupVC!.removeFromParent()
                 popupVC?.view = nil
@@ -161,7 +159,6 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
                     }
             }
         }
-            
             self.downloadPhotoModels()
             
           
@@ -195,13 +192,12 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
                      cat = category
                     }
                 }
-                if cat != nil{
+                if (cat != nil && photoID != nil && latitude != nil && longitude != nil && date != nil){
                     
 
                     let model = Photomodel.init(id: photoID!, latitude: latitude!, longitude: longitude!, category:cat!, date: date!, hashtags: hastags ?? [""], description: description ?? "", image: UIImage.init())
                 
                 let a = Custom(coordinate: CLLocationCoordinate2D.init(latitude: latitude!, longitude: longitude!))
-               // a.image = image
                 a.color = UIColor.init(red: cat!.fred, green: cat!.fgreen, blue: cat!.fblue, alpha: cat!.falpha)
                 a.photoModel = model
                 self.mapView.addAnnotation(a)
@@ -233,17 +229,12 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
     }
     
     func openCamera(){
-    
-        
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
             let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-            if (status == .denied){
-                
-            }
+            if (status == .denied){}
             else{
                 self.imagePickerController.sourceType = UIImagePickerController.SourceType.camera
                 self.imagePickerController.allowsEditing = false
-                
                 self.present(self.imagePickerController, animated: true, completion: nil)
                 
             }
@@ -253,14 +244,11 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
     
     func openGallery(){
         let status = PHPhotoLibrary.authorizationStatus()
-        if (status == .denied){
-            
-        }
+        if (status == .denied){}
         else{
             self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.imagePickerController.allowsEditing = false
                 self.present(self.imagePickerController, animated: true, completion: nil)
-            
         }
     }
     
@@ -279,12 +267,9 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
             dateFormatter.dateFormat = "yyyy:MM:dd HH:mm:ss"
             currentdate = dateFormatter.date(from: dateString) ?? Date.init()
         } else {
-            
-                    let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset
-                     currentdate = asset?.creationDate ?? Date.init()
+                let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset
+                currentdate = asset?.creationDate ?? Date.init()
         }
-        
-        
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         if (image != nil){
             addPopupVC(whithImage: image!, model: nil, date: currentdate )
@@ -326,9 +311,7 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
     let ann = MKPointAnnotation()
         ann.coordinate = point!
             self.annotation = ann
-            
-        
-    }
+            }
     
 }
 
@@ -347,9 +330,6 @@ extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate,Photo
         popupVC = nil
        
     }
-    
-    
-    
     
     func movePopupVC() {
         self.popupVC?.removeFromParent()

@@ -36,7 +36,8 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        canShowCallout = true
+        canShowCallout = false
+        isUserInteractionEnabled = true
 }
     convenience  init(annotation: MKAnnotation?, reuseIdentifier: String?,model:Photomodel) {
         self.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -83,4 +84,15 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
         calloutView?.removeFromSuperview()
     }
     
+     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+            if let hitView = super.hitTest(point, with: event) { return hitView }
+            
+            if let calloutView = calloutView {
+                let pointInCalloutView = convert(point, to: calloutView)
+                return calloutView.hitTest(pointInCalloutView, with: event)
+            }
+            
+            return nil
+        }
+
 }

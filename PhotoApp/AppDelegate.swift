@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().currentUser != nil{
             
             let mainVC = MainViewController()
-            let timeVC = TimeLineViewController()
+            let timeVC = TimeLineViewController(ISsearhbar: true, message: "")
             let otherVC = OtherViewController()
             let navMainVC = UINavigationController.init(rootViewController: mainVC)
             let navTimeVC = UINavigationController.init(rootViewController: timeVC)

@@ -34,7 +34,7 @@ protocol PopupDelegate : AnyObject{
     func movePopupVC()
 }
 protocol CalloutDelegate : AnyObject {
-    func addPopupVC(whithImage image:UIImage, model:Photomodel?)
+    func addPopupVC(whithImage image:UIImage, model:Photomodel?, date: Date?)
 }
 
 
@@ -44,20 +44,20 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
 
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
-     var ref: DatabaseReference!
-      
-      var selectedCategoriesArray = [CategoryModel]()
-    
+
+    var ref: DatabaseReference!
+    var selectedCategoriesArray = [CategoryModel]()
     let imagePickerController =  UIImagePickerController()
     
     private var currentCoordinate: CLLocationCoordinate2D?
     private let locationManager = CLLocationManager()
     
-    var vc : PopupViewController?
+    var popupVC : PopupViewController?
     var annotation = MKPointAnnotation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         ref = Database.database().reference()
         downloadCategories()
         
@@ -69,37 +69,17 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.startUpdatingLocation()
-        
         mapView.showsUserLocation = true
-        // Do any additional setup after loading the view.
-       
-        
         imagePickerController.delegate = self
-        
-            }
+        }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        self.vc?.removeFromParent()
-        vc?.view = nil
-        vc = nil
-        
-    }
-    
-    
-    /*
-    // MARK: - Navigation
+   
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     private func beginLocationUpdates(locationManager: CLLocationManager) {
-        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
     }
@@ -108,17 +88,17 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
         let zoomRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(zoomRegion, animated: true)
     }
+    
     @IBAction func currentLocationTapped(_ sender: Any) {
         if (self.currentCoordinate != nil){
         zoomToLatestLocation(with: self.currentCoordinate! )
         }
-        
-        let a = self.mapView.annotations
-        let b = Custom.init(coordinate: a[0].coordinate)
-        self.mapView.removeAnnotation(b)
+        let annotations = self.mapView.annotations
+        let coordinate = Custom.init(coordinate: annotations[0].coordinate)
+        self.mapView.removeAnnotation(coordinate)
     }
-    let geocoder = CLGeocoder()
     
+    let geocoder = CLGeocoder()
     func addAnnotation(for coordinate: CLLocationCoordinate2D) {
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         geocoder.reverseGeocodeLocation(location) { placemarks, _ in
@@ -131,24 +111,19 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
             }
         }
     }
+    
     @objc func longPressed(sender: UILongPressGestureRecognizer)   {
-        if sender.state == UIGestureRecognizer.State.ended{
-            
+        if sender.state == UIGestureRecognizer.State.began{
             addPhoto()
-            print("looooong")
-            
             let point = sender.location(in: self.mapView)
             let view = self.mapView.hitTest(point, with: nil)
-            
-            
             if (self.children.count != 0){
-                print("remove")
-                vc!.removeFromParent()
-                vc?.view = nil
-                vc = nil
+                popupVC!.removeFromParent()
+                popupVC?.view = nil
+                popupVC = nil
                 return
-                
             }
+            
             if view is MKAnnotationView{
                 print("anot")
             }
@@ -161,30 +136,32 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
             }
         }
     }
+    
+    
     func downloadCategories()  {
         let userID = Auth.auth().currentUser!.uid
-        let aaaa = ref?.child(userID).child("categories") .queryOrdered(byChild: "isSelected").queryEqual(toValue: 1);
-        aaaa?.observe(.value, with: { (snapshot) in
+        let selectedCategories = ref?.child(userID).child("categories") .queryOrdered(byChild: "isSelected").queryEqual(toValue: 1);
+        selectedCategories?.observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.selectedCategoriesArray.removeAll()
             for (categoryID, categoryInfo) in value ?? [:]{
-                let categoryIn = categoryInfo as! NSDictionary
-                let catid = categoryID as! String
-                let name = categoryIn["name"] as! String
-                let fred = categoryIn["fred"] as! CGFloat
-                let fblue = categoryIn["fblue"] as! CGFloat
-                let fgreen = categoryIn["fgreen"] as! CGFloat
-                let falpha = categoryIn["falpha"] as! CGFloat
-                let isSelected = categoryIn["isSelected"] as! Int
-                let category = CategoryModel.init(id: catid  , name: name , fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha,isSelected:isSelected)
-                self.selectedCategoriesArray.append(category)
+                if let categoryIn = categoryInfo as? NSDictionary {
+                let catid = categoryID as? String
+                let name = categoryIn["name"] as? String
+                let fred = categoryIn["fred"] as? CGFloat
+                let fblue = categoryIn["fblue"] as? CGFloat
+                let fgreen = categoryIn["fgreen"] as? CGFloat
+                let falpha = categoryIn["falpha"] as? CGFloat
+                let isSelected = categoryIn["isSelected"] as? Int
+                     if (catid != nil &&  name != nil && fred != nil && fblue != nil && fgreen != nil && falpha != nil && isSelected != nil){
+                let category = CategoryModel.init(id: catid!  , name: name! , fred: fred!, fgreen: fgreen!, fblue: fblue!, falpha: falpha!,isSelected:isSelected!)
+                        self.selectedCategoriesArray.append(category)
+                    }
             }
-            
-            
+        }
             self.downloadPhotoModels()
             
-          //  self.tableView.reloadData()
-            // ...
+          
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -197,15 +174,16 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
             let value = snapshot.value as? NSDictionary
             self.mapView.removeAnnotations(self.mapView.annotations)
             for (photomodelID, photomodelInfo) in value ?? [:]{
-                let photoIn = photomodelInfo as! NSDictionary
+                if  let photoIn = photomodelInfo as? NSDictionary {
                 //let catid = photomodelID as! String
-                let catid = photoIn["categoryID"] as! String
-                let date = photoIn["date"] as! String
+                let catid = photoIn["categoryID"] as? String
+                let date = photoIn["date"] as? String
                 let hastags = photoIn["hashtags"] as? [String]
-                let latitude = photoIn["latitude"] as! CLLocationDegrees
-                let longitude = photoIn["longitude"] as! CLLocationDegrees
-                let photoID = photoIn["photoID"] as! String
+                let latitude = photoIn["latitude"] as? CLLocationDegrees
+                let longitude = photoIn["longitude"] as? CLLocationDegrees
+                let photoID = photoIn["photoID"] as? String
                 let description = photoIn["description"] as? String
+                
                 
                 
                 var cat:CategoryModel?
@@ -214,22 +192,19 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
                      cat = category
                     }
                 }
-                if cat != nil{
-                    let model = Photomodel.init(id: photoID, latitude: latitude, longitude: longitude, category:cat! , date: date, hashtags: hastags ?? [""], description: description ?? "", image: UIImage.init())
+                if (cat != nil && photoID != nil && latitude != nil && longitude != nil && date != nil){
+                    
+
+                    let model = Photomodel.init(id: photoID!, latitude: latitude!, longitude: longitude!, category:cat!, date: date!, hashtags: hastags ?? [""], description: description ?? "", image: UIImage.init())
                 
-                
-                let cate = model.category
-                let a = Custom(coordinate: CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude))
-               // a.image = image
+                let a = Custom(coordinate: CLLocationCoordinate2D.init(latitude: latitude!, longitude: longitude!))
                 a.color = UIColor.init(red: cat!.fred, green: cat!.fgreen, blue: cat!.fblue, alpha: cat!.falpha)
                 a.photoModel = model
                 self.mapView.addAnnotation(a)
                 }
-                //self.vc?.removeFromParent()
-                //1vc?.view = nil
-              //  vc = nil
-            }
             
+            }
+          }
         })
         
         
@@ -254,19 +229,14 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
     }
     
     func openCamera(){
-       // UIWindow.main.view
-        
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
             let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-            if (status == .denied){
-                
-            }
+            if (status == .denied){}
             else{
                 self.imagePickerController.sourceType = UIImagePickerController.SourceType.camera
                 self.imagePickerController.allowsEditing = false
-                if (self.imagePickerController != nil){
                 self.present(self.imagePickerController, animated: true, completion: nil)
-                }
+                
             }
         }
     }
@@ -274,15 +244,11 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
     
     func openGallery(){
         let status = PHPhotoLibrary.authorizationStatus()
-        if (status == .denied){
-            
-        }
+        if (status == .denied){}
         else{
             self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.imagePickerController.allowsEditing = false
-            if (self.imagePickerController != nil){
                 self.present(self.imagePickerController, animated: true, completion: nil)
-            }
         }
     }
     
@@ -291,73 +257,84 @@ class MainViewController: UIViewController,UIGestureRecognizerDelegate,UIImagePi
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true, completion: nil)
+       
+        var currentdate:Date!
+        if (picker.sourceType == .camera){
+            let metadata = info[UIImagePickerController.InfoKey.mediaMetadata] as! NSDictionary
+            let metaDate = metadata.object(forKey: "{TIFF}") as! NSDictionary
+            let dateString = metaDate.object(forKey: "DateTime") as! String
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy:MM:dd HH:mm:ss"
+            currentdate = dateFormatter.date(from: dateString) ?? Date.init()
+        } else {
+                let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset
+                currentdate = asset?.creationDate ?? Date.init()
+        }
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         if (image != nil){
-            addPopupVC(whithImage: image!, model: nil)
+            addPopupVC(whithImage: image!, model: nil, date: currentdate )
         }
-        
+        self.dismiss(animated: true, completion: nil)
     }
-    func addPopupVC(whithImage image:UIImage,model:Photomodel?){
-            vc = PopupViewController()
-        
+    
+    
+    func addPopupVC(whithImage image:UIImage,model:Photomodel?,date: Date?){
+            popupVC = PopupViewController()
+        PopupViewController.categories = self.selectedCategoriesArray
         let childrens = self.children
         if (childrens.count == 0){
-            if model != nil{
-                vc?.photoModel = model
+            popupVC?.photoModel = model
+            popupVC?.date = date
+            self.addChild(popupVC!)
+            popupVC?.view.frame = self.view.frame(forAlignmentRect: CGRect.zero)
+            popupVC?.imageView.image = image
+            popupVC?.imageView.contentMode = .scaleAspectFill
+            popupVC?.annotation = self.annotation
+            popupVC?.delegate = self
+            self.view.addSubview(popupVC!.view)
+            popupVC?.view.translatesAutoresizingMaskIntoConstraints = false
+            let leadingConstraint = popupVC?.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40)
+            let topConstraint = popupVC?.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120)
+            let xConstraint = popupVC?.view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
+            let ylConstraint = popupVC?.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: -40)
+            
+            if (leadingConstraint != nil && topConstraint != nil && xConstraint != nil && ylConstraint != nil  ){
+            self.view.addConstraints([leadingConstraint!, topConstraint!, xConstraint!, ylConstraint!])
             }
-            print("add")
-            self.addChild(vc!)
-            
-            vc!.view.frame = self.view.frame(forAlignmentRect: CGRect.zero)
-            PopupViewController.categories = self.selectedCategoriesArray
-            vc!.imageView.image = image
-            vc!.annotation = self.annotation
-            vc!.delegate = self
-            self.view.addSubview(vc!.view)
-            vc!.view.translatesAutoresizingMaskIntoConstraints = false
-            let leadingConstraint = vc!.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40)
-            let trailinglConstraint = vc!.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 100)
-            let topConstraint = vc!.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120)
-            let bottomConstraint = vc!.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 200)
-            let xConstraint = vc!.view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
-            let ylConstraint = vc!.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: -40)
-            
-            self.view.addConstraints([leadingConstraint, topConstraint, xConstraint, ylConstraint])
-            vc!.didMove(toParent: self)
+            popupVC!.didMove(toParent: self)
         }
     }
 
+    @IBAction func makePhotoIncurrentLocation(_ sender: Any) {
+        addPhoto()
+        let point = currentCoordinate
+    let ann = MKPointAnnotation()
+        ann.coordinate = point!
+            self.annotation = ann
+            }
+    
 }
 
-
-
-
-/////////////////////////////////////////////////////////////
 extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate,PhotoAnnotationDelegate,PopupDelegate {
-    
     
     
     func addAnnotation(model: Photomodel, image: UIImage) {
         let cat = model.category
-        let a = Custom(coordinate: self.annotation.coordinate)
-        a.image = image
-        a.color = UIColor.init(red: cat.fred, green: cat.fgreen, blue: cat.fblue, alpha: cat.falpha)
-        a.photoModel = model
-        self.mapView.addAnnotation(a)
-        self.vc?.removeFromParent()
-        vc?.view = nil
-        vc = nil
+        let annotation = Custom(coordinate: self.annotation.coordinate)
+        annotation.image = image
+        annotation.color = UIColor.init(red: cat.fred, green: cat.fgreen, blue: cat.fblue, alpha: cat.falpha)
+        annotation.photoModel = model
+        self.mapView.addAnnotation(annotation)
+        self.popupVC?.removeFromParent()
+        popupVC?.view = nil
+        popupVC = nil
        
     }
     
-    
-    
-    
     func movePopupVC() {
-        self.vc?.removeFromParent()
-        vc?.view = nil
-        vc = nil
+        self.popupVC?.removeFromParent()
+        popupVC?.view = nil
+        popupVC = nil
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -366,30 +343,14 @@ extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate,Photo
         let customAnnotationViewIdentifier = "MyAnnotation"
         
         var pin = mapView.dequeueReusableAnnotationView(withIdentifier: customAnnotationViewIdentifier) as? PhotoAnnotationView
-        //if pin == nil {
-            if annotation.image == nil{
-            if let photoModel = annotation.photoModel{
+        if let photoModel = annotation.photoModel{
                 pin = PhotoAnnotationView(annotation: annotation, reuseIdentifier: customAnnotationViewIdentifier, model: photoModel)
                 pin?.delegate = self
                 pin?.calloutDelegate = self
                 }
             
-            
-            }
-            else{
-                if let photoModel = annotation.photoModel{
-                    pin = PhotoAnnotationView(annotation: annotation, reuseIdentifier: customAnnotationViewIdentifier, model: photoModel,image: annotation.image!)
-                    pin?.delegate = self
-                     pin?.calloutDelegate = self
-                }
-            }
-            
-       // } else {
-        //    pin?.annotation = annotation
-       // }
         pin?.markerTintColor = annotation.color
         pin?.glyphText = ""
-        
         return pin
     }
 
@@ -402,7 +363,6 @@ extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate,Photo
         if currentCoordinate == nil {
             zoomToLatestLocation(with: latestLocation.coordinate)
         }
-
         currentCoordinate = latestLocation.coordinate
     }
 

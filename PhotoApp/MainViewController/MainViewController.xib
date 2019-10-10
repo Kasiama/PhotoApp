@@ -29,6 +29,9 @@
                     <rect key="frame" x="260" y="45" width="45" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="photo"/>
+                    <connections>
+                        <action selector="makePhotoIncurrentLocation:" destination="-1" eventType="touchUpInside" id="QM5-5X-MPP"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0m-7Y-8sr">
                     <rect key="frame" x="332" y="45" width="45" height="37"/>

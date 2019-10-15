@@ -49,6 +49,7 @@
 		7605D2BF233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
 		7605D2C0233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
 		7605D2C1233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
+		760B6E122355EB4700A57C34 /* UITableViewCellExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760B6E112355EB4700A57C34 /* UITableViewCellExtention.swift */; };
 		760E715C2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760E715A2345E99C005FAE30 /* PhotoTableViewCell.swift */; };
 		760E715D2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760E715A2345E99C005FAE30 /* PhotoTableViewCell.swift */; };
 		760E715E2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760E715A2345E99C005FAE30 /* PhotoTableViewCell.swift */; };
@@ -153,6 +154,7 @@
 		7602D50C2327EC8700FA9A05 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7602D50D2327EC8700FA9A05 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		7605D2BE233B62290054031C /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
+		760B6E112355EB4700A57C34 /* UITableViewCellExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtention.swift; sourceTree = "<group>"; };
 		760E715A2345E99C005FAE30 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		760E715B2345E99C005FAE30 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		760ED5AD234383EB00CF74AB /* HashtagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		7602D4DD2327DC8200FA9A05 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				760B6E132355EBA400A57C34 /* UItableViewCellExtention */,
 				760ED5AB23437FED00CF74AB /* ActiveLabel */,
 				7605D2BD233B58EC0054031C /* CashImages */,
 				7602D4E72327E50600FA9A05 /* Timeline */,
@@ -330,6 +333,14 @@
 				7605D2BE233B62290054031C /* CachedImageView.swift */,
 			);
 			path = CashImages;
+			sourceTree = "<group>";
+		};
+		760B6E132355EBA400A57C34 /* UItableViewCellExtention */ = {
+			isa = PBXGroup;
+			children = (
+				760B6E112355EB4700A57C34 /* UITableViewCellExtention.swift */,
+			);
+			path = UItableViewCellExtention;
 			sourceTree = "<group>";
 		};
 		760DC926233208340000894A /* PhotAnnotation */ = {
@@ -430,6 +441,7 @@
 				7602D47E2327A3D100FA9A05 /* Frameworks */,
 				7602D47F2327A3D100FA9A05 /* Resources */,
 				7449771E8347BE9C01D9A71D /* [CP] Embed Pods Frameworks */,
+				760B6E152355FCE800A57C34 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -647,6 +659,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PhotoApp/Pods-PhotoApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		760B6E152355FCE800A57C34 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		A87073E5B6F8B522D5C93F1E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -679,6 +708,7 @@
 				760E715C2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
 				7602D50E2327EC8700FA9A05 /* MainViewController.swift in Sources */,
 				7610C499233DFD330037943A /* FullImageViewController.swift in Sources */,
+				760B6E122355EB4700A57C34 /* UITableViewCellExtention.swift in Sources */,
 				7602D4D72327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				7602D4CD2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				761023E72334E4E500650754 /* PhotoAnnotation.swift in Sources */,

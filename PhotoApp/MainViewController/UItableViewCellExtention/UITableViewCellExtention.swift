@@ -29,13 +29,13 @@ extension UITableView {
         }
         return cell
     }
-    
+
     func cellForRow<T: UITableViewCell>(at indexPath: IndexPath) -> T {
-        
+
         guard let cell = cellForRow(at: indexPath) as? T else {
             fatalError("Unable to Dequeue Reusable Table View Cell")
         }
         return cell
     }
-    
+
 }

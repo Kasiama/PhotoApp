@@ -14,7 +14,7 @@ class PhotoTableViewCell: UITableViewCell {
     var id: String = ""
     @IBOutlet weak var hastagshLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,11 +27,9 @@ class PhotoTableViewCell: UITableViewCell {
     }
     override func prepareForReuse() {
         super.prepareForReuse()
-        if (self.photoImageView.image == nil){
+        if self.photoImageView.image == nil {
         self.photoImageView.cancelTask(id: self.id)
         }
-        self.photoImageView.image = nil
+        //self.photoImageView.image = nil
     }
 }
-
-

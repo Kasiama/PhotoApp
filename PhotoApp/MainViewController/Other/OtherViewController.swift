@@ -9,10 +9,8 @@
 import UIKit
 import Firebase
 
-
 class OtherViewController: UIViewController {
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,22 +18,21 @@ class OtherViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-   
-    
+
     @IBAction func signOutButtonTapped(_ sender: Any) {
-        
+
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-          let a =  self.appDelegate
-            a.setLoginVCRootControler()
+          let appDelegate =  self.appDelegate
+            appDelegate.setLoginVCRootControler()
             } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-            
+            print("Error signing out: %@", signOutError)
+
         }
-        
+
     }
-    
+
     /*
     // MARK: - Navigation
 

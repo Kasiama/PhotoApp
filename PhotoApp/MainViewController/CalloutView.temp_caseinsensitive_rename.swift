@@ -15,7 +15,7 @@ class CalloutView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -24,7 +24,7 @@ class CalloutView: UIView {
         super.init(coder: aDecoder)
         //commonInit()
     }
-    private func commonInit(){
+    private func commonInit() {
         Bundle.main.loadNibNamed("calloutView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
@@ -48,9 +48,9 @@ class CalloutView: UIView {
     }
     func add(to annotationView: MKAnnotationView) {
         annotationView.addSubview(self)
-        
+
         // constraints for this callout with respect to its superview
-        
+
         //        NSLayoutConstraint.activate([
         //            bottomAnchor.constraint(equalTo: annotationView.topAnchor, constant: annotationView.calloutOffset.y),
         //            centerXAnchor.constraint(equalTo: annotationView.centerXAnchor, constant: annotationView.calloutOffset.x)

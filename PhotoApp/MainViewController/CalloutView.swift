@@ -9,45 +9,54 @@
 import UIKit
 import MapKit
 
-
 class CalloutView: UIView {
 
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     @IBOutlet var contentView: UIView!
     @IBOutlet  var imageView: CachedImageView!
        weak var calloutDelegate: CalloutDelegate?
-    
+
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     var model: Photomodel?
-    
-    convenience init(frame:CGRect, model:Photomodel ){
+
+    convenience init(frame: CGRect, model: Photomodel ) {
         self.init(frame: frame)
         self.model = model
         commonInit()
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    private func commonInit(){
+    private func commonInit() {
         Bundle.main.loadNibNamed("calloutView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addBackgroundButton(to: contentView)
-        self.imageView.loadImage(idString: model!.id)
-        self.descriptionLabel.text = self.model!.description
+        if let model = self.model {
+        self.imageView.loadImage(idString: model.id)
+        self.descriptionLabel.text = model.description
         let formater = DateFormatter()
         formater.dateFormat = "yyyy:MM:dd HH:mm:ss"
-        let date = formater.date(from: self.model?.date ?? "")
-        formater.dateFormat = "yyyy-MM-dd"
+        let date = formater.date(from: model.date ?? "")
+        formater.dateFormat = "dd-MM-yyyy"
         self.dateLabel.text = formater.string(from: date ?? Date.init())
-        
-        
+
+        self.layer.shadowPath =
+            UIBezierPath(roundedRect: self.bounds ,
+                         cornerRadius: 10 ).cgPath
+        self.layer.shadowColor = UIColor.black.cgColor
+          self.layer.shadowOpacity = 0.5
+          self.layer.shadowOffset = CGSize(width: 10, height: 10)
+          self.layer.shadowRadius = 1
+
+        self.imageView.layer.cornerRadius = 10
+    }
     }
     fileprivate func addBackgroundButton(to view: UIView) {
         let button = UIButton(type: .custom)
@@ -62,16 +71,16 @@ class CalloutView: UIView {
         button.addTarget(self, action: #selector(didTouchUpInCallout(_:)), for: .touchUpInside)
     }
     @objc func didTouchUpInCallout(_ sender: Any) {
-        if imageView.image != nil {
-       self.calloutDelegate?.addPopupVC(whithImage: imageView.image!,model: self.model, date: nil)
+        if let img =  imageView.image {
+       self.calloutDelegate?.addPopupVC(whithImage: img, model: self.model, date: nil)
+        } else {
+
         }
-    
+
     }
     func add(to annotationView: MKAnnotationView) {
         annotationView.addSubview(self)
-        
+
     }
-    
-    
 
 }

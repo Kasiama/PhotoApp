@@ -50,7 +50,6 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
             self.calloutView?.removeFromSuperview()
             if let photoModel = self.photoModel {
             calloutView =  CalloutView.init(frame: CGRect.init(x: -90, y: -115, width: 210, height: 70), model: photoModel)
-            //calloutView?.layer.cornerRadius  = 10
 
             calloutView?.calloutDelegate = self.calloutDelegate
             self.calloutView?.add(to: self)

@@ -24,8 +24,6 @@ import Firebase
         self.idString = idString
          let idkey = idString as NSString
         self.activityIndicator.center = self.center
-        self.activityIndicator.center.y += 0
-        self.activityIndicator.center.x -= 0
 
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.style = .medium
@@ -65,6 +63,8 @@ import Firebase
 
                 if let error = error {
                     print(error.localizedDescription)
+                    self.activityIndicator.stopAnimating()
+                    self.image = UIImage.init(named: "close-2")
                     return
                 } else {
 

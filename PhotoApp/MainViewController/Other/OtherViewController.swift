@@ -27,6 +27,8 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         imagePickerController.delegate = self
         
+        self.navigationItem.title = "User page"
+        
         if let user = Auth.auth().currentUser{
             self.emailLaibel.text = user.email
             self.imageView.loadImage(idString: user.uid)
@@ -38,7 +40,7 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
     }
     @objc func imageViewTap(){
       addPhoto()
@@ -74,7 +76,14 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-            if status == .denied {} else {
+            if status == .denied {
+                let alert = UIAlertController(title: "Camera", message: "Camera access is absolutely necessary to use this app", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { action in
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
+                alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                     self.present(alert, animated: true)
+            } else {
                 self.imagePickerController.sourceType = UIImagePickerController.SourceType.camera
                 self.imagePickerController.allowsEditing = false
                 self.present(self.imagePickerController, animated: true, completion: nil)
@@ -85,7 +94,14 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     func openGallery() {
         let status = PHPhotoLibrary.authorizationStatus()
-        if status == .denied {} else {
+        if status == .denied {
+            let alert = UIAlertController(title: "Galery", message: "Galery access is absolutely necessary to use this app", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { action in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
+            alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                 self.present(alert, animated: true)
+        } else {
             self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.imagePickerController.allowsEditing = false
                 self.present(self.imagePickerController, animated: true, completion: nil)
@@ -119,5 +135,9 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func aboutTaped(_ sender: Any) {
+        let aboutVC = AboutViewController()
+        self.navigationController?.pushViewController(aboutVC, animated: true)
+    }
+    
 }

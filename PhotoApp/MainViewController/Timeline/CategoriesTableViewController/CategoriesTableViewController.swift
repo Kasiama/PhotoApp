@@ -222,5 +222,6 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
        self.navigationController?.popViewController(animated: true)
         }
     }
+    
 
 }

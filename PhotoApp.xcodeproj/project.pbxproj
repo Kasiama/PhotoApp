@@ -100,6 +100,9 @@
 		7614591823571A9D001038A5 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7614591423571A9D001038A5 /* AboutViewController.xib */; };
 		7614591923571A9D001038A5 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7614591423571A9D001038A5 /* AboutViewController.xib */; };
 		7614591A23571A9D001038A5 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7614591423571A9D001038A5 /* AboutViewController.xib */; };
+		7614591D2357394D001038A5 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614591C2357394D001038A5 /* StringExtention.swift */; };
+		7614591E2357394D001038A5 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614591C2357394D001038A5 /* StringExtention.swift */; };
+		7614591F2357394D001038A5 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614591C2357394D001038A5 /* StringExtention.swift */; };
 		769927902338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
 		769927912338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
 		769927922338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
@@ -179,6 +182,7 @@
 		76143140232A6C5E001756A9 /* AddCategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCategoryViewController.xib; sourceTree = "<group>"; };
 		7614591323571A9D001038A5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		7614591423571A9D001038A5 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		7614591C2357394D001038A5 /* StringExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
 		7699278E2338B190002F056E /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		7699278F2338B190002F056E /* PopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
 		7699279623392528002F056E /* Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 		7602D4DD2327DC8200FA9A05 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7614591B2357391D001038A5 /* StringExtention */,
 				760B6E132355EBA400A57C34 /* UItableViewCellExtention */,
 				760ED5AB23437FED00CF74AB /* ActiveLabel */,
 				7605D2BD233B58EC0054031C /* CashImages */,
@@ -414,6 +419,14 @@
 				76143140232A6C5E001756A9 /* AddCategoryViewController.xib */,
 			);
 			path = AddCategoryViewController;
+			sourceTree = "<group>";
+		};
+		7614591B2357391D001038A5 /* StringExtention */ = {
+			isa = PBXGroup;
+			children = (
+				7614591C2357394D001038A5 /* StringExtention.swift */,
+			);
+			path = StringExtention;
 			sourceTree = "<group>";
 		};
 		B60F01A0AD37689D5786A300 /* Frameworks */ = {
@@ -722,6 +735,7 @@
 				7602D50E2327EC8700FA9A05 /* MainViewController.swift in Sources */,
 				7614591523571A9D001038A5 /* AboutViewController.swift in Sources */,
 				7610C499233DFD330037943A /* FullImageViewController.swift in Sources */,
+				7614591D2357394D001038A5 /* StringExtention.swift in Sources */,
 				760B6E122355EB4700A57C34 /* UITableViewCellExtention.swift in Sources */,
 				7602D4D72327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				7602D4CD2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
@@ -748,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				769927912338B190002F056E /* PopupViewController.swift in Sources */,
+				7614591E2357394D001038A5 /* StringExtention.swift in Sources */,
 				7602D4D82327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				760ED5B3234384CC00CF74AB /* ActiveLabel.swift in Sources */,
 				7699279823392528002F056E /* Custom.swift in Sources */,
@@ -773,6 +788,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				769927922338B190002F056E /* PopupViewController.swift in Sources */,
+				7614591F2357394D001038A5 /* StringExtention.swift in Sources */,
 				7602D4D92327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				760ED5B4234384CC00CF74AB /* ActiveLabel.swift in Sources */,
 				7699279923392528002F056E /* Custom.swift in Sources */,

@@ -14,7 +14,7 @@ class ActiveLabel: UILabel {
 
     lazy var activeElements = [ElementTuple]()
 
-    fileprivate var _customizing: Bool = true
+    fileprivate var isCostomizing: Bool = true
     fileprivate var defaultCustomColor: UIColor = .black
 
     internal var hashtagTapHandler: ((String) -> Void)?
@@ -57,13 +57,13 @@ class ActiveLabel: UILabel {
     // MARK: - init functions
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        _customizing = false
+        isCostomizing = false
         setupLabel()
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        _customizing = false
+        isCostomizing = false
         setupLabel()
     }
 
@@ -85,9 +85,9 @@ class ActiveLabel: UILabel {
     // MARK: - customzation
     @discardableResult
     open func customize(_ block: (_ label: ActiveLabel) -> Void) -> ActiveLabel {
-        _customizing = true
+        isCostomizing = true
         block(self)
-        _customizing = false
+        isCostomizing = false
         updateTextStorage()
         return self
     }
@@ -131,7 +131,7 @@ class ActiveLabel: UILabel {
     }
 
     fileprivate func updateTextStorage(parseText: Bool = true) {
-        if _customizing { return }
+        if isCostomizing { return }
         // clean up previous active elements
         guard let attributedText = attributedText, attributedText.length > 0 else {
 
@@ -150,9 +150,9 @@ class ActiveLabel: UILabel {
 
         addLinkAttribute(mutAttrString)
         textStorage.setAttributedString(mutAttrString)
-        _customizing = true
+        isCostomizing = true
         text = mutAttrString.string
-        _customizing = false
+        isCostomizing = false
         setNeedsDisplay()
     }
 
@@ -173,8 +173,8 @@ class ActiveLabel: UILabel {
 
     fileprivate func parseTextAndExtractActiveElements(_ attrString: NSAttributedString) -> String {
         let textString = attrString.string
-        let filter: ((String) -> Bool)? = nil
-        let hashtagElements = ActiveBuilder.createElements(from: textString, filterPredicate: filter)
+       // let filter: ((String) -> Bool)? = nil
+        let hashtagElements = ActiveBuilder.createElements(from: textString, filterPredicate: nil)
         activeElements = hashtagElements
 
         return textString

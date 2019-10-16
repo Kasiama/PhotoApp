@@ -10,21 +10,7 @@ import UIKit
 import MapKit
 import Firebase
 
-extension String {
-    func findMentionText() -> [String] {
-        var arrHasStrings: [String] = []
-        let regex = try? NSRegularExpression(pattern: "(#[a-zA-Z0-9_\\p{Arabic}\\p{N}]*)", options: [])
-        if let matches = regex?.matches(in: self, options: [], range: NSRange(location: 0, length: self.count)) {
-            for match in matches {
-                let foundedString = NSString(string: self).substring(with: NSRange(location: match.range.location, length: match.range.length ))
-                if foundedString != "#"{
-                arrHasStrings.append(foundedString)
-                }
-            }
-        }
-        return arrHasStrings
-    }
-}
+
 
 class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -178,8 +164,7 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 let childUpdates = ["/\(String(describing: userID))/photomodels/\(model.id)": photomodelsend]
              ref.updateChildValues(childUpdates)
             }
-            } else {
-             if let cat = PopupViewController.categories?[row] {
+            } else if let cat = PopupViewController.categories?[row] {
              guard let key = ref.child("\(String(describing: userID))/photoModels").childByAutoId().key else { return }
                 var stringDate = ""
                 if let date = self.date {
@@ -220,7 +205,7 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 }
 
             }
-            }
+            
         }
             if let photoModel = self.photoModel {
         self.delegate?.addAnnotation(model: photoModel, image: self.imageView.image ?? UIImage.init())

@@ -32,4 +32,5 @@ class PhotoTableViewCell: UITableViewCell {
         }
         //self.photoImageView.image = nil
     }
+    
 }

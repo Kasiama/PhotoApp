@@ -263,7 +263,16 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-            if status == .denied {} else {
+            if status == .denied {
+                let alert = UIAlertController(title: "Camera", message: "Camera access is absolutely necessary to use this app", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { action in
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
+                alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                
+                     self.present(alert, animated: true)
+
+            } else {
                 self.imagePickerController.sourceType = UIImagePickerController.SourceType.camera
                 self.imagePickerController.allowsEditing = false
                 self.present(self.imagePickerController, animated: true, completion: nil)
@@ -274,7 +283,15 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
     func openGallery() {
         let status = PHPhotoLibrary.authorizationStatus()
-        if status == .denied {} else {
+        if status == .denied {
+            let alert = UIAlertController(title: "Galery", message: "Galery access is absolutely necessary to use this app", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { action in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
+            alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                 self.present(alert, animated: true)
+            
+        } else {
             self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.imagePickerController.allowsEditing = false
                 self.present(self.imagePickerController, animated: true, completion: nil)
@@ -287,7 +304,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
 
-        var currentdate: Date!
+         let currentdate: Date?
         if picker.sourceType == .camera {
             let metadata = info[UIImagePickerController.InfoKey.mediaMetadata] as? NSDictionary
             let metaDate = metadata?.object(forKey: "{TIFF}") as? NSDictionary
@@ -353,7 +370,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             self.annotation = ann
         }
             }
-
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate, PhotoAnnotationDelegate, PopupDelegate {

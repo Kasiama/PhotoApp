@@ -12,12 +12,11 @@ class FullImageViewController: UIViewController {
 
     @IBOutlet weak var descriptionLabel: ActiveLabel!
 
-    @IBOutlet  var imageView: CachedImageView!
+    @IBOutlet weak var imageView: CachedImageView!
     var image: UIImage?
     var photoDescription = ""
     var hastags: [String]?
     var date: String?
-    var searchbar = UISearchBar.init()
     var imageForStatusbar: UIImage?
 
     convenience init(id: String, description: String? ) {
@@ -33,7 +32,7 @@ class FullImageViewController: UIViewController {
         descriptionLabel.customize { label in
             label.text = " " + photoDescription
             label.numberOfLines = 0
-            label.textColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+            label.textColor = UIColor.white
             label.hashtagColor = UIColor(red: 85.0/255, green: 172.0/255, blue: 238.0/255, alpha: 1)
             label.handleHashtagTap { self.hastagTaped("Hashtag", message: $0)}
         }
@@ -44,6 +43,7 @@ class FullImageViewController: UIViewController {
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
+        
         self.imageView.layer.addSublayer(gradient)
 
         let gradientе = CAGradientLayer()
@@ -52,6 +52,7 @@ class FullImageViewController: UIViewController {
         gradientе.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
         gradientе.startPoint = CGPoint(x: 0, y: 1)
         gradientе.endPoint = CGPoint(x: 0, y: 0)
+        
         self.imageView.layer.addSublayer(gradientе)
         }
     override func viewDidLoad() {

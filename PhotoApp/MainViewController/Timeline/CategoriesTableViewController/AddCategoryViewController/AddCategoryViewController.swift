@@ -148,4 +148,7 @@ class AddCategoryViewController: UIViewController {
         }
         self.navigationController?.popViewController(animated: true)
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

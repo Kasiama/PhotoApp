@@ -61,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           let otherVC = OtherViewController()
           let navMainVC = UINavigationController.init(rootViewController: mainVC)
           let navTimeVC = UINavigationController.init(rootViewController: timeVC)
+        let navOtherVC = UINavigationController.init(rootViewController: otherVC)
 
           let tabBarControllerr = UITabBarController()
 
@@ -78,9 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
           navMainVC.tabBarItem = mapItem
           navTimeVC.tabBarItem=timeItem
-          otherVC.tabBarItem = otherItem
+          navOtherVC.tabBarItem = otherItem
 
-           tabBarControllerr.viewControllers = [navMainVC, navTimeVC, otherVC]
+           tabBarControllerr.viewControllers = [navMainVC, navTimeVC, navOtherVC]
           self.window?.rootViewController = tabBarControllerr
     }
 

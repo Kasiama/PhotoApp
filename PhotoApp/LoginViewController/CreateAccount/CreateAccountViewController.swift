@@ -99,5 +99,7 @@ class CreateAccountViewController: UIViewController {
             return
         }
     }
-
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

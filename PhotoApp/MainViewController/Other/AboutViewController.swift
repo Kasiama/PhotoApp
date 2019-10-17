@@ -19,7 +19,7 @@ class AboutViewController: UIViewController {
         self.imageView.image = UIImage.init(named: "me")
         self.imageView.contentMode = .scaleAspectFill
         let xConstraint = self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
-        let ylConstraint = self.imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150)
+        let ylConstraint = self.imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -120)
         self.view.addConstraints([ xConstraint, ylConstraint])
         // Do any additional setup after loading the view.
     }

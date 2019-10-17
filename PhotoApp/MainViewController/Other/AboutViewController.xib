@@ -34,7 +34,7 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bob-Iy-qP7">
-                    <rect key="frame" x="136" y="357" width="102" height="39"/>
+                    <rect key="frame" x="110" y="357" width="155" height="39"/>
                     <color key="backgroundColor" red="0.18918124733443695" green="0.67129996827411165" blue="0.20914913855976935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <state key="normal" title="GitHub">
@@ -44,20 +44,20 @@
                         <action selector="githubButtonTaped:" destination="-1" eventType="touchUpInside" id="J4p-Hz-iRm"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="madeBy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-3e-Exf">
-                    <rect key="frame" x="158" y="282" width="58" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="madeBy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-3e-Exf">
+                    <rect key="frame" x="120" y="282" width="145" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Zhurauski Ivan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPF-ja-ude">
-                    <rect key="frame" x="97" y="311" width="180" height="38"/>
+                    <rect key="frame" x="77" y="311" width="220" height="38"/>
                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4P-Re-n9M">
-                    <rect key="frame" x="136" y="416" width="102" height="39"/>
+                    <rect key="frame" x="110" y="416" width="155" height="39"/>
                     <color key="backgroundColor" red="0.43493940974157053" green="0.66963231405044032" blue="0.9193567576142132" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                     <state key="normal" title="VK">
@@ -70,18 +70,18 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bob-Iy-qP7" secondAttribute="trailing" constant="137" id="2Ot-Oq-8Oy"/>
-                <constraint firstItem="VgT-3e-Exf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="158" id="8qn-EW-qlt"/>
-                <constraint firstItem="x4P-Re-n9M" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="136" id="VTo-2H-0tj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bob-Iy-qP7" secondAttribute="trailing" constant="110" id="2Ot-Oq-8Oy"/>
+                <constraint firstItem="VgT-3e-Exf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="120" id="8qn-EW-qlt"/>
+                <constraint firstItem="x4P-Re-n9M" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="110" id="VTo-2H-0tj"/>
                 <constraint firstItem="lPF-ja-ude" firstAttribute="top" secondItem="VgT-3e-Exf" secondAttribute="bottom" constant="8" id="YfL-bD-os3"/>
-                <constraint firstItem="lPF-ja-ude" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="97" id="czr-4V-ulg"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="x4P-Re-n9M" secondAttribute="trailing" constant="137" id="h6Z-Nd-KbX"/>
-                <constraint firstItem="bob-Iy-qP7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="136" id="hrA-kX-OUI"/>
+                <constraint firstItem="lPF-ja-ude" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="77" id="czr-4V-ulg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="x4P-Re-n9M" secondAttribute="trailing" constant="110" id="h6Z-Nd-KbX"/>
+                <constraint firstItem="bob-Iy-qP7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="110" id="hrA-kX-OUI"/>
                 <constraint firstItem="x4P-Re-n9M" firstAttribute="top" secondItem="bob-Iy-qP7" secondAttribute="bottom" constant="20" id="j4e-js-Y4I"/>
                 <constraint firstItem="VgT-3e-Exf" firstAttribute="top" secondItem="xeo-js-Fxc" secondAttribute="bottom" constant="8" id="mAn-DA-jif"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lPF-ja-ude" secondAttribute="trailing" constant="98" id="mBO-e3-X8b"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lPF-ja-ude" secondAttribute="trailing" constant="78" id="mBO-e3-X8b"/>
                 <constraint firstItem="bob-Iy-qP7" firstAttribute="top" secondItem="lPF-ja-ude" secondAttribute="bottom" constant="8" id="mmA-aw-eL7"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VgT-3e-Exf" secondAttribute="trailing" constant="159" id="vIC-cf-i9t"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VgT-3e-Exf" secondAttribute="trailing" constant="110" id="vIC-cf-i9t"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-191.19999999999999" y="104.7976011994003"/>

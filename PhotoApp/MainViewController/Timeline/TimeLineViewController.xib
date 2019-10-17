@@ -18,14 +18,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="grouped" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-Xb-DuM">
-                    <rect key="frame" x="0.0" y="20" width="375" height="643"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-Xb-DuM">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <inset key="separatorInset" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yHX-Xb-DuM" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="GEi-HT-STp"/>
+                <constraint firstItem="yHX-Xb-DuM" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="NG5-O2-TAj"/>
+                <constraint firstItem="yHX-Xb-DuM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Y4g-p5-szx"/>
+                <constraint firstItem="yHX-Xb-DuM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="noL-x2-cDq"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-8.8000000000000007" y="126.38680659670166"/>
         </view>

@@ -96,7 +96,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="52" id="e22-Jf-FK7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Save"/>
                     <connections>
                         <action selector="doneTapped:" destination="-1" eventType="touchUpInside" id="95u-fl-FIe"/>
                     </connections>

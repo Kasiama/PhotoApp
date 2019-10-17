@@ -60,6 +60,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapoutside))
+        self.mapView.addGestureRecognizer(tap)
         ref = Database.database().reference()
         downloadCategories()
 
@@ -81,6 +84,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
+    }
+    @objc func tapoutside(){
+        movePopupVC()
+        print("fjjfferfefr")
     }
 
     @objc func keyboardWillShow(notification: Notification) {
@@ -112,6 +119,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
 
+        
         if touch?.view != self.popupVC?.descriptionTextView {
 
             self.view.endEditing(true)
@@ -133,6 +141,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     }
 
     @IBAction func currentLocationTapped(_ sender: Any) {
+        movePopupVC()
         if let currentCoordinate = self.currentCoordinate {
         zoomToLatestLocation(with: currentCoordinate)
         }
@@ -248,16 +257,20 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
     func addPhoto() {
         let alert = UIAlertController.init(title: "Add photo", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        alert.addAction(UIAlertAction.init(title: "Take A Picture", style: UIAlertAction.Style.default, handler: { (_) in
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            alert.addAction(UIAlertAction.init(title: "Take A Picture", style: UIAlertAction.Style.default, handler: { (_) in
             self.openCamera()
         }))
+        }
+        
         alert.addAction(UIAlertAction.init(title: "Choose From Gallery", style: UIAlertAction.Style.default, handler: { (_) in
             self.openGallery()
         }))
         alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
 
         self.present(alert, animated: true, completion: nil)
-
+        
     }
 
     func openCamera() {
@@ -363,6 +376,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     }
 
     @IBAction func makePhotoIncurrentLocation(_ sender: Any) {
+        movePopupVC()
         addPhoto()
         if let point = currentCoordinate {
     let ann = MKPointAnnotation()

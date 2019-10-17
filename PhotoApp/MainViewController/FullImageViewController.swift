@@ -18,17 +18,20 @@ class FullImageViewController: UIViewController {
     var hastags: [String]?
     var date: String?
     var imageForStatusbar: UIImage?
+     
 
-    convenience init(id: String, description: String? ) {
+    convenience init(id: String, description: String?) {
         self.init()
          Bundle.main.loadNibNamed("FullImageViewController", owner: self, options: nil)
+        
             self.imageView.loadImage(idString: id)
+        
         photoDescription = description ?? ""
             load()
     }
 
     func load() {
-        self.view.backgroundColor = UIColor.gray
+        self.view.backgroundColor = UIColor.black
         descriptionLabel.customize { label in
             label.text = " " + photoDescription
             label.numberOfLines = 0

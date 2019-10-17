@@ -27,7 +27,7 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var photoModel: Photomodel?
     var date: Date?
     static var categories: [CategoryModel]?
-    var row = 0
+    var row = -1
     var annotation = MKPointAnnotation()
 
     var ref: DatabaseReference!
@@ -82,7 +82,6 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                                                                                         bottom: self.imageView.frame.height,
                                                                                         right: self.view.frame.width))
             self.imageView.image = resizebleImage
-
             addBackgroundButton()
             }
     override func viewDidAppear(_ animated: Bool) {
@@ -111,11 +110,18 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
 
     @objc func didTouchUpInCallout(_ sender: Any) {
-        let chVC = FullImageViewController(id: photoModel?.id ?? "", description: photoModel?.description)
-        chVC.photoDescription = self.photoModel?.description ?? ""
+        if let photomodel = self.photoModel{
+            let chVC = FullImageViewController(id: photomodel.id, description: photoModel?.description)
+            chVC.photoDescription = photomodel.description
         chVC.hastags = self.photoModel?.hashtags
         chVC.date = self.dateLabel.text
         self.parent?.navigationController?.pushViewController(chVC, animated: true)
+        }
+        else {
+            let alert = UIAlertController(title: "Save Photo", message: "To continue please save this photo", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
+                                self.present(alert, animated: true)
+        }
         }
 
     @objc func pickerViewDone() {
@@ -147,6 +153,13 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
 
     @IBAction func doneTapped(_ sender: Any) {
+        if self.row == -1 {
+            let alert = UIAlertController(title: "Choose Category", message: "To save please choose category", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
+                                self.present(alert, animated: true)
+            return
+        }
+        
         if let user  = Auth.auth().currentUser {
                let userID = user.uid
         let hashtags = self.descriptionTextView.text.findMentionText()

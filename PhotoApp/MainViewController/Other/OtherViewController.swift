@@ -28,7 +28,7 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
           //let leadingConstraint = self.imageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35)
            // let topConstraint = self.imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height / 4.5)
             let xConstraint = self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
-            let ylConstraint = self.imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150)
+            let ylConstraint = self.imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -120)
            // let with = self.imageView.widthAnchor.constraint(equalToConstant: 180)
             //let height = self.imageView.heightAnchor.constraint(equalToConstant: 180)
         
@@ -73,9 +73,10 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func addPhoto() {
         let alert = UIAlertController.init(title: "Add photo", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        alert.addAction(UIAlertAction.init(title: "Take A Picture", style: UIAlertAction.Style.default, handler: { (_) in
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            alert.addAction(UIAlertAction.init(title: "Take A Picture", style: UIAlertAction.Style.default, handler: { (_) in
             self.openCamera()
-        }))
+        }))}
         alert.addAction(UIAlertAction.init(title: "Choose From Gallery", style: UIAlertAction.Style.default, handler: { (_) in
             self.openGallery()
         }))

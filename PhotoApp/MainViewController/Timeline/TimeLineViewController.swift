@@ -258,7 +258,7 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate, UI
             let dateCatStr = formater.string(from: date ?? Date.init()) + "/" + cellls[indexPath.item].category.name.uppercased()
             cell.descriptionLabel.text = dateCatStr
                 cell.hastagshLabel.text = item.photoDescription
-           // cell.photoImageView.loadImage(idString: item.id)
+            cell.photoImageView.loadImage(idString: item.id)
             } else {
                 print("Cant Find cells of sections")
             }
@@ -273,7 +273,7 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate, UI
             formater.dateFormat = "yy-MM-dd"
             let dateCatStr = formater.string(from: date ?? Date.init()) + "/" + cellls[indexPath.item].category.name.uppercased()
             cell.descriptionLabel.text = dateCatStr
-           // cell.photoImageView.loadImage(idString: item.id)
+            cell.photoImageView.loadImage(idString: item.id)
             cell.hastagshLabel.text = item.photoDescription
 
             } else {print("Cant Find cells of sortedSection")}

@@ -33,13 +33,13 @@ public typealias PreviewView = UIView & ColorSliderPreviewing
 public enum PreviewState {
 	/// The color is not being changed and the preview view is centered at the last modified point.
 	case inactive
-	
+
 	/// The color is still being changed, but the preview view center is fixed.
 	/// This occurs when a touch begins inside the slider but continues outside of it.
 	/// In this case, the color is actively being modified, but the preview remains fixed at
 	/// the same position that it was when the touch moved outside of the slider.
 	case activeFixed
-	
+
 	/// The color is being actively changed and the preview view center will be updated to match the current color.
 	case active
 }
@@ -59,7 +59,7 @@ public protocol ColorSliderPreviewing {
 	/// Called when the color of the slider changes, so the preview can respond correctly.
 	/// - parameter color: The newly selected color.
 	func colorChanged(to color: UIColor)
-	
+
 	/// Called when the preview changes state and should update its appearance appropriately.
 	/// Since `ColorSlider` sets the `center` of your preview automatically, you should use your
 	/// view's `transform` to adjust or animate most changes. See `DefaultPreviewView` for an example.

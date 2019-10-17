@@ -25,6 +25,18 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(newTap)
         
+          //let leadingConstraint = self.imageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35)
+           // let topConstraint = self.imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height / 4.5)
+            let xConstraint = self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
+            let ylConstraint = self.imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150)
+           // let with = self.imageView.widthAnchor.constraint(equalToConstant: 180)
+            //let height = self.imageView.heightAnchor.constraint(equalToConstant: 180)
+        
+        self.view.addConstraints([ xConstraint, ylConstraint])
+
+        
+        
+        
         imagePickerController.delegate = self
         
         self.navigationItem.title = "User page"

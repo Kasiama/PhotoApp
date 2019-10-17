@@ -9,25 +9,24 @@
 import UIKit
 import Firebase
 
-
-
  extension UIViewController {
     var appDelegate: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+           fatalError("Unable to make delegate as AppDelegate")
+        }
+        return delegate
     }
 }
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
 
-     var window: UIWindow?
-    // var navigationController: UINavigationController?
-   
-    var rootViewController:UIViewController{
-        get{
-            return self.window!.rootViewController!
+    var rootViewController: UIViewController {
+        get {
+            return self.window?.rootViewController ?? UIViewController.init()
         }
-        set(rootVC){
+        set(rootVC) {
             self.window?.rootViewController = rootVC
         }
     }
@@ -35,78 +34,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
             window.makeKeyAndVisible()
         }
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
         FirebaseApp.configure()
 
         let loginVC = LoginViewController()
-        
-        if Auth.auth().currentUser != nil{
-            
-            let mainVC = MainViewController()
-            let timeVC = TimeLineViewController()
-            let otherVC = OtherViewController()
-            let navMainVC = UINavigationController.init(rootViewController: mainVC)
-            let navTimeVC = UINavigationController.init(rootViewController: timeVC)
-            
-            
-            let tabBarControllerr = UITabBarController()
-          
-            let mapItem = UITabBarItem()
-            mapItem.title = "Map"
-            mapItem.image = UIImage.init(imageLiteralResourceName: "map")
-            
-            
-            let timeItem = UITabBarItem()
-            timeItem.title = "Timeline"
-            
-            let otherItem = UITabBarItem()
-            otherItem.title = "Other"
-            
-            navMainVC.tabBarItem = mapItem
-            navTimeVC.tabBarItem=timeItem
-            otherVC.tabBarItem = otherItem
-           
-           
-             tabBarControllerr.viewControllers = [navMainVC, navTimeVC, otherVC]
-            
-           // navigationController?.pushViewController(tabBarControllerr, animated: true)
-            self.window?.rootViewController = tabBarControllerr
-        }
-        else {
+
+        if Auth.auth().currentUser != nil {
+            setupNavBar()
+        } else {
             let navLoginVC = UINavigationController.init(rootViewController: loginVC)
             self.window?.rootViewController = navLoginVC
         }
-        
+
         return true
     }
+    func setupNavBar() {
+        let mainVC = MainViewController()
+          let timeVC = TimeLineViewController(ISsearhbar: true, message: "")
+          let otherVC = OtherViewController()
+          let navMainVC = UINavigationController.init(rootViewController: mainVC)
+          let navTimeVC = UINavigationController.init(rootViewController: timeVC)
+        let navOtherVC = UINavigationController.init(rootViewController: otherVC)
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+          let tabBarControllerr = UITabBarController()
+
+          let mapItem = UITabBarItem()
+          mapItem.title = "Map"
+          mapItem.image = UIImage.init(imageLiteralResourceName: "map")
+
+          let timeItem = UITabBarItem()
+          timeItem.title = "Timeline"
+          timeItem.image = UIImage.init(imageLiteralResourceName: "timeline")
+
+          let otherItem = UITabBarItem()
+          otherItem.title = "Other"
+          otherItem.image = UIImage.init(imageLiteralResourceName: "dots")
+
+          navMainVC.tabBarItem = mapItem
+          navTimeVC.tabBarItem=timeItem
+          navOtherVC.tabBarItem = otherItem
+
+           tabBarControllerr.viewControllers = [navMainVC, navTimeVC, navOtherVC]
+          self.window?.rootViewController = tabBarControllerr
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-        func setLoginVCRootControler(){
+        func setLoginVCRootControler() {
             if let window = window {
                 window.makeKeyAndVisible()
             }
@@ -114,41 +93,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navLoginVC = UINavigationController.init(rootViewController: loginVC)
             self.window?.rootViewController = navLoginVC
     }
-    
-    func setMainVCRoot(){
+
+    func setMainVCRoot() {
         if let window = window {
             window.makeKeyAndVisible()
         }
-        
-        let mainVC = MainViewController()
-        let timeVC = TimeLineViewController()
-        let otherVC = OtherViewController()
-        let navMainVC = UINavigationController.init(rootViewController: mainVC)
-        let navTimeVC = UINavigationController.init(rootViewController: timeVC)
-        
-        
-        let tabBarControllerr = UITabBarController()
-        
-        let mapItem = UITabBarItem()
-        mapItem.title = "Map"
-        mapItem.image = UIImage.init(imageLiteralResourceName: "map")
-        
-        
-        let timeItem = UITabBarItem()
-        timeItem.title = "Timeline"
-        
-        let otherItem = UITabBarItem()
-        otherItem.title = "Other"
-        
-        navMainVC.tabBarItem = mapItem
-        navTimeVC.tabBarItem=timeItem
-        otherVC.tabBarItem = otherItem
-        
-        
-        tabBarControllerr.viewControllers = [navMainVC, navTimeVC, otherVC]
-        self.window?.rootViewController = tabBarControllerr
-      
-    }
-    
-}
+        setupNavBar()
 
+    }
+
+}

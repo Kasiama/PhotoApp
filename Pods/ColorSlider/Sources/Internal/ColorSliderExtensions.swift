@@ -48,14 +48,14 @@ internal extension UITouch {
 	func progress(in view: UIView, withOrientation orientation: Orientation) -> CGFloat {
 		let touchLocation = self.location(in: view)
 		var progress: CGFloat = 0
-		
+
 		switch orientation {
 		case .vertical:
 			progress = touchLocation.y / view.bounds.height
 		case .horizontal:
 			progress = touchLocation.x / view.bounds.width
 		}
-		
+
 		return (0.0..<1.0).clamp(progress)
 	}
 }

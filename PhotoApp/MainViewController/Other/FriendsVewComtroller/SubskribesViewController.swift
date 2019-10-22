@@ -118,8 +118,16 @@ extension SubskribesViewController : UITableViewDataSource, UITableViewDelegate,
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isSearching {
+            let user  = self.sortedSubscribes[indexPath.row]
+            if self.subscribers.contains(user){
+                let userVC = UserViewController(status: .heSubscribeForYou, user: user)
+                self.navigationController?.pushViewController(userVC, animated: true)
+        }
         }
         else {
+            let user  = self.subscribers[indexPath.row]
+            let userVC = UserViewController(status: .heSubscribeForYou, user: user)
+                self.navigationController?.pushViewController(userVC, animated: true)
             
         }
     }

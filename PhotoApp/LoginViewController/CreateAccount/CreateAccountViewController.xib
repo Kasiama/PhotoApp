@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +14,7 @@
                 <outlet property="emailTextfield" destination="ODu-if-C0c" id="uYt-g8-ml6"/>
                 <outlet property="passwordTextField" destination="kga-el-adl" id="xFb-hA-xGN"/>
                 <outlet property="repeatPasswordTextField" destination="BkL-nX-1nK" id="G8g-MF-rAm"/>
+                <outlet property="userNameTextField" destination="U51-Yg-N7r" id="aYv-Jp-RFW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,17 +24,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ODu-if-C0c">
-                    <rect key="frame" x="70" y="176" width="180" height="30"/>
+                    <rect key="frame" x="70" y="164" width="180" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kga-el-adl">
-                    <rect key="frame" x="70" y="214" width="180" height="30"/>
+                    <rect key="frame" x="70" y="206" width="180" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BkL-nX-1nK">
-                    <rect key="frame" x="70" y="252" width="180" height="30"/>
+                    <rect key="frame" x="70" y="248" width="180" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
@@ -59,6 +57,11 @@
                     <color key="textColor" red="1" green="0.10832243799999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U51-Yg-N7r">
+                    <rect key="frame" x="70" y="122" width="180" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -72,11 +75,14 @@
                 <constraint firstItem="kga-el-adl" firstAttribute="top" secondItem="ODu-if-C0c" secondAttribute="bottom" constant="8" id="PVX-DB-tOA"/>
                 <constraint firstItem="BkL-nX-1nK" firstAttribute="top" secondItem="kga-el-adl" secondAttribute="bottom" constant="8" id="R5q-DX-KFa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZqR-0e-bcD" secondAttribute="trailing" constant="70" id="UA2-vJ-iKX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U51-Yg-N7r" secondAttribute="trailing" constant="70" id="bLl-yA-Dr0"/>
+                <constraint firstItem="ODu-if-C0c" firstAttribute="top" secondItem="U51-Yg-N7r" secondAttribute="bottom" constant="8" id="dsp-Bz-ElV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ODu-if-C0c" secondAttribute="trailing" constant="70" id="glx-Ah-PDc"/>
                 <constraint firstItem="esg-Gk-Ejn" firstAttribute="top" secondItem="ZqR-0e-bcD" secondAttribute="bottom" constant="8" id="kKI-XE-t4J"/>
                 <constraint firstItem="ZqR-0e-bcD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="70" id="l7F-Ro-Sls"/>
                 <constraint firstItem="ZqR-0e-bcD" firstAttribute="top" secondItem="BkL-nX-1nK" secondAttribute="bottom" constant="8" id="mEB-7H-rIB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="esg-Gk-Ejn" secondAttribute="bottom" constant="220" id="uvF-qL-bpD"/>
+                <constraint firstItem="U51-Yg-N7r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="70" id="xGN-9W-veY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="37.5" y="33.802816901408448"/>

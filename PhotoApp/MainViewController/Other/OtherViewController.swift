@@ -14,12 +14,16 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
  
     @IBOutlet weak var imageView: CachedImageView!
     @IBOutlet weak var emailLaibel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     let imagePickerController =  UIImagePickerController()
    let  storageRef = Storage.storage().reference()
-    
+    let ref = Database.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+      self.navigationItem.rightBarButtonItem =  UIBarButtonItem.init(title: "about", style: UIBarButtonItem.Style.done, target: self, action: #selector(aboutTaped))
         
         let newTap = UITapGestureRecognizer.init(target: self, action: #selector(imageViewTap))
         imageView.isUserInteractionEnabled = true
@@ -44,6 +48,16 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if let user = Auth.auth().currentUser{
             self.emailLaibel.text = user.email
             self.imageView.loadImage(idString: user.uid)
+            let ref = Database.database().reference()
+            ref.child(user.uid).child("Username").observe(.value) { (snapshot) in
+                if  let value = snapshot.value as? String {
+                    self.userNameLabel.text = value
+                }
+            
+            }
+                
+          
+            
         }
         else {
              self.emailLaibel.text = "cant check the user"
@@ -57,11 +71,18 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @objc func imageViewTap(){
       addPhoto()
     }
+    @objc func aboutTaped(){
+        let aboutVC = AboutViewController()
+        self.navigationController?.pushViewController(aboutVC, animated: true)
+        
+    }
+    
     @IBAction func signOutButtonTapped(_ sender: Any) {
 
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            self.ref.removeAllObservers()
           let appDelegate =  self.appDelegate
             appDelegate.setLoginVCRootControler()
             } catch let signOutError as NSError {
@@ -148,9 +169,18 @@ class OtherViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func aboutTaped(_ sender: Any) {
-        let aboutVC = AboutViewController()
-        self.navigationController?.pushViewController(aboutVC, animated: true)
+    @IBAction func friendsTaped(_ sender: Any) {
+        let  friendsVC = FriendsViewController()
+        self.navigationController?.pushViewController(friendsVC, animated: true)
+    }
+    @IBAction func changeNameTaped(_ sender: Any) {
+        var changeNameVC = ChangeNameViewController()
+        changeNameVC.userName = self.userNameLabel.text ?? ""
+        self.navigationController?.pushViewController(changeNameVC, animated: true)
+    }
+    @IBAction func subscribesTaped(_ sender: Any) {
+        let subscribesVC = SubskribesViewController()
+        self.navigationController?.pushViewController(subscribesVC, animated: true)
     }
     
 }

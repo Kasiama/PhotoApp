@@ -19,7 +19,9 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
 
         var categoriesArray = [CategoryModel]()
         var ref: DatabaseReference!
-
+        
+       var friendCategoriesArray = [FriendCategoryModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -148,9 +150,28 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     func editCategory(category: CategoryModel, row: Int) {
         categoriesArray[row] = category
         let cell: CategoryTableViewCell = tableView.cellForRow(at: IndexPath.init(item: row, section: 0))
-        cell.cellView.removeFromSuperview()
+        cell.cirkleView?.removeFromSuperview()
+        cell.fillCircle?.removeFromSuperview()
         cell.cirkleView = nil
         cell.fillCircle = nil
+        let red = categoriesArray[row].fred
+        let green = categoriesArray[row].fgreen
+        let blue = categoriesArray[row].fblue
+        let alpha = categoriesArray[row].falpha
+        let color = UIColor.init(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+        let circle = CirkleView.init(frame: cell.cellView.bounds, color: color )
+               cell.cirkleView = circle
+               cell.cellView.addSubview(circle)
+                let fillCircle =  CircleFillView.init(frame: cell.cellView.bounds, color: color )
+               cell.fillCircle = fillCircle
+
+               if categoriesArray[row].isSelected == 1 {
+               cell.cellView.addSubview(fillCircle)
+               } else {
+                   cell.cellView.addSubview(fillCircle)
+                   cell.fillCircle?.isHidden = true
+                   }
+        
         tableView.reloadData()
         }
 
@@ -182,6 +203,14 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         }
      }
     }
+
+    func downloadFriendsCategories (){
+        if let user = Auth.auth().currentUser{
+            let userID = user.uid
+           //ref.child(userID).child("friends").observe(DataEventType, with: <#T##(DataSnapshot) -> Void#>)
+        }
+    }
+    
 
     @objc func addTapped() {
         let catecoriesTableVC = AddCategoryViewController()

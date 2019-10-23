@@ -60,10 +60,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapoutside))
         self.mapView.addGestureRecognizer(tap)
         ref = Database.database().reference()
+        setupObserversToFriends()
         downloadCategories()
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -81,6 +81,30 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         imagePickerController.delegate = self
         }
 
+    func setupObserversToFriends(){
+        if let user = Auth.auth().currentUser{
+            let userId = user.uid
+            self.ref.child(userId).child("friends").observe(.value) { (snapshot) in
+                if let friendsDict = snapshot.value as? NSDictionary {
+                    for (friendID, categoriesInfo) in friendsDict {
+                        if let friendID = friendID as? String{
+                            let selectedCategoriesRef = self.ref.child(friendID).child("categories").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
+                            selectedCategoriesRef.observe( .value, with: { (snapshot) in
+                                    if  let value = snapshot.value as? NSDictionary{
+                                    self.ref.child(userId).child("friends").child(friendID).setValue(value)
+                                    }
+                            }) { (error) in
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false

@@ -50,50 +50,60 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDesign()
-        
+        setupObservers()
+    }
+    
+    func setupObservers(){
         if let userID = Auth.auth().currentUser?.uid{
-        
-            switch status {
-            case .Friend:
-                self.ref.child(user.id).child("subscribes").child(userID).observe(.value) { (snapshot) in
-                    if (snapshot.value as? String) != nil {
-                        self.status = .youSubsribeForHim
-                        self.setupDesign()
+            
+                switch status {
+                case .Friend:
+                    self.ref.child(user.id).child("subscribes").child(userID).observe(.value) { (snapshot) in
+                        if (snapshot.value as? String) != nil {
+                            self.ref.child(self.user.id).child("subscribes").child(userID).removeAllObservers()
+                            self.status = .youSubsribeForHim
+                            self.setupObservers()
+                            self.setupDesign()
+                            
+                        }
                     }
-                }
-            case .youSubsribeForHim:
-                self.ref.child(user.id).child("friends").child(userID).observe(.value) { (snapshot) in
-                                   if (snapshot.value as? String) != nil {
-                                       self.status = .Friend
-                                       self.setupDesign()
+                case .youSubsribeForHim:
+                    self.ref.child(user.id).child("friends").child(userID).observe(.value) { (snapshot) in
+                                       if (snapshot.value as? String) != nil {
+                                        self.ref.child(self.user.id).child("friends").child(userID).removeAllObservers()
+                                           self.status = .Friend
+                                        self.setupObservers()
+                                           self.setupDesign()
+                                       }
                                    }
-                               }
-            case .heSubscribeForYou:
-                self.ref.child(userID).child("subscribes").child(user.id).observe(.value) { (snapshot) in
-                    if (snapshot.value as? String) == nil {
-                        self.ref.child(userID).child("friends").child(self.user.id).observeSingleEvent(of: .value) { (snapshot) in
-                            if (snapshot.value as? String) == nil {
-                                self.status = .user
-                                self.setupDesign()
+                case .heSubscribeForYou:
+                    self.ref.child(userID).child("subscribes").child(user.id).observe(.value) { (snapshot) in
+                        if (snapshot.value as? String) == nil {
+                            self.ref.child(userID).child("friends").child(self.user.id).observeSingleEvent(of: .value) { (snapshot) in
+                                if (snapshot.value as? String) == nil {
+                                    self.status = .user
+                                    self.ref.child(userID).child("subscribes").child(self.user.id).removeAllObservers()
+                                    self.setupObservers()
+                                    self.setupDesign()
+                                }
                             }
                         }
                     }
-                }
-                
-            case .user:
-                self.ref.child(userID).child("subscribes").child(user.id).observe(.value) { (snapshot) in
-                    if (snapshot.value as? String) != nil {
-                        self.status = .heSubscribeForYou
-                        self.setupDesign()
+                    
+                case .user:
+                    self.ref.child(userID).child("subscribes").child(user.id).observe(.value) { (snapshot) in
+                        if (snapshot.value as? String) != nil {
+                            self.status = .heSubscribeForYou
+                            self.ref.child(userID).child("subscribes").child(self.user.id).removeAllObservers()
+                            self.setupObservers()
+                            self.setupDesign()
+                        }
                     }
+                default:
+                    print("kffk")
                 }
-            default:
-                print("kffk")
-            }
-        
-    }
-       
-    
+            
+        }
     }
     func setupDesign(){
         switch status {
@@ -135,6 +145,8 @@ class UserViewController: UIViewController {
         case .Friend:
                 self.ref.child(userID).child("friends").child(user.id).removeValue()
                 self.ref.child(user.id).child("friends").child(userID).removeValue()
+                self.ref.child(userID).child("friends").child(user.id).removeAllObservers()
+                self.ref.child(user.id).child("friends").child(userID).removeAllObservers()
                 ref.child(userID).child("subscribes").child(user.id).setValue("")
                 self.status = .heSubscribeForYou
                 setupDesign()
@@ -144,6 +156,7 @@ class UserViewController: UIViewController {
             self.ref.child(userID).child("subscribes").child(user.id).removeValue()
             ref.child(userID).child("friends").child(user.id).setValue("")
             ref.child(user.id).child("friends").child(userID).setValue("")
+            //changeCategories()
             self.status = .Friend
             setupDesign()
             
@@ -169,6 +182,28 @@ class UserViewController: UIViewController {
     
         
     }
+    func changeCategories() {
+        if let user  = Auth.auth().currentUser {
+        let userID = user.uid
+        let selectedCategoriesRef = ref.child(userID).child("categories").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
+            selectedCategoriesRef.observe( .value, with: { (snapshot) in
+                if  let value = snapshot.value as? NSDictionary{
+                self.ref.child(self.user.id).child("friends").child(userID).setValue(value)
+                }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+            
+            let friendSelectedCategoriesRef = ref.child(self.user.id).child("categories").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
+            friendSelectedCategoriesRef.observe(.value, with: { (snapshot) in
+                    if  let value = snapshot.value as? NSDictionary{
+                        self.ref.child(userID).child("friends").child(self.user.id).setValue(value)
+                    }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+    }
+    }
     
-
+    
 }

@@ -19,6 +19,17 @@ import Firebase
     var isSelected: Int
 
 }
+struct FriendCategoryModel{
+    var id: String
+    var name: String
+    var fred: CGFloat
+    var fgreen: CGFloat
+    var fblue: CGFloat
+    var falpha: CGFloat
+    var isSelected: Int
+    var friendID: String
+    
+}
 
 typealias PhotoModellcell = (id: String, category: CategoryModel, photoDescription: String?, date: String, hastags: [String]?)
 

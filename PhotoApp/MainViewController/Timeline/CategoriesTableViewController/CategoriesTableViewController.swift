@@ -207,7 +207,7 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     func downloadFriendsCategories (){
         if let user = Auth.auth().currentUser{
             let userID = user.uid
-           //ref.child(userID).child("friends").observe(DataEventType, with: <#T##(DataSnapshot) -> Void#>)
+            
         }
     }
     

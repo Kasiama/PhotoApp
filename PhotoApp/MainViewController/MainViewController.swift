@@ -89,10 +89,21 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                     for (friendID, categoriesInfo) in friendsDict {
                         if let friendID = friendID as? String{
                             let selectedCategoriesRef = self.ref.child(friendID).child("categories").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
-                            selectedCategoriesRef.observe( .value, with: { (snapshot) in
-                                    if  let value = snapshot.value as? NSDictionary{
-                                    self.ref.child(userId).child("friends").child(friendID).setValue(value)
+                            selectedCategoriesRef.observe( .value, with: { (snapshott) in
+                                    if  let value = snapshott.value as? NSDictionary{
+                                        self.ref.child(userId).child("friends").child(friendID).observeSingleEvent(of: .value) { (snapshottt) in
+                                            if (snapshottt.value as? NSDictionary) != nil || (snapshottt.value as? String) != nil {
+                                                self.ref.child(userId).child("friends").child(friendID).setValue(value)
+                                            }
+                                        }
                                     }
+                                    else if (snapshott.value as? NSDictionary) == nil{
+                                     self.ref.child(userId).child("friends").child(friendID).observeSingleEvent(of: .value) { (snapshottt) in
+                                         if (snapshottt.value as? NSDictionary) != nil || (snapshottt.value as? String) != nil {
+                                             self.ref.child(userId).child("friends").child(friendID).setValue("")
+                                         }
+                                     }
+                                }
                             }) { (error) in
                                 print(error.localizedDescription)
                             }

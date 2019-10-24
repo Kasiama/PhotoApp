@@ -865,8 +865,8 @@
             timestampString = "592144102.0999171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "longPressed(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -882,8 +882,8 @@
             timestampString = "592144102.099991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "currentLocationTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -899,8 +899,8 @@
             timestampString = "592144102.100103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "openGallery()"
             landmarkType = "7">
          </BreakpointContent>
@@ -916,8 +916,8 @@
             timestampString = "592144102.100155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "427"
-            endingLineNumber = "427"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "addAnnotation(model:image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -933,8 +933,8 @@
             timestampString = "592144102.100206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "434"
-            endingLineNumber = "434"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "movePopupVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -950,8 +950,8 @@
             timestampString = "592144102.100256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "beginLocationUpdates(locationManager:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -967,8 +967,8 @@
             timestampString = "592144102.100305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "movePopupVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -984,8 +984,8 @@
             timestampString = "592144102.100356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "434"
-            endingLineNumber = "434"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "movePopupVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1001,8 +1001,8 @@
             timestampString = "592144102.100504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "MainViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -1018,8 +1018,8 @@
             timestampString = "592144102.100558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1035,8 +1035,8 @@
             timestampString = "592144102.100611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1052,8 +1052,8 @@
             timestampString = "592144102.100709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "434"
-            endingLineNumber = "434"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "movePopupVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1222,8 +1222,8 @@
             timestampString = "592144102.1010309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1239,8 +1239,8 @@
             timestampString = "592144102.10123"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1256,8 +1256,8 @@
             timestampString = "592144102.10128"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "downloadCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1273,8 +1273,8 @@
             timestampString = "592144102.101329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1290,8 +1290,8 @@
             timestampString = "592144102.101377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "MainViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1307,8 +1307,8 @@
             timestampString = "592144102.101474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
             landmarkName = "MainViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1341,8 +1341,8 @@
             timestampString = "592144102.101653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1375,8 +1375,8 @@
             timestampString = "592144102.101882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1477,8 +1477,8 @@
             timestampString = "592144102.103834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "longPressed(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1846,8 +1846,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "beginLocationUpdates(locationManager:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1958,8 +1958,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "403"
+            endingLineNumber = "403"
             landmarkName = "addPopupVC(whithImage:model:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1990,8 +1990,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "keyboardWillShow(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2006,8 +2006,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "setupObserversToFriends()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2086,8 +2086,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "keyboardWillHide(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2102,8 +2102,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "keyboardWillShow(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2118,8 +2118,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "keyboardWillShow(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2214,8 +2214,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "openGallery()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2278,8 +2278,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
             landmarkName = "addPopupVC(whithImage:model:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2326,8 +2326,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "addPhoto()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2422,8 +2422,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "keyboardWillShow(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2438,8 +2438,8 @@
             filePath = "PhotoApp/MainViewController/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "imagePickerControllerDidCancel(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2806,8 +2806,8 @@
             filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2905,22 +2905,6 @@
             startingLineNumber = "322"
             endingLineNumber = "322"
             landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CD944CA2-8807-4B8B-804E-EE5AB4755F66"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "btnTaped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3318,8 +3302,8 @@
             filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "setupDesign()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3455,54 +3439,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D28A0F06-2AA2-4118-BD81-13A89A658675"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "changeCategories()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D28A0F06-2AA2-4118-BD81-13A89A658675 - 17756cf50b484b48"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhotoApp.UserViewController.changeCategories() -&gt; ()"
-                  moduleName = "PhotoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "187"
-                  endingLineNumber = "187"
-                  offsetFromSymbolStart = "898">
-               </Location>
-               <Location
-                  uuid = "D28A0F06-2AA2-4118-BD81-13A89A658675 - e890a25c6259af51"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in PhotoApp.UserViewController.changeCategories() -&gt; ()"
-                  moduleName = "PhotoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188"
-                  offsetFromSymbolStart = "199">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8A4203EE-C7B8-49FD-A8F6-755283458AB4"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3561,6 +3497,534 @@
             startingLineNumber = "163"
             endingLineNumber = "163"
             landmarkName = "editCategory(category:row:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A67FF2D-7ED0-4C82-BD31-17D427F83F17"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "setupObserversToFriends()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A483658-8117-42C5-B5BC-CF7989511508"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "setupObserversToFriends()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70200F78-26EC-4D6D-9127-B01FB871A7FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "setupObserversToFriends()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4BDC50D8-BE16-4094-9340-B0C079E06D17"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "setupObserversToFriends()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4BDC50D8-BE16-4094-9340-B0C079E06D17 - 8eaaacfc17a21c98"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in PhotoApp.MainViewController.setupObserversToFriends() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "2213">
+               </Location>
+               <Location
+                  uuid = "4BDC50D8-BE16-4094-9340-B0C079E06D17 - 92a84cc730f49241"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.FIRDataSnapshot) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in PhotoApp.MainViewController.setupObserversToFriends() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "242">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4B11FD6-0B66-49E5-8F46-242BD8D6CD05"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C4B11FD6-0B66-49E5-8F46-242BD8D6CD05 - a4d4071390be49d1"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (__C.FIRDataSnapshot) -&gt; () in PhotoApp.UserViewController.setupObservers() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "755">
+               </Location>
+               <Location
+                  uuid = "C4B11FD6-0B66-49E5-8F46-242BD8D6CD05 - d8afe03976137221"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #3 (__C.FIRDataSnapshot) -&gt; () in PhotoApp.UserViewController.setupObservers() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "111">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3587C37C-90D0-4B13-B2D5-80B11E5DADF2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0710982-F834-44E4-9B7E-999F0E29225A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B0710982-F834-44E4-9B7E-999F0E29225A - 2f4abb503531d3ca"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotoApp.UserViewController.setupObservers() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "3055">
+               </Location>
+               <Location
+                  uuid = "B0710982-F834-44E4-9B7E-999F0E29225A - 27898e79afa5e7d6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (__C.FIRDataSnapshot) -&gt; () in PhotoApp.UserViewController.setupObservers() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "171">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "723BAFD5-5C30-4A27-99D4-010746380315"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51BE1F3C-4AE5-4D42-86AA-23FBB29960E5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "btnTaped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8663D624-062D-445E-A770-4E9548875508"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "btnTaped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E86A34C9-3997-435D-AA34-6451BA432F83"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E86A34C9-3997-435D-AA34-6451BA432F83 - 2f4abb503531d3ca"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotoApp.UserViewController.setupObservers() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "576">
+               </Location>
+               <Location
+                  uuid = "E86A34C9-3997-435D-AA34-6451BA432F83 - 5a2f1a6776b1edd3"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in PhotoApp.UserViewController.setupObservers() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "171">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "74B159F7-98D8-4C36-9423-716E204A352A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "74B159F7-98D8-4C36-9423-716E204A352A - 2f4abb503531d3ca"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotoApp.UserViewController.setupObservers() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "3043">
+               </Location>
+               <Location
+                  uuid = "74B159F7-98D8-4C36-9423-716E204A352A - 27898e79afa5e7d6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (__C.FIRDataSnapshot) -&gt; () in PhotoApp.UserViewController.setupObservers() -&gt; ()"
+                  moduleName = "PhotoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivan.zhurauski/Desktop/PhotoApp/PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "171">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75734ADF-6B67-46F6-8328-A04055CFE5E1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "00A8C944-E3AD-4AEC-982C-1BD7E0F5CA55"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E26814FB-F725-46F3-BC38-9A10CBD2FF10"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4FB5F7B6-6249-4F9E-8D2C-986D7C0CF3E7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD184BEE-E2BD-43DC-92E1-7928D75D24C8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CFC74DB8-57B6-41B9-A44B-B6AFFC894DE5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABB699D2-1B4C-41D3-AF24-22D6D7C326A0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0EADD5A0-C666-4F20-BAF3-D880E73B0BC3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B368C93-53EE-4711-9500-A6249B121563"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "setupObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D16C2CF-3FA7-4005-A245-CA9D3765A204"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "btnTaped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA5B060C-CF94-43FE-BB9A-A2D3AADB4C7C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoApp/MainViewController/Other/FriendsVewComtroller/UserViewController/UserViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "setupObservers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

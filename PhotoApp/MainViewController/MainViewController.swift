@@ -63,7 +63,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapoutside))
         self.mapView.addGestureRecognizer(tap)
         ref = Database.database().reference()
-        setupObserversToFriends()
+        setuplala()
         downloadCategories()
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -82,17 +82,22 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         }
 
     func setupObserversToFriends(){
+        
         if let user = Auth.auth().currentUser{
             let userId = user.uid
-            self.ref.child(userId).child("friends").observe(.value) { (snapshot) in
+           
+            self.ref.child(userId).child("friends").observeSingleEvent( of: .value) { (snapshot) in
                 if let friendsDict = snapshot.value as? NSDictionary {
                     for (friendID, categoriesInfo) in friendsDict {
                         if let friendID = friendID as? String{
+                           
                             let selectedCategoriesRef = self.ref.child(friendID).child("categories").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
+                            self.ref.child(friendID).child("categories").queryOrdered(byChild: "isSelected").removeAllObservers()
                             selectedCategoriesRef.observe( .value, with: { (snapshott) in
                                     if  let value = snapshott.value as? NSDictionary{
                                         self.ref.child(userId).child("friends").child(friendID).observeSingleEvent(of: .value) { (snapshottt) in
                                             if (snapshottt.value as? NSDictionary) != nil || (snapshottt.value as? String) != nil {
+                                                
                                                 self.ref.child(userId).child("friends").child(friendID).setValue(value)
                                             }
                                         }
@@ -115,6 +120,21 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         
         
     }
+    
+    func setuplala(){
+       if let user = Auth.auth().currentUser{
+        let userId = user.uid
+        self.ref.child(userId).child("friends").observe(.childAdded) { (snaphot) in
+            self.setupObserversToFriends()
+        }
+        self.ref.child(userId).child("friends").observe(.childRemoved) { (snaphot) in
+            self.setupObserversToFriends()
+        }
+        
+        
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true

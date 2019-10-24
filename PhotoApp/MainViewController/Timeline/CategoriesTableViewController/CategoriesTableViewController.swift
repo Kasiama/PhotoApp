@@ -21,12 +21,15 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         var ref: DatabaseReference!
         
        var friendCategoriesArray = [FriendCategoryModel]()
+        var friendNames = [String]()
+        var freindsDict = [String:[FriendCategoryModel]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
          ref = Database.database().reference()
         downloadCategories()
+        downloadFriendsCategories()
 
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Add", style: UIBarButtonItem.Style.done,
@@ -48,18 +51,18 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         self.navigationController?.navigationBar.isHidden = false
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return categoriesArray.count
+      
+        if section == 0{return self.categoriesArray.count}
+      else  {
+            
+            return self.freindsDict[self.friendNames[section-1]]?.count ?? 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        if indexPath.section == 0{
         let red = categoriesArray[indexPath.row].fred
         let green = categoriesArray[indexPath.row].fgreen
         let blue = categoriesArray[indexPath.row].fblue
@@ -88,17 +91,52 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         cell.cellTextLabel.text = categoriesArray[indexPath.row].name
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
-//        else {
-//            let a = UITableViewCell()
-//            return a
-//        }
+        }
+        else{
+             let cell: CategoryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            let key = friendNames[indexPath.section - 1]
+            if  let arr = self.freindsDict[key]{
+                
+            let red = arr [indexPath.row ].fred
+            let green = arr[indexPath.row ].fgreen
+            let blue = arr[indexPath.row ].fblue
+            let alpha = arr[indexPath.row].falpha
+            let color = UIColor.init(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+           cell.cirkleView?.removeFromSuperview()
+           cell.fillCircle?.removeFromSuperview()
+                cell.cirkleView = nil
+            cell.color = color
+            cell.cellTextLabel.textColor = color
+
+            if cell.cirkleView == nil {
+
+            let circle = CirkleView.init(frame: cell.cellView.bounds, color: color )
+            cell.cirkleView = circle
+            cell.cellView.addSubview(circle)
+             let fillCircle =  CircleFillView.init(frame: cell.cellView.bounds, color: color )
+            cell.fillCircle = fillCircle
+
+            if arr[indexPath.row ].isSelected == 1 {
+            cell.cellView.addSubview(fillCircle)
+            } else {
+                cell.cellView.addSubview(fillCircle)
+                cell.fillCircle?.isHidden = true
+                }
+            }
+            cell.cellTextLabel.text = arr[indexPath.row].name
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            }
+            return cell
+        }
     }
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let cell: CategoryTableViewCell = tableView.cellForRow(at: indexPath)
+        if indexPath.section == 0{
         if  self.categoriesArray[indexPath.row].isSelected == 1 {
             self.categoriesArray[indexPath.row].isSelected = 0
             cell.fillCircle?.isHidden = true
@@ -106,11 +144,28 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
             self.categoriesArray[indexPath.row].isSelected = 1
             cell.fillCircle?.isHidden = false
         }
-
+        }
+        else{
+           let key = friendNames[indexPath.section - 1]
+            if  var arr = self.freindsDict[key]{
+                if  arr[indexPath.row].isSelected == 1 {
+                    arr[indexPath.row].isSelected = 0
+                    cell.fillCircle?.isHidden = true
+                    self.freindsDict[key] = arr
+                } else {
+                    arr[indexPath.row].isSelected = 1
+                    cell.fillCircle?.isHidden = false
+                     self.freindsDict[key] = arr
+                }
+            }
+            
+        }
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
+        
+        if indexPath.section == 0 {
         let edit = UIContextualAction.init(style: .normal, title: "Edit") { (_, _, (Bool) -> Void) in
             let category = self.categoriesArray[indexPath.row]
              let editVC = AddCategoryViewController()
@@ -140,6 +195,25 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         edit.backgroundColor = UIColor.blue
         delete.backgroundColor = UIColor.red
         return UISwipeActionsConfiguration.init(actions: [delete, edit])
+        }
+        else {
+            return nil
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{ return "Me"}
+        else{
+       return friendNames[section-1]
+        }
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return friendNames.count + 1
     }
 
     func addCategory(category: CategoryModel) {
@@ -207,11 +281,57 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     func downloadFriendsCategories (){
         if let user = Auth.auth().currentUser{
             let userID = user.uid
+            self.ref.child(userID).child("friends").observe(.value) { (snapshot) in
+                self.friendCategoriesArray.removeAll()
+                self.friendNames.removeAll()
+                self.freindsDict.removeAll()
+                if let friendsDict  = snapshot.value as? NSDictionary{
+                    for (friendID,categoriesDict) in friendsDict{
+                     if let friendID = friendID as? String ,
+                        let categoriesDict = categoriesDict as? NSDictionary {
+                          self.ref.child(friendID).child("Username").observeSingleEvent(of: .value) { (shot) in
+                            if let friendName = shot.value as? String,friendName != ""{
+                                var arr = [FriendCategoryModel]()
+                        for (categoryID, categoryInfo) in categoriesDict{
+                            if  let categoryIn = categoryInfo as? NSDictionary,
+                            let catid = categoryID as? String,
+                            let name = categoryIn["name"] as? String,
+                            let fred = categoryIn["fred"] as? CGFloat,
+                            let fblue = categoryIn["fblue"] as? CGFloat,
+                            let fgreen = categoryIn["fgreen"] as? CGFloat,
+                            let falpha = categoryIn["falpha"] as? CGFloat,
+                                let isSelected = categoryIn["isSelected"] as? Int{
+                              
+                                
+                                        let friendCategory = FriendCategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName:friendName)
+                                        arr.append(friendCategory)
+                                    
+                                    
+                                }
+                                
+                            }
+                                self.freindsDict[friendName] = arr
+                                
+                        }
+                            self.friendNames.removeAll()
+                            for (key,value) in self.freindsDict{
+                                if let key = key as? String{
+                                    self.friendNames.append(key)
+                                }
+                            }
+                            self.tableView.reloadData()
+                        }
+                        
+                        }
+                        
+                    }
+                }
+                
+            }
             
         }
     }
     
-
     @objc func addTapped() {
         let catecoriesTableVC = AddCategoryViewController()
         catecoriesTableVC.delegate = self
@@ -247,10 +367,31 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
             }
 
         }
-
+       saveFriendsCategories()
        self.navigationController?.popViewController(animated: true)
         }
     }
     
+    func saveFriendsCategories(){
+        if let userID = Auth.auth().currentUser?.uid{
+        for key in self.friendNames{
+            if let arr = self.freindsDict[key]{
+                for category in arr{
+                    
+                        let categorysend = ["name": category.name,
+                                            "fred": category.fred,
+                                            "fgreen": category.fgreen,
+                                            "fblue": category.fblue,
+                                            "falpha": category.falpha,
+                                            "isSelected": category.isSelected      ] as [String: Any]
+                    let childUpdates = ["/\(String(describing: userID))/friends/\(category.friendID)/\(category.id)": categorysend]
+
+                        ref.updateChildValues(childUpdates)
+                        
+                }
+            }
+        }
+        }
+    }
 
 }

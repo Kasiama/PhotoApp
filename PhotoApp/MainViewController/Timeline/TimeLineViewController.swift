@@ -28,6 +28,7 @@ struct FriendCategoryModel{
     var falpha: CGFloat
     var isSelected: Int
     var friendID: String
+    var friendName: String
     
 }
 

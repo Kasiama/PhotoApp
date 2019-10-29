@@ -74,5 +74,9 @@ class CategoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    override func prepareForReuse() {
+           super.prepareForReuse()
+           self.cirkleView?.removeFromSuperview()
+           self.fillCircle?.removeFromSuperview()
+       }
 }

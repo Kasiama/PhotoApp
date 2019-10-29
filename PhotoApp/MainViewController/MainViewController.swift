@@ -1,3 +1,4 @@
+
 //
 //  MainViewController.swift
 //  PhotoApp
@@ -12,7 +13,7 @@ import Photos
 import Firebase
 
 struct Photomodel {
-   var id: String
+    var id: String
     var latitude: CLLocationDegrees
     var longitude: CLLocationDegrees
     var category: CategoryModel
@@ -57,6 +58,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
     var upsize: CGFloat = 0
     var uosize: CGFloat = 0
+    var friendGrou = DispatchGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,57 +84,75 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         imagePickerController.delegate = self
         }
 
-    func setupObserversToFriends(){
-        
-        if let user = Auth.auth().currentUser{
-            let userId = user.uid
-           
-            self.ref.child(userId).child("friends").observeSingleEvent( of: .value) { (snapshot) in
-                if let friendsDict = snapshot.value as? NSDictionary {
-                    for (friendID, categoriesInfo) in friendsDict {
-                        if let friendID = friendID as? String{
-                           
-                            let selectedCategoriesRef = self.ref.child(friendID).child("categories").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
-                            self.ref.child(friendID).child("categories").queryOrdered(byChild: "isSelected").removeAllObservers()
-                            selectedCategoriesRef.observe( .value, with: { (snapshott) in
-                                    if  let value = snapshott.value as? NSDictionary{
-                                        self.ref.child(userId).child("friends").child(friendID).observeSingleEvent(of: .value) { (snapshottt) in
-                                            if (snapshottt.value as? NSDictionary) != nil || (snapshottt.value as? String) != nil {
-                                                
-                                                self.ref.child(userId).child("friends").child(friendID).setValue(value)
-                                            }
-                                        }
-                                    }
-                                    else if (snapshott.value as? NSDictionary) == nil{
-                                     self.ref.child(userId).child("friends").child(friendID).observeSingleEvent(of: .value) { (snapshottt) in
-                                         if (snapshottt.value as? NSDictionary) != nil || (snapshottt.value as? String) != nil {
-                                             self.ref.child(userId).child("friends").child(friendID).setValue("")
-                                         }
-                                     }
-                                }
-                            }) { (error) in
-                                print(error.localizedDescription)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        
-    }
+   
     
     func setuplala(){
        if let user = Auth.auth().currentUser{
         let userId = user.uid
-        self.ref.child(userId).child("friends").observe(.childAdded) { (snaphot) in
-            self.setupObserversToFriends()
+        self.ref.child(userId).child("friends").observe(.value) { (snaphot) in
+        self.ref.child(userId).child("categories").child("friends").removeValue()
+            self.ref.child(userId).child("photomodels").child("friends").removeValue()
+            self.setupCategoriesObservers()
         }
-        self.ref.child(userId).child("friends").observe(.childRemoved) { (snaphot) in
-            self.setupObserversToFriends()
         }
-        
-        
+    }
+    
+    func setupCategoriesObservers(){
+        if let user = Auth.auth().currentUser{
+            let userId = user.uid
+            self.ref.child(userId).child("friends").observeSingleEvent( of: .value) { (snapshot) in
+                if let friendsDict = snapshot.value as? NSDictionary {
+                    for (friendID, _) in friendsDict {
+                        if let friendId = friendID as? String{
+                            self.ref.child(friendId).child("Username").observeSingleEvent(of: .value) { (shot) in
+                                if let friendName = shot.value as? String{
+                        if let friendID = friendID as? String{
+                            let selectedCategoriesRef = self.ref.child(friendID).child("categories").child("user").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
+                            self.ref.child(friendID).child("categories").child("user").queryOrdered(byChild: "isSelected").removeAllObservers()
+                            selectedCategoriesRef.observe( .value, with: { (snapshott) in
+                                self.ref.child(userId).child("categories").child("friends").child(friendID).removeValue()
+                                    if  let value = snapshott.value as? NSDictionary{
+                                        for(categoryID,categoryDict) in value{
+                                            if let categoryID = categoryID as? String,
+                                                let categoryDict = categoryDict as? NSMutableDictionary{
+                                                self.ref.child(friendID).child("Username").observeSingleEvent(of: .value) { (name) in
+                                                    if  let userName = name.value as? String{
+                                                        categoryDict["friendName"] = userName
+                                                        self.ref.child(userId).child("categories").child("friends").child(friendID).child(categoryID).setValue(categoryDict)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }) { (error) in
+                                print(error.localizedDescription)
+                            }
+                        }
+                            }
+                    }
+                }
+                        
+            }
+                }
+            }
+        }
+            
+    }
+    
+    func setupphotomodelsObservers(){
+        if let userID = Auth.auth().currentUser?.uid{
+            self.ref.child(userID).child("friends").observeSingleEvent(of: .value) { (friendsSnapshot) in
+                if let friendsDict = friendsSnapshot.value as? NSDictionary{
+                    for (friendID,driendData) in friendsDict{
+                        if let friendID = friendID as? String{
+                            self.ref.child(friendID).child("photomodels").observe(.value) { (DataSnapshot) in
+                                print("s")
+                            }
+                        }
+                            
+                    }
+                }
+            }
         }
     }
     
@@ -199,10 +220,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         movePopupVC()
         if let currentCoordinate = self.currentCoordinate {
         zoomToLatestLocation(with: currentCoordinate)
+            let annotations = self.mapView.annotations
+            let coordinate = Custom.init(coordinate: annotations[0].coordinate)
+            self.mapView.removeAnnotation(coordinate)
         }
-        let annotations = self.mapView.annotations
-        let coordinate = Custom.init(coordinate: annotations[0].coordinate)
-        self.mapView.removeAnnotation(coordinate)
+        
     }
 
     let geocoder = CLGeocoder()
@@ -258,8 +280,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                     let fblue = categoryIn["fblue"] as? CGFloat,
                     let fgreen = categoryIn["fgreen"] as? CGFloat,
                     let falpha = categoryIn["falpha"] as? CGFloat,
-                    let isSelected = categoryIn["isSelected"] as? Int {
-               let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected: isSelected)
+                    let isSelected = categoryIn["isSelected"] as? Int,
+                    let friendID = categoryIn["friendID"] as? String,
+                    let friendName = categoryIn["driendName"] as? String{
+                    let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
                         self.selectedCategoriesArray.append(category)
             }
         }

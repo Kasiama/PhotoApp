@@ -21,7 +21,7 @@ import Firebase
     var friendName: String
 
 }
-struct FriendCategoryModel{
+struct FriendCategoryModel {
     var id: String
     var name: String
     var fred: CGFloat
@@ -31,10 +31,10 @@ struct FriendCategoryModel{
     var isSelected: Int
     var friendID: String
     var friendName: String
-    
+
 }
 
-typealias PhotoModellcell = (id: String, category: CategoryModel, photoDescription: String?, date: String, hastags: [String]?)
+typealias PhotoModellcell = (id: String, category: CategoryModel, photoDescription: String?, date: String, hastags: [String]?, isFriend: Bool)
 
 var timeLineCellId = "PhotoTableViewCell"
 
@@ -54,10 +54,13 @@ class TimeLineViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
 
     var selectedCategoriesArray = [CategoryModel]()
-    var friendsSelectedCategoryArray = [FriendCategoryModel]()
-    var photoModels = [PhotoModellcell]()
+    var friendsSelectedCategoriesArray = [CategoryModel]()
+    var myPhotoModelsCells = [PhotoModellcell]()
+    var friendsPhotoModelsCells = [PhotoModellcell]()
+
     var headers = [String]()
     var headers2 = [String]()
+
     var sections = [String: [PhotoModellcell]]()
     var sortedSections = [String: [PhotoModellcell]]()
     var allHashtags = Set<String>()
@@ -105,7 +108,7 @@ class TimeLineViewController: UIViewController {
     func downloadCategories() {
         if let user  = Auth.auth().currentUser {
         let userID = user.uid
-        let selectedCategoriesRef = ref.child(userID).child("categories").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
+            let selectedCategoriesRef = ref.child(userID).child("categories").child("user").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
         selectedCategoriesRef.observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.selectedCategoriesArray.removeAll()
@@ -119,9 +122,8 @@ class TimeLineViewController: UIViewController {
                 let falpha = categoryData["falpha"] as? CGFloat,
                 let isSelected = categoryData["isSelected"] as? Int,
                     let friendID = categoryData["friendID"] as? String,
-                let friendName = categoryData["driendName"] as? String
-                {
-                let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected: isSelected,friendID:friendID, friendName: friendName)
+                let friendName = categoryData["friendName"] as? String {
+                let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
                 self.selectedCategoriesArray.append(category)
                 } else {print("Cant make dictionary from dataCategory")}
             }
@@ -132,131 +134,175 @@ class TimeLineViewController: UIViewController {
         }
     }
     }
-    
-  
+    func downloadPhotoModels() {
 
-    
-    
-   
-    
-    func downloadFriendsCategories(){
-        if let user = Auth.auth().currentUser{
+     if let user  = Auth.auth().currentUser {
+      let userID = user.uid
+        self.ref.child(userID).child("photomodels").child("user").observe(.value, with: { (snapshot) in
+          let value = snapshot.value as? NSDictionary
+          self.myPhotoModelsCells.removeAll()
+          for (photomodelID, photomodelInfo) in value ?? [:] {
+              if  let photomodelData = photomodelInfo as? NSDictionary,
+                  let photomodelID = photomodelID as? String,
+                  let catid = photomodelData["categoryID"] as? String,
+                  let date = photomodelData["date"] as? String {
+
+              let hastags = photomodelData["hashtags"] as? [String]
+              let description = photomodelData["description"] as? String
+
+                  for category in self.selectedCategoriesArray {
+                  if category.id == catid {
+                      if let  hastags = hastags {
+                          for hashtag in hastags {
+                              self.allHashtags.insert(hashtag)
+                          }
+                      }
+                    let photoModel: PhotoModellcell = (photomodelID, category, description, date, hastags, false)
+                    self.myPhotoModelsCells.append(photoModel)
+//                      let date = formater.date(from: photoModel.date)
+//                      let dateStr = formater2.string(from: date ?? Date.init())
+//                      if self.sections.index(forKey: dateStr) != nil {
+//                          self.sections[dateStr]?.append(photoModel)
+//                      } else {
+//                          self.sections[dateStr] = [photoModel]
+//                      }
+                  }
+              }
+          } else {print("Cant make dictionary from DataPhotomodel")}
+          }
+//          let sortSections = self.sections.sorted {
+//          if let first = formater2.date(from: $0.key), let second = formater2.date(from: $1.key) {return first > second} else {return true}
+//              }
+//          self.headers.removeAll()
+//          for(key, value) in sortSections {
+//              let sortedArrforKey = value.sorted {
+//                  if let first =  formater.date(from: $0.date), let second =  formater.date(from: $1.date) {
+//                      return first>second} else {return true}
+//              }
+//              self.headers.append(key)
+//              self.sortedSections[key] = sortedArrforKey
+//
+//          }
+//          self.sections.removeAll()
+//          if self.isSeaerchBar {
+//          self.photoTableView.reloadData()
+//          } else {
+//              self.changeTable(whithSearchText: self.searchMessage)
+//          }
+        self.downloadFriendsCategories()
+      }) { (error) in
+          print(error.localizedDescription)
+      }
+
+  }
+  }
+
+    func downloadFriendsCategories () {
+        if let user = Auth.auth().currentUser {
             let userID = user.uid
-            self.ref.child(userID).child("friends").observeSingleEvent(of: .value) { (snapshot) in
-                if let friendsDict = snapshot.value as? NSDictionary{
-                    for (friendID,categoriesDict) in friendsDict{
-                        if let friendID = friendID as? String {
-                            self.ref.child(friendID).child("Username").observeSingleEvent(of: .value) { (data) in
-                                if let friendName = data.value as? String{
-                            
-                            
-                            let selectedCatRef =  self.ref.child(userID).child("friends").child(friendID).queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
-                            
-                            selectedCatRef.observeSingleEvent(of: .value) { (snap) in
-                                if let categoryDict = snap.value as? NSDictionary{
-                                    for (categoryID,catInfo) in categoryDict{
-                                        if  let categoryID = categoryID as? String,
-                                            let catInfo = catInfo as? NSDictionary,
-                                            let falpha = catInfo["falpha"] as? CGFloat,
-                                            let fgreen = catInfo["fgreen"] as? CGFloat,
-                                            let fred = catInfo["fred"] as? CGFloat,
-                                            let fblue = catInfo["fblue"] as? CGFloat,
-                                            let name = catInfo["name"] as? String,
-                                            let isSelected = catInfo["isSelected"] as? Int{
-                                            let friendcat = FriendCategoryModel.init(id: categoryID, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
-                                            self.friendsSelectedCategoryArray.append(friendcat)
-                                            
-                                        }
-                                            
+            self.ref.child(userID).child("categories").child("friends").observe(.value) { (friendCatShot) in
+                self.friendsSelectedCategoriesArray.removeAll()
+                if let friendsCategories = friendCatShot.value as? NSDictionary {
+                    for(friendId, friendCatsDict) in friendsCategories {
+                        if friendId is String {
+                                if let catdict = friendCatsDict as? NSDictionary {
+                                    for (categoryID, categoriesDict) in catdict {
+                                       if  let catid = categoryID as? String,
+                                        let categoriesDict = categoriesDict as? NSDictionary {
+
+                                           if let name = categoriesDict["name"] as? String,
+                                            let fred = categoriesDict["fred"] as? CGFloat,
+                                            let fblue = categoriesDict["fblue"] as? CGFloat,
+                                            let fgreen = categoriesDict["fgreen"] as? CGFloat,
+                                            let falpha = categoriesDict["falpha"] as? CGFloat,
+                                                let isSelected = categoriesDict["isSelected"] as? Int,
+                                                let friendID = categoriesDict["friendID"] as? String,
+                                                let friendName = categoriesDict["friendName"] as? String {
+                                              let friendCategory = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen,
+                                                                                      fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
+                                            if friendCategory.isSelected == 1 {
+                                            self.friendsSelectedCategoriesArray.append(friendCategory)
+                                            }
                                         }
                                     }
-                                    
-                                }
-                                }
-                        }
+                                        }
+
                             }
-                            
+
                         }
                     }
-                self.downloadFriendsPhotoModels()
                 }
+                self.downloadFriendsPhotomodels()
             }
-            
-            
         }
-        
-    func downloadFriendsPhotoModels(){
-        
     }
-    
-    
-    func downloadPhotoModels() {
-        let formater = DateFormatter()
-        formater.dateFormat = "yyyy:MM:dd HH:mm:ss"
-        let formater2 = DateFormatter()
-        formater2.dateFormat = "MMMM-yyyy"
 
-       if let user  = Auth.auth().currentUser {
+    func downloadFriendsPhotomodels() {
+        if let user = Auth.auth().currentUser {
         let userID = user.uid
-        self.ref.child(userID).child("photomodels").observe(.value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            self.sections.removeAll()
-            self.sortedSections.removeAll()
-            for (photomodelID, photomodelInfo) in value ?? [:] {
-                if  let photomodelData = photomodelInfo as? NSDictionary,
-                    let photomodelID = photomodelID as? String,
-                    let catid = photomodelData["categoryID"] as? String,
-                    let date = photomodelData["date"] as? String {
+            self.ref.child(userID).child("photomodels").child("friends").observe(.value) { (snapshot) in
+                self.friendsPhotoModelsCells.removeAll()
 
-                let hastags = photomodelData["hashtags"] as? [String]
-                let description = photomodelData["description"] as? String
+                if let frindsModels = snapshot.value as? NSDictionary {
+                    for (_, photomodelDict) in frindsModels {
+                        if let photomodelDict = photomodelDict as? NSDictionary {
+                            for(photomodelID, photomodelInfo) in photomodelDict {
+                                if  let photoIn = photomodelInfo as? NSDictionary,
+                                    let photomodelID = photomodelID as? String,
+                                let catid = photoIn["categoryID"] as? String,
+                                let date = photoIn["date"] as? String,
+                                let hastags = photoIn["hashtags"] as? [String],
+                                let description = photoIn["description"] as? String {
+                                for category in self.friendsSelectedCategoriesArray {
+                                if category.id == catid {
+                                            for hashtag in hastags {
+                                                self.allHashtags.insert(hashtag)
+                                    }
+                                                let photoModel: PhotoModellcell = (photomodelID, category, description, date, hastags, true)
+                                                    self.friendsPhotoModelsCells.append(photoModel)
 
-                    for category in self.selectedCategoriesArray {
-                    if category.id == catid {
-                        if let  hastags = hastags {
-                            for hashtag in hastags {
-                                self.allHashtags.insert(hashtag)
+                                        }
+                                    }
                             }
-                        }
-                        let photoModel: PhotoModellcell = (photomodelID, category, description, date, hastags)
-                        let date = formater.date(from: photoModel.date)
-                        let dateStr = formater2.string(from: date ?? Date.init())
-                        if self.sections.index(forKey: dateStr) != nil {
-                            self.sections[dateStr]?.append(photoModel)
-                        } else {
-                            self.sections[dateStr] = [photoModel]
                         }
                     }
                 }
-            } else {print("Cant make dictionary from DataPhotomodel")}
+                    self.makeSections()
             }
-            let sortSections = self.sections.sorted {
-            if let first = formater2.date(from: $0.key), let second = formater2.date(from: $1.key) {return first > second} else {return true}
-                }
-            self.headers.removeAll()
-            for(key, value) in sortSections {
-                let sortedArrforKey = value.sorted {
-                    if let first =  formater.date(from: $0.date), let second =  formater.date(from: $1.date) {
-                        return first>second} else {return true}
-                }
-                self.headers.append(key)
-                self.sortedSections[key] = sortedArrforKey
+        }
+    }
+    }
+    func makeSections () {
+        let formater = DateFormatter()
+             formater.dateFormat = "yyyy:MM:dd HH:mm:ss"
+             let formater2 = DateFormatter()
+             formater2.dateFormat = "MMMM-yyyy"
+        self.sortedSections.removeAll()
+        self.headers.removeAll()
 
-            }
-            self.sections.removeAll()
-            if self.isSeaerchBar {
-            self.photoTableView.reloadData()
-            } else {
-                self.changeTable(whithSearchText: self.searchMessage)
-            }
-        }) { (error) in
-            print(error.localizedDescription)
+        let arr = self.myPhotoModelsCells + self.friendsPhotoModelsCells
+        let sortedArr = arr.sorted {
+            if let first = formater.date(from: $0.date), let second = formater.date(from: $1.date) {return first > second} else {return true}
+        }
+        for modelCell in sortedArr {
+            let date = formater.date(from: modelCell.date)
+            let dateStr = formater2.string(from: date ?? Date.init())
+            if self.sortedSections.index(forKey: dateStr) != nil {
+                                      self.sortedSections[dateStr]?.append(modelCell)
+                                  } else {
+                                      self.sortedSections[dateStr] = [modelCell]
+                                }
+        }
+        for (key, _) in self.sortedSections {
+            self.headers.append(key)
         }
 
+        if self.isSeaerchBar {
+                  self.photoTableView.reloadData()
+                  } else {
+                      self.changeTable(whithSearchText: self.searchMessage)
+                  }
     }
-    }
-    
-    
 
     func getImageFrom(gradientLayer: CAGradientLayer) -> UIImage? {
         var gradientImage: UIImage?
@@ -334,7 +380,13 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate, UI
             let dateCatStr = formater.string(from: date ?? Date.init()) + "/" + cellls[indexPath.item].category.name.uppercased()
             cell.descriptionLabel.text = dateCatStr
                 cell.hastagshLabel.text = item.photoDescription
-            cell.photoImageView.loadImage(idString: item.id)
+                cell.nameLabel.text = item.category.friendName
+           if item.isFriend {
+                            cell.photoImageView.loadImageWhithoutUser(idString: "\(item.category.friendID)/\(item.id)")
+                          } else {
+                                cell.photoImageView.loadImage(idString: item.id)
+                          }
+
             } else {
                 print("Cant Find cells of sections")
             }
@@ -349,7 +401,12 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate, UI
             formater.dateFormat = "yy-MM-dd"
             let dateCatStr = formater.string(from: date ?? Date.init()) + "/" + cellls[indexPath.item].category.name.uppercased()
             cell.descriptionLabel.text = dateCatStr
-            cell.photoImageView.loadImage(idString: item.id)
+                cell.nameLabel.text = item.category.friendName
+                if item.isFriend {
+                    cell.photoImageView.loadImageWhithoutUser(idString: "\(item.category.friendID)/\(item.id)")
+                } else {
+                    cell.photoImageView.loadImage(idString: item.id)
+                }
             cell.hastagshLabel.text = item.photoDescription
 
             } else {print("Cant Find cells of sortedSection")}
@@ -363,13 +420,24 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate, UI
         if searching {
             if let cellls = self.sections[self.headers2[indexPath.section]] {
             let item = cellls[indexPath.row]
-            let fullImageVC  = FullImageViewController(id: item.id, description: item.photoDescription)
+           var fullImageVC: FullImageViewController
+           if item.isFriend {
+               fullImageVC  = FullImageViewController(id: item.id, description: item.photoDescription, friendId: item.category.friendID)
+                          } else {
+                              fullImageVC  = FullImageViewController(id: item.id, description: item.photoDescription)
+                          }
             self.navigationController?.pushViewController(fullImageVC, animated: true)
             } else {print("Cant Find cells of sections")}
         } else {
             if let cellls = self.sortedSections[self.headers[indexPath.section]] {
             let item = cellls[indexPath.row]
-            let fullImageVC  = FullImageViewController(id: item.id, description: item.photoDescription)
+                var fullImageVC: FullImageViewController
+                if item.isFriend {
+                    fullImageVC  = FullImageViewController(id: item.id, description: item.photoDescription, friendId: item.category.friendID)
+                               } else {
+                                   fullImageVC  = FullImageViewController(id: item.id, description: item.photoDescription)
+                               }
+
             self.navigationController?.pushViewController(fullImageVC, animated: true)
             } else {print("Cant Find cells of sortedSections")}
         }
@@ -404,6 +472,24 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate, UI
         }
         self.searchbar.endEditing(true)
         delete.backgroundColor = UIColor.red
+
+        if searching {
+        if let cellls = self.sections[self.headers2[indexPath.section]] {
+        let item = cellls[indexPath.row]
+            if item.isFriend {
+                return nil
+            }
+            }
+        } else {
+        if  let cellls = self.sortedSections[self.headers[indexPath.section]] {
+            let item = cellls[indexPath.row]
+            if item.isFriend {
+                return nil
+            }
+            }
+
+        }
+
         return UISwipeActionsConfiguration.init(actions: [delete])
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -482,4 +568,3 @@ extension TimeLineViewController: UISearchBarDelegate {
     }
 
 }
-

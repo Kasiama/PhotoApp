@@ -134,7 +134,6 @@
 		761B2B68235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
 		761B2B69235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
 		769927902338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
-		769927912338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
 		769927922338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
 		769927932338B190002F056E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7699278F2338B190002F056E /* PopupViewController.xib */; };
 		769927942338B190002F056E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7699278F2338B190002F056E /* PopupViewController.xib */; };
@@ -601,6 +600,9 @@
 		7602D4792327A3D100FA9A05 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Ivan Zhurauski";
@@ -797,7 +799,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n";
 		};
 		A87073E5B6F8B522D5C93F1E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -863,7 +865,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				769927912338B190002F056E /* PopupViewController.swift in Sources */,
 				7614591E2357394D001038A5 /* StringExtention.swift in Sources */,
 				7602D4D82327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				760ED5B3234384CC00CF74AB /* ActiveLabel.swift in Sources */,

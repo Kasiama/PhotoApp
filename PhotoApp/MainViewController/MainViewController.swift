@@ -1,4 +1,3 @@
-
 //
 //  MainViewController.swift
 //  PhotoApp
@@ -20,6 +19,7 @@ struct Photomodel {
     var date: String
     var hashtags: [String]
     var description: String
+    var isFriend = false
     var image: UIImage? {
         willSet {
         }
@@ -36,10 +36,10 @@ protocol PopupDelegate: AnyObject {
 }
 protocol CalloutDelegate: AnyObject {
     func addPopupVC(whithImage image: UIImage, model: Photomodel?, date: Date?)
+    func addFullImageVC(model: Photomodel?, date: Date?)
 }
 
 class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CalloutDelegate {
-
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
 
@@ -59,7 +59,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     var upsize: CGFloat = 0
     var uosize: CGFloat = 0
     var friendGrou = DispatchGroup()
-    
+
+    var myMapAnnotations = [Custom]()
+    var friendsMapAnnotations = [Custom]()
+     var friendsSelectedCategoriesArray = [CategoryModel]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,41 +86,42 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+         self.imagePickerController.allowsEditing = true
         }
 
-   
-    
-    func setuplala(){
-       if let user = Auth.auth().currentUser{
+    func setuplala() {
+       if let user = Auth.auth().currentUser {
         let userId = user.uid
-        self.ref.child(userId).child("friends").observe(.value) { (snaphot) in
+        self.ref.child(userId).child("friends").observe(.value) { (_) in
         self.ref.child(userId).child("categories").child("friends").removeValue()
             self.ref.child(userId).child("photomodels").child("friends").removeValue()
             self.setupCategoriesObservers()
+            self.setupphotomodelsObservers()
         }
         }
     }
-    
-    func setupCategoriesObservers(){
-        if let user = Auth.auth().currentUser{
+
+    func setupCategoriesObservers() {
+        if let user = Auth.auth().currentUser {
             let userId = user.uid
             self.ref.child(userId).child("friends").observeSingleEvent( of: .value) { (snapshot) in
                 if let friendsDict = snapshot.value as? NSDictionary {
                     for (friendID, _) in friendsDict {
-                        if let friendId = friendID as? String{
+                        if let friendId = friendID as? String {
                             self.ref.child(friendId).child("Username").observeSingleEvent(of: .value) { (shot) in
-                                if let friendName = shot.value as? String{
-                        if let friendID = friendID as? String{
+                                if (shot.value as? String) != nil {
+                        if let friendID = friendID as? String {
                             let selectedCategoriesRef = self.ref.child(friendID).child("categories").child("user").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
                             self.ref.child(friendID).child("categories").child("user").queryOrdered(byChild: "isSelected").removeAllObservers()
                             selectedCategoriesRef.observe( .value, with: { (snapshott) in
                                 self.ref.child(userId).child("categories").child("friends").child(friendID).removeValue()
-                                    if  let value = snapshott.value as? NSDictionary{
-                                        for(categoryID,categoryDict) in value{
+                                    if  let value = snapshott.value as? NSDictionary {
+                                        for(categoryID, categoryDict) in value {
                                             if let categoryID = categoryID as? String,
-                                                let categoryDict = categoryDict as? NSMutableDictionary{
+                                                let categoryDict = categoryDict as? NSMutableDictionary {
                                                 self.ref.child(friendID).child("Username").observeSingleEvent(of: .value) { (name) in
-                                                    if  let userName = name.value as? String{
+                                                    if  let userName = name.value as? String {
                                                         categoryDict["friendName"] = userName
                                                         self.ref.child(userId).child("categories").child("friends").child(friendID).child(categoryID).setValue(categoryDict)
                                                     }
@@ -131,37 +136,39 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                             }
                     }
                 }
-                        
+
             }
                 }
             }
         }
-            
+
     }
-    
-    func setupphotomodelsObservers(){
-        if let userID = Auth.auth().currentUser?.uid{
+
+    func setupphotomodelsObservers() {
+        if let userID = Auth.auth().currentUser?.uid {
             self.ref.child(userID).child("friends").observeSingleEvent(of: .value) { (friendsSnapshot) in
-                if let friendsDict = friendsSnapshot.value as? NSDictionary{
-                    for (friendID,driendData) in friendsDict{
-                        if let friendID = friendID as? String{
-                            self.ref.child(friendID).child("photomodels").observe(.value) { (DataSnapshot) in
-                                print("s")
+                if let friendsDict = friendsSnapshot.value as? NSDictionary {
+                    for (friendID, _) in friendsDict {
+                        if let friendID = friendID as? String {
+                            self.ref.child(friendID).child("photomodels").child("user").observe(.value) { (photomodelShot) in
+                                if let photomodelDict = photomodelShot.value as? NSDictionary {
+                                    self.ref.child(userID).child("photomodels").child("friends").child(friendID).setValue(photomodelDict)
+                                } else {
+                                    self.ref.child(userID).child("photomodels").child("friends").child(friendID).removeValue()
+                                }
                             }
                         }
-                            
                     }
                 }
             }
         }
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
     }
-    @objc func tapoutside(){
+    @objc func tapoutside() {
         movePopupVC()
         print("fjjfferfefr")
     }
@@ -194,12 +201,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-
-        
         if touch?.view != self.popupVC?.descriptionTextView {
-
             self.view.endEditing(true)
-
         } else {
             //self.view.endEditing(true)
             return
@@ -224,7 +227,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             let coordinate = Custom.init(coordinate: annotations[0].coordinate)
             self.mapView.removeAnnotation(coordinate)
         }
-        
     }
 
     let geocoder = CLGeocoder()
@@ -252,7 +254,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                 popupVC = nil
                 return
             }
-
             if view is MKAnnotationView {
                 print("anot")
             } else {
@@ -268,7 +269,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     func downloadCategories() {
        if let user  = Auth.auth().currentUser {
                let userID = user.uid
-        let selectedCategories = ref?.child(userID).child("categories") .queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
+        let selectedCategories = ref?.child(userID).child("categories").child("user").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
         selectedCategories?.observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.selectedCategoriesArray.removeAll()
@@ -282,13 +283,13 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                     let falpha = categoryIn["falpha"] as? CGFloat,
                     let isSelected = categoryIn["isSelected"] as? Int,
                     let friendID = categoryIn["friendID"] as? String,
-                    let friendName = categoryIn["driendName"] as? String{
-                    let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
+                    let friendName = categoryIn["friendName"] as? String {
+                    let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue:
+                        fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
                         self.selectedCategoriesArray.append(category)
             }
         }
             self.downloadPhotoModels()
-
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -298,9 +299,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     func downloadPhotoModels() {
         if let user  = Auth.auth().currentUser {
         let userID = user.uid
-        self.ref?.child(userID).child("photomodels").observe(.value, with: { (snapshot) in
+            self.ref?.child(userID).child("photomodels").child("user").observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             self.mapView.removeAnnotations(self.mapView.annotations)
+                self.myMapAnnotations.removeAll()
             for (_, photomodelInfo) in value ?? [:] {
                 if  let photoIn = photomodelInfo as? NSDictionary,
                     let latitude = photoIn["latitude"] as? CLLocationDegrees,
@@ -320,14 +322,102 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                 let customAnnotation = Custom(coordinate: CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude))
                 customAnnotation.color = UIColor.init(red: category.fred, green: category.fgreen, blue: category.fblue, alpha: category.falpha)
                 customAnnotation.photoModel = model
-                self.mapView.addAnnotation(customAnnotation)
+                        self.myMapAnnotations.append(customAnnotation)
                     }
                 }
             }
           }
+                self.downloadFriendsCategories()
         })
-
         }
+    }
+
+    func downloadFriendsCategories () {
+        if let user = Auth.auth().currentUser {
+            let userID = user.uid
+            self.ref.child(userID).child("categories").child("friends").observe(.value) { (friendCatShot) in
+                self.friendsSelectedCategoriesArray.removeAll()
+                if let friendsCategories = friendCatShot.value as? NSDictionary {
+                    for(friendId, friendCatsDict) in friendsCategories {
+                        if friendId is String {
+                                if let catdict = friendCatsDict as? NSDictionary {
+                                    for (categoryID, categoriesDict) in catdict {
+                                       if  let catid = categoryID as? String,
+                                        let categoriesDict = categoriesDict as? NSDictionary {
+                                           if let name = categoriesDict["name"] as? String,
+                                            let fred = categoriesDict["fred"] as? CGFloat,
+                                            let fblue = categoriesDict["fblue"] as? CGFloat,
+                                            let fgreen = categoriesDict["fgreen"] as? CGFloat,
+                                            let falpha = categoriesDict["falpha"] as? CGFloat,
+                                                let isSelected = categoriesDict["isSelected"] as? Int,
+                                                let friendID = categoriesDict["friendID"] as? String,
+                                                let friendName = categoriesDict["friendName"] as? String {
+                                              let friendCategory = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen,
+                                                                                      fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
+                                            if friendCategory.isSelected == 1 {
+                                            self.friendsSelectedCategoriesArray.append(friendCategory)
+                                            }
+                                        }
+                                    }
+                                        }
+                            }
+                        }
+                    }
+                }
+                self.downloadFriendsPhotomodels()
+            }
+        }
+    }
+
+    func downloadFriendsPhotomodels() {
+        if let user = Auth.auth().currentUser {
+        let userID = user.uid
+            self.ref.child(userID).child("photomodels").child("friends").observe(.value) { (snapshot) in
+                 self.friendsMapAnnotations.removeAll()
+                  self.mapView.removeAnnotations(self.mapView.annotations)
+                if let frindsModels = snapshot.value as? NSDictionary {
+                    for (_, photomodelDict) in frindsModels {
+                        if let photomodelDict = photomodelDict as? NSDictionary {
+                            for(_, photomodelInfo) in photomodelDict {
+                                if  let photoIn = photomodelInfo as? NSDictionary,
+                                let latitude = photoIn["latitude"] as? CLLocationDegrees,
+                                let longitude = photoIn["longitude"] as? CLLocationDegrees,
+                                let catid = photoIn["categoryID"] as? String,
+                                let date = photoIn["date"] as? String,
+                                let photoID = photoIn["photoID"] as? String,
+                                let hastags = photoIn["hashtags"] as? [String],
+                                let description = photoIn["description"] as? String {
+                                for category in self.friendsSelectedCategoriesArray {
+                                if category.id == catid {
+                                var model = Photomodel.init(id: photoID, latitude: latitude,
+                                                                        longitude: longitude, category: category,
+                                                                        date: date, hashtags: hastags ,
+                                                                        description: description, image: UIImage.init())
+                                    model.isFriend = true
+                                        let customAnnotation = Custom(coordinate: CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude))
+                                        customAnnotation.color = UIColor.init(red: category.fred, green: category.fgreen, blue: category.fblue, alpha: category.falpha)
+                                        customAnnotation.photoModel = model
+                                        customAnnotation.isFriend = true
+                                            self.friendsMapAnnotations.append(customAnnotation)
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                    }
+                }
+                self.addannotatios()
+            }
+        }
+    }
+
+    func addannotatios() {
+        for myannotation in myMapAnnotations {
+            self.mapView.addAnnotation(myannotation)
+        }
+        for myannotation in friendsMapAnnotations {
+                   self.mapView.addAnnotation(myannotation)
+               }
     }
 
     func moveMap(zoomRegion: MKCoordinateRegion) {
@@ -336,20 +426,16 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
     func addPhoto() {
         let alert = UIAlertController.init(title: "Add photo", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             alert.addAction(UIAlertAction.init(title: "Take A Picture", style: UIAlertAction.Style.default, handler: { (_) in
             self.openCamera()
         }))
         }
-        
         alert.addAction(UIAlertAction.init(title: "Choose From Gallery", style: UIAlertAction.Style.default, handler: { (_) in
             self.openGallery()
         }))
         alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-
         self.present(alert, animated: true, completion: nil)
-        
     }
 
     func openCamera() {
@@ -358,10 +444,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             if status == .denied {
                 let alert = UIAlertController(title: "Camera", message: "Camera access is absolutely necessary to use this app", preferredStyle: .alert)
 
-                alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { action in
+                alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
                 alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-                
+
                      self.present(alert, animated: true)
 
             } else {
@@ -378,11 +464,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         if status == .denied {
             let alert = UIAlertController(title: "Galery", message: "Galery access is absolutely necessary to use this app", preferredStyle: .alert)
 
-            alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { action in
+            alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
             alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
                  self.present(alert, animated: true)
-            
+
         } else {
             self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.imagePickerController.allowsEditing = false
@@ -405,8 +491,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             dateFormatter.dateFormat = "yyyy:MM:dd HH:mm:ss"
             currentdate = dateFormatter.date(from: dateString ?? "") ?? Date.init()
         } else {
-                let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset
-                currentdate = asset?.creationDate ?? Date.init()
+            if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
+                currentdate = asset.creationDate
+            } else {
+                
+                currentdate = Date.init()
+            }
         }
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         if let img = image {
@@ -453,6 +543,15 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
         }
     }
+    func addFullImageVC( model: Photomodel?, date: Date?) {
+        if let photomodel = model {
+            let chVC = FullImageViewController(id: photomodel.id, description: photomodel.description, friendId: photomodel.category.friendID)
+            chVC.photoDescription = photomodel.description
+        chVC.hastags = photomodel.hashtags
+            chVC.date = photomodel.date
+        self.navigationController?.pushViewController(chVC, animated: true)
+        }
+    }
 
     @IBAction func makePhotoIncurrentLocation(_ sender: Any) {
         movePopupVC()
@@ -497,12 +596,21 @@ extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate, Phot
         var pin = mapView.dequeueReusableAnnotationView(withIdentifier: customAnnotationViewIdentifier) as? PhotoAnnotationView
         if let photoModel = annotation.photoModel {
                 pin = PhotoAnnotationView(annotation: annotation, reuseIdentifier: customAnnotationViewIdentifier, model: photoModel)
+
                 pin?.delegate = self
                 pin?.calloutDelegate = self
                 }
 
         pin?.markerTintColor = annotation.color
-        pin?.glyphText = ""
+        if annotation.isFriend {
+            if   let str = annotation.photoModel?.category.friendName {
+            let index = str.index(str.startIndex, offsetBy: 3)
+              pin?.glyphText = String(str.prefix(upTo: index))
+                pin?.isFriend = true
+            }
+        } else {
+        pin?.glyphText = "Me"
+        }
         return pin
     }
 

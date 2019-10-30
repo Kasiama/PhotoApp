@@ -10,7 +10,6 @@ import UIKit
 
 class FriendTableViewCell: UITableViewCell {
 
-    
     var friendId = ""
     var friendName = ""
     @IBOutlet weak var friendImageView: CachedImageView!
@@ -32,5 +31,5 @@ class FriendTableViewCell: UITableViewCell {
             self.friendImageView.cancelTask(id: self.friendId)
         }
     }
-    
+
 }

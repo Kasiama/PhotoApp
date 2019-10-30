@@ -10,8 +10,6 @@ import UIKit
 import MapKit
 import Firebase
 
-
-
 class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var dateLabel: UITextField!
@@ -63,15 +61,12 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
         }
 
-        let toolbar = UIToolbar()
-        let doneButton = UIBarButtonItem.init(title: "done", style: .plain, target: self, action: #selector(pickerViewDone))
-        let space = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem.init(title: "cancel", style: .plain, target: self, action: #selector(pickerViewCancel))
-        toolbar.items = [cancelButton, space, doneButton]
-        self.categoryTextField.inputView = categoryPicker
-        self.categoryTextField.inputAccessoryView = toolbar
-        toolbar.sizeToFit()
+        if PopupViewController.categories?.count ?? 0 > 0 {
+            self.setupCategoryTextField()
+        } else {
+            self.categoryTextField.isEnabled = false
 
+        }
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
         self.categoryPicker.backgroundColor = .white
@@ -96,6 +91,17 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     }
 
+    func setupCategoryTextField() {
+        let toolbar = UIToolbar()
+               let doneButton = UIBarButtonItem.init(title: "done", style: .plain, target: self, action: #selector(pickerViewDone))
+               let space = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+               let cancelButton = UIBarButtonItem.init(title: "cancel", style: .plain, target: self, action: #selector(pickerViewCancel))
+               toolbar.items = [cancelButton, space, doneButton]
+               self.categoryTextField.inputView = categoryPicker
+               self.categoryTextField.inputAccessoryView = toolbar
+               toolbar.sizeToFit()
+    }
+
     fileprivate func addBackgroundButton() {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -110,14 +116,13 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
 
     @objc func didTouchUpInCallout(_ sender: Any) {
-        if let photomodel = self.photoModel{
+        if let photomodel = self.photoModel {
             let chVC = FullImageViewController(id: photomodel.id, description: photoModel?.description)
             chVC.photoDescription = photomodel.description
         chVC.hastags = self.photoModel?.hashtags
         chVC.date = self.dateLabel.text
         self.parent?.navigationController?.pushViewController(chVC, animated: true)
-        }
-        else {
+        } else {
             let alert = UIAlertController(title: "Save Photo", message: "To continue please save this photo", preferredStyle: .alert)
             alert.addAction(UIAlertAction.init(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
                                 self.present(alert, animated: true)
@@ -159,7 +164,7 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                                 self.present(alert, animated: true)
             return
         }
-        
+
         if let user  = Auth.auth().currentUser {
                let userID = user.uid
         let hashtags = self.descriptionTextView.text.findMentionText()
@@ -174,11 +179,11 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                                    "hashtags": model.hashtags,
                                    "description": model.description,
                                    "categoryID": cat.id] as [String: Any]
-                let childUpdates = ["/\(String(describing: userID))/photomodels/\(model.id)": photomodelsend]
+                let childUpdates = ["/\(String(describing: userID))/photomodels/user/\(model.id)": photomodelsend]
              ref.updateChildValues(childUpdates)
             }
             } else if let cat = PopupViewController.categories?[row] {
-             guard let key = ref.child("\(String(describing: userID))/photoModels").childByAutoId().key else { return }
+             guard let key = ref.child("\(String(describing: userID))/photoModels/user").childByAutoId().key else { return }
                 var stringDate = ""
                 if let date = self.date {
                 let dateformatter = DateFormatter()
@@ -198,7 +203,7 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                                    "hashtags": model.hashtags,
                                    "description": model.description,
                                    "categoryID": cat.id] as [String: Any]
-                let childUpdates = ["/\(String(describing: userID))/photomodels/\(key)": photomodelsend]
+                let childUpdates = ["/\(String(describing: userID))/photomodels/user/\(key)": photomodelsend]
                  ref.updateChildValues(childUpdates)
                 let ref = storageRef.child("\(String(describing: userID))/\(key)")
 
@@ -218,7 +223,7 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 }
 
             }
-            
+
         }
             if let photoModel = self.photoModel {
         self.delegate?.addAnnotation(model: photoModel, image: self.imageView.image ?? UIImage.init())

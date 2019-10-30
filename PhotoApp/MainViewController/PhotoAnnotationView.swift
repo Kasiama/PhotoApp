@@ -17,7 +17,7 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
    weak var calloutDelegate: CalloutDelegate?
     var photoModel: Photomodel?
     var storageRef: StorageReference!
-
+    var isFriend = false
     override var annotation: MKAnnotation? {
         willSet {
             calloutView?.removeFromSuperview()
@@ -50,7 +50,6 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
             self.calloutView?.removeFromSuperview()
             if let photoModel = self.photoModel {
             calloutView =  CalloutView.init(frame: CGRect.init(x: -90, y: -115, width: 210, height: 70), model: photoModel)
-
             calloutView?.calloutDelegate = self.calloutDelegate
             self.calloutView?.add(to: self)
         if animated {

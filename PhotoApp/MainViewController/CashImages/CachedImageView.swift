@@ -86,7 +86,7 @@ import Firebase
     }
 
     }
-    
+
     open func loadImageWhithoutUser(idString: String) {
         super.image = nil
         self.idString = idString
@@ -123,7 +123,6 @@ import Firebase
 
                 }
 
-            if let userID = Auth.auth().currentUser?.uid {
             let islandRef = storageRef.child("\(String(describing: idString))")
 
             self.dict[idString] = islandRef.getData(maxSize: 1024 * 1024 * 1024) { data, error in
@@ -149,12 +148,10 @@ import Firebase
                 }
                 }
             }
-        }
-    }
 
     }
 
-    
+    }
 
     open func cancelTask(id: String) {
         print("pause  " + id)

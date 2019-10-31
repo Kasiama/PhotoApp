@@ -88,6 +88,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
          self.imagePickerController.allowsEditing = true
+       // self.imagePickerController.modalPresentationStyle = .fullScreen
         }
 
     func setuplala() {
@@ -441,6 +442,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+            
             if status == .denied {
                 let alert = UIAlertController(title: "Camera", message: "Camera access is absolutely necessary to use this app", preferredStyle: .alert)
 
@@ -461,19 +463,36 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
     func openGallery() {
         let status = PHPhotoLibrary.authorizationStatus()
-        if status == .denied {
-            let alert = UIAlertController(title: "Galery", message: "Galery access is absolutely necessary to use this app", preferredStyle: .alert)
+     
+        switch status {
+        case .authorized:
+             self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+             self.imagePickerController.allowsEditing = false
+            // self.imagePickerController.modalPresentationStyle = .
+                 self.present(self.imagePickerController, animated: true, completion: nil)
+            
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { (PHAuthorizationStatus) in
+                           switch PHAuthorizationStatus{
+                           case .authorized:
+                               DispatchQueue.main.async {
+                                   self.openGallery()
+                               }
+                           default: return
+                           }
+                       }
+            
+            
+        default:
+               let alert = UIAlertController(title: "Camera", message: "Camera access is absolutely necessary to use this app", preferredStyle: .alert)
 
-            alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
-                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
-            alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-                 self.present(alert, animated: true)
+                         alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
+                             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
+                         alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
 
-        } else {
-            self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
-            self.imagePickerController.allowsEditing = false
-                self.present(self.imagePickerController, animated: true, completion: nil)
+                              self.present(alert, animated: true)
         }
+    
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

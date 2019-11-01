@@ -71,14 +71,15 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.categoryPicker.dataSource = self
         self.categoryPicker.backgroundColor = .white
 
-            let image = self.imageView.image
-            let resizebleImage = image?.resizableImage(withCapInsets: UIEdgeInsets.init(top: self.imageView.frame.origin.y,
+        let image = self.imageView.image
+        let resizebleImage = image?.resizableImage(withCapInsets: UIEdgeInsets.init(top: self.imageView.frame.origin.y,
                                                                                         left: self.imageView.frame.origin.x,
                                                                                         bottom: self.imageView.frame.height,
                                                                                         right: self.view.frame.width))
-            self.imageView.image = resizebleImage
-            addBackgroundButton()
+        self.imageView.image = resizebleImage
+        addBackgroundButton()
             }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.view.layer.shadowPath =
             UIBezierPath(roundedRect: self.view.bounds ,
@@ -93,13 +94,13 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     func setupCategoryTextField() {
         let toolbar = UIToolbar()
-               let doneButton = UIBarButtonItem.init(title: "done", style: .plain, target: self, action: #selector(pickerViewDone))
-               let space = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-               let cancelButton = UIBarButtonItem.init(title: "cancel", style: .plain, target: self, action: #selector(pickerViewCancel))
-               toolbar.items = [cancelButton, space, doneButton]
-               self.categoryTextField.inputView = categoryPicker
-               self.categoryTextField.inputAccessoryView = toolbar
-               toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem.init(title: "done", style: .plain, target: self, action: #selector(pickerViewDone))
+        let space = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem.init(title: "cancel", style: .plain, target: self, action: #selector(pickerViewCancel))
+        toolbar.items = [cancelButton, space, doneButton]
+        self.categoryTextField.inputView = categoryPicker
+        self.categoryTextField.inputAccessoryView = toolbar
+        toolbar.sizeToFit()
     }
 
     fileprivate func addBackgroundButton() {
@@ -119,9 +120,9 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         if let photomodel = self.photoModel {
             let chVC = FullImageViewController(id: photomodel.id, description: photoModel?.description)
             chVC.photoDescription = photomodel.description
-        chVC.hastags = self.photoModel?.hashtags
-        chVC.date = self.dateLabel.text
-        self.parent?.navigationController?.pushViewController(chVC, animated: true)
+            chVC.hastags = self.photoModel?.hashtags
+            chVC.date = self.dateLabel.text
+            self.parent?.navigationController?.pushViewController(chVC, animated: true)
         } else {
             let alert = UIAlertController(title: "Save Photo", message: "To continue please save this photo", preferredStyle: .alert)
             alert.addAction(UIAlertAction.init(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))

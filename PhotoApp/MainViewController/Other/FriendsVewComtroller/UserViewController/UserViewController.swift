@@ -32,15 +32,13 @@ class UserViewController: UIViewController {
     convenience init (isaFriend: Bool, user: User) {
        self.init()
         self.status = .user
-       if isaFriend {
+        if isaFriend {
             self.user = user
-           self.status = .friend
-       } else {
-         self.user = user
-
+            self.status = .friend
+        } else {
+            self.user = user
+        }
     }
-
-   }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +101,6 @@ class UserViewController: UIViewController {
                                                    }
                                                }
                                            }
-
                                        }
                 case .youSubsribeForHim:
                     self.ref.child(userID).child("subscribes").child(user.id).observe(.value) { (snapshot) in
@@ -190,7 +187,6 @@ class UserViewController: UIViewController {
                         if (snapshot.value as? String) == "1" {
                             self.status = .youSubsribeForHim
                             self.ref.child(self.user.id).child("subscribes").child(userID).removeAllObservers()
-                            //self.ref.child(userID).child("subscribes").child(self.user.id).removeAllObservers()
                             self.setupObservers()
                             self.setupDesign()
                         }
@@ -199,7 +195,6 @@ class UserViewController: UIViewController {
                                            if (snapshot.value as? String) == "1" {
                                                self.status = .heSubscribeForYou
                                                self.ref.child(userID).child("subscribes").child(self.user.id).removeAllObservers()
-                                               // self.ref.child(self.user.id).child("subscribes").child(userID).removeAllObservers()
                                                self.setupObservers()
                                                self.setupDesign()
                                            }
@@ -211,31 +206,23 @@ class UserViewController: UIViewController {
         }
     }
     func setupDesign() {
-
         switch status {
         case .friend:
-
             self.friendBtn.backgroundColor = UIColor.init(named: "subfribackground")
             self.friendBtn.setTitleColor(UIColor.init(named: "subfrietintcolor"), for: .normal)
             self.friendBtn.setTitle("In Friends", for: .normal)
-
+            
         case .youSubsribeForHim:
-           // self.usernameLabel.text = self.user.username
-            //self.avatarImageView.loadImageWhithoutUser(idString: "\(user.id)/\(user.id)")
             self.friendBtn.backgroundColor = UIColor.init(named: "subfribackground-1")
             self.friendBtn.setTitleColor(UIColor.init(named: "subfrietintcolor"), for: .normal)
             self.friendBtn.setTitle("You subscribed", for: .normal)
-
+            
         case .heSubscribeForYou:
-           // self.usernameLabel.text = self.user.username
-           // self.avatarImageView.loadImageWhithoutUser(idString: "\(user.id)/\(user.id)")
             self.friendBtn.backgroundColor = UIColor.init(named: "subfribackground-1")
             self.friendBtn.setTitleColor(UIColor.init(named: "subfrietintcolor"), for: .normal)
             self.friendBtn.setTitle("Subscribed", for: .normal)
 
         default:
-           // self.usernameLabel.text = self.user.username
-           // self.avatarImageView.loadImageWhithoutUser(idString: "\(user.id)/\(user.id)")
             self.friendBtn.backgroundColor = UIColor.init(named: "subfrietintcolor")
             self.friendBtn.setTitleColor(UIColor.white, for: .normal)
             self.friendBtn.setTitle("Add to Friends", for: .normal)
@@ -244,24 +231,23 @@ class UserViewController: UIViewController {
 
     @IBAction func btnTaped(_ sender: Any) {
          if let userID = Auth.auth().currentUser?.uid {
-        switch status {
-        case .friend:
-
+            switch status {
+            case .friend:
                 self.ref.child(userID).child("friends").child(user.id).removeValue()
                 self.ref.child(user.id).child("friends").child(userID).removeValue()
                 self.ref.child(user.id).child("subscribes").child(userID).removeValue()
 
-        case .heSubscribeForYou:
-            self.ref.child(user.id).child("subscribes").child(userID).setValue("1")
+            case .heSubscribeForYou:
+                self.ref.child(user.id).child("subscribes").child(userID).setValue("1")
 
-        case.youSubsribeForHim:
-            self.ref.child(user.id).child("subscribes").child(userID).removeValue()
+            case.youSubsribeForHim:
+                self.ref.child(user.id).child("subscribes").child(userID).removeValue()
 
-        case .user :
-            ref.child(user.id).child("subscribes").child(userID).setValue("1")
+            case .user :
+                ref.child(user.id).child("subscribes").child(userID).setValue("1")
 
-        default:
-            print("rfufrhfreihfer")
+            default:
+                print("rfufrhfreihfer")
         }
         }
 

@@ -25,7 +25,8 @@ struct User: Comparable {
     var isFriend = false
 }
 
-    var friendCellId = "FriendTableViewCell"
+    let friendCellId = "FriendTableViewCell"
+   let friendsCellHeight = 105
 
 class FriendsViewController: UIViewController {
 
@@ -50,6 +51,8 @@ class FriendsViewController: UIViewController {
 
     var sortedFriends = [User]()
     var sortedAllUsers = [User]()
+    
+ 
 
     convenience init (isAllFriends: Bool) {
         self.init()
@@ -72,7 +75,7 @@ class FriendsViewController: UIViewController {
         self.friendsTableView.register(nib, forCellReuseIdentifier: friendCellId)
         self.friendsTableView.dataSource = self
         self.friendsTableView.delegate = self
-        self.friendsTableView.rowHeight = 105
+        self.friendsTableView.rowHeight = friendsCellHeight
         self.friendsTableView.delegate = self
         self.friendsTableView.tableFooterView = UIView()
 
@@ -94,11 +97,11 @@ class FriendsViewController: UIViewController {
         if let user = Auth.auth().currentUser {
             let userId = user.uid
             self.ref.child(userId).child("friends").observe( .value) { (snapshot) in
-                 self.friendsId.removeAll()
+                self.friendsId.removeAll()
                 if let value = snapshot.value as? NSDictionary {
                    for (friendId, _) in value {
                         if let frienfID = friendId as? String {
-                        self.friendsId.append(frienfID)
+                            self.friendsId.append(frienfID)
                         }
                     }
                 }
@@ -109,20 +112,20 @@ class FriendsViewController: UIViewController {
 
     func downloadFriendsIDWithoutObserver() {
            if let user = Auth.auth().currentUser {
-               let userId = user.uid
+            let userId = user.uid
             self.ref.child(userId).child("friends").observeSingleEvent( of: .value) { (snapshot) in
-                    self.friendsId.removeAll()
-                   if let value = snapshot.value as? NSDictionary {
-                      for (friendId, _) in value {
-                           if let frienfID = friendId as? String {
-                           self.friendsId.append(frienfID)
-                           }
-                       }
-                   }
-                   self.downloadFriendsNames()
-               }
-           }
-       }
+                self.friendsId.removeAll()
+                if let value = snapshot.value as? NSDictionary {
+                    for (friendId, _) in value {
+                        if let frienfID = friendId as? String {
+                            self.friendsId.append(frienfID)
+                        }
+                    }
+                }
+                self.downloadFriendsNames()
+            }
+        }
+    }
 
     func downloadFriendsNames () {
          self.friends.removeAll()
@@ -193,13 +196,13 @@ extension FriendsViewController: UITableViewDataSource, UITableViewDelegate, UIG
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isAllUsers {
             if isSearching { return self.sortedAllUsers.count} else {
-           return self.allUsers.count
+                return self.allUsers.count
             }
         } else {
             if isSearching {
-              return  self.sortedFriends.count
+                return  self.sortedFriends.count
             } else {
-       return self.friends.count
+                return self.friends.count
             }
         }
     }
@@ -245,81 +248,74 @@ extension FriendsViewController: UITableViewDataSource, UITableViewDelegate, UIG
                     let userVC = UserViewController(status: .friend, user: user)
                     self.navigationController?.pushViewController(userVC, animated: true)
                 } else {
-                if let userID = Auth.auth().currentUser?.uid {
-                           self.ref.child(userID).child("subscribes").child(user.id).observeSingleEvent(of: .value) { (snapshot) in
-                               if (snapshot.value as? String) != nil {
-                                   status = .heSubscribeForYou
+                    if let userID = Auth.auth().currentUser?.uid {
+                        self.ref.child(userID).child("subscribes").child(user.id).observeSingleEvent(of: .value) { (snapshot) in
+                            if (snapshot.value as? String) != nil {
+                                status = .heSubscribeForYou
                                 let userVC = UserViewController(status: status, user: user)
                                 self.navigationController?.pushViewController(userVC, animated: true)
                                } else {
-                                   self.ref.child(user.id).child("subscribes").child(userID).observeSingleEvent(of: .value) { (snapshot) in
-                                       if (snapshot.value as? String) != nil {
-                                           print("fiorerfp")
-                                           status = .youSubsribeForHim
-                                        let userVC = UserViewController(status: status, user: user)
-                                        self.navigationController?.pushViewController(userVC, animated: true)
+                                    self.ref.child(user.id).child("subscribes").child(userID).observeSingleEvent(of: .value) { (snapshot) in
+                                        if (snapshot.value as? String) != nil {
+                                            print("fiorerfp")
+                                            status = .youSubsribeForHim
+                                            let userVC = UserViewController(status: status, user: user)
+                                            self.navigationController?.pushViewController(userVC, animated: true)
                                        } else {
-                                        let userVC = UserViewController(status: status, user: user)
-                                        self.navigationController?.pushViewController(userVC, animated: true)
-                                    }
-                                   }
-
+                                            let userVC = UserViewController(status: status, user: user)
+                                            self.navigationController?.pushViewController(userVC, animated: true)
+                                        }
                                 }
-                               }
-                           }
-                       }
-            } else {
 
+                            }
+                        }
+                    }
+                }
+            } else {
                 let friend  = sortedFriends[indexPath.row]
                 let userVC = UserViewController(status: .friend, user: friend)
                 self.navigationController?.pushViewController(userVC, animated: true)
-
             }
         }
             ///// no searching
             else {
-        if self.isAllUsers {
-            let user  = self.allUsers[indexPath.row]
-            var status = Status.user
-            if self.friends.contains(user) {
-                let userVC = UserViewController(status: .friend, user: user)
-                self.navigationController?.pushViewController(userVC, animated: true)
-            } else {
-            if let userID = Auth.auth().currentUser?.uid {
-                       self.ref.child(userID).child("subscribes").child(user.id).observeSingleEvent(of: .value) { (snapshot) in
-                           if (snapshot.value as? String) != nil {
-                               status = .heSubscribeForYou
-                            let userVC = UserViewController(status: status, user: user)
-                            self.navigationController?.pushViewController(userVC, animated: true)
-                           } else {
-                               self.ref.child(user.id).child("subscribes").child(userID).observeSingleEvent(of: .value) { (snapshot) in
-                                   if (snapshot.value as? String) != nil {
+            if self.isAllUsers {
+                let user  = self.allUsers[indexPath.row]
+                var status = Status.user
+                if self.friends.contains(user) {
+                    let userVC = UserViewController(status: .friend, user: user)
+                    self.navigationController?.pushViewController(userVC, animated: true)
+                } else {
+                    if let userID = Auth.auth().currentUser?.uid {
+                        self.ref.child(userID).child("subscribes").child(user.id).observeSingleEvent(of: .value) { (snapshot) in
+                            if (snapshot.value as? String) != nil {
+                                status = .heSubscribeForYou
+                                let userVC = UserViewController(status: status, user: user)
+                                self.navigationController?.pushViewController(userVC, animated: true)
+                            } else {
+                                self.ref.child(user.id).child("subscribes").child(userID).observeSingleEvent(of: .value) { (snapshot) in
+                                    if (snapshot.value as? String) != nil {
                                        print("fiorerfp")
                                        status = .youSubsribeForHim
-                                    let userVC = UserViewController(status: status, user: user)
-                                    self.navigationController?.pushViewController(userVC, animated: true)
+                                        let userVC = UserViewController(status: status, user: user)
+                                        self.navigationController?.pushViewController(userVC, animated: true)
                                    } else {
-                                    let userVC = UserViewController(status: status, user: user)
-                                    self.navigationController?.pushViewController(userVC, animated: true)
+                                        let userVC = UserViewController(status: status, user: user)
+                                        self.navigationController?.pushViewController(userVC, animated: true)
+                                    }
                                 }
-                               }
-
                             }
-                           }
-                       }
-                   }
-        } else {
-
-            let friend  = friends[indexPath.row]
-            let userVC = UserViewController(status: .friend, user: friend)
-            self.navigationController?.pushViewController(userVC, animated: true)
-
+                        }
+                    }
+                }
+            } else {
+                let friend  = friends[indexPath.row]
+                let userVC = UserViewController(status: .friend, user: friend)
+                self.navigationController?.pushViewController(userVC, animated: true)
+            }
         }
     }
-
     }
-
-   }
 
 extension FriendsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

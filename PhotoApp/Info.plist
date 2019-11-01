@@ -3,11 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>adadas</string>
+	<string>Accept to use lphotoLibrary</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>accefwfw</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -25,11 +23,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>camera use</string>
+	<string> Accept to use camera</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>jiortjhirj</string>
+	<string>Accept to use location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>guygfiyfgig</string>
+	<string>Accept to use location</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -35,21 +35,20 @@ class ChangeNameViewController: UIViewController {
     }
     */
     @IBAction func saveBtnTaped(_ sender: Any) {
-        if let newusername = self.usernametextField.text {
-            if newusername != "" {
+        if let newusername = self.usernametextField.text,
+            newusername != "" {
         if let user = Auth.auth().currentUser {
             let userID = user.uid
             let ref = Database.database().reference()
              let childUpdates = ["/\(String(describing: userID))/Username": newusername]
             ref.updateChildValues(childUpdates)
-
-        self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
             } else {
                 self.usernametextField.layer.borderColor = UIColor.red.cgColor
                 self.usernametextField.layer.borderWidth = 1.0
                 alertLabel.text = "Cant be empty username"
             }
-        }
+        
     }
 }

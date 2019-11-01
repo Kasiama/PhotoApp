@@ -27,9 +27,8 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         ref = Database.database().reference()
+        ref = Database.database().reference()
         downloadCategories()
-        // downloadFriendsCategories()
 
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Add", style: UIBarButtonItem.Style.done,
@@ -52,9 +51,9 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        if section == 0 {return self.categoriesArray.count} else {
-
+        if section == 0{
+            return self.categoriesArray.count}
+        else {
             return self.freindsDict[self.friendNames[section-1]]?.count ?? 0
         }
     }
@@ -70,8 +69,6 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         let cell: CategoryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.color = color
         cell.cellTextLabel.textColor = color
-
-      //  if cell.cirkleView == nil {
 
         let circle = CirkleView.init(frame: cell.cellView.bounds, color: color )
         cell.cirkleView = circle
@@ -90,7 +87,7 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
         } else {
-             let cell: CategoryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            let cell: CategoryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             let key = friendNames[indexPath.section - 1]
             if  let arr = self.freindsDict[key] {
 
@@ -99,26 +96,26 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
             let blue = arr[indexPath.row ].fblue
             let alpha = arr[indexPath.row].falpha
             let color = UIColor.init(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
-           cell.cirkleView?.removeFromSuperview()
-           cell.fillCircle?.removeFromSuperview()
-                cell.cirkleView = nil
+            cell.cirkleView?.removeFromSuperview()
+            cell.fillCircle?.removeFromSuperview()
+            cell.cirkleView = nil
             cell.color = color
             cell.cellTextLabel.textColor = color
 
             if cell.cirkleView == nil {
 
-            let circle = CirkleView.init(frame: cell.cellView.bounds, color: color )
-            cell.cirkleView = circle
-            cell.cellView.addSubview(circle)
-             let fillCircle =  CircleFillView.init(frame: cell.cellView.bounds, color: color )
-            cell.fillCircle = fillCircle
+                let circle = CirkleView.init(frame: cell.cellView.bounds, color: color )
+                cell.cirkleView = circle
+                cell.cellView.addSubview(circle)
+                let fillCircle =  CircleFillView.init(frame: cell.cellView.bounds, color: color )
+                cell.fillCircle = fillCircle
 
-            if arr[indexPath.row ].isSelected == 1 {
-            cell.cellView.addSubview(fillCircle)
-            } else {
-                cell.cellView.addSubview(fillCircle)
-                cell.fillCircle?.isHidden = true
-                }
+                if arr[indexPath.row ].isSelected == 1 {
+                    cell.cellView.addSubview(fillCircle)
+                } else {
+                    cell.cellView.addSubview(fillCircle)
+                    cell.fillCircle?.isHidden = true
+                    }
             }
             cell.cellTextLabel.text = arr[indexPath.row].name
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -186,7 +183,7 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         }
         edit.backgroundColor = UIColor.blue
         delete.backgroundColor = UIColor.red
-        return UISwipeActionsConfiguration.init(actions: [delete, edit])
+            return UISwipeActionsConfiguration.init(actions: [delete, edit])
         } else {
             return nil
         }
@@ -197,8 +194,10 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 { return "Me"} else {
-       return friendNames[section-1]
+        if section == 0 {
+            return "Me"
+        }else {
+            return friendNames[section-1]
         }
     }
 
@@ -244,37 +243,32 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
         let userID = user.uid
             ref.child(userID).child("categories").child("user").observe( .value, with: { (snapshot) in
                 self.categoriesArray.removeAll()
-          let value = snapshot.value as? NSDictionary
-            for (categoryID, categoryInfo) in value ?? [:] {
-                if  let categoryIn = categoryInfo as? NSDictionary,
-                let catid = categoryID as? String,
-                let name = categoryIn["name"] as? String,
-                let fred = categoryIn["fred"] as? CGFloat,
-                let fblue = categoryIn["fblue"] as? CGFloat,
-                let fgreen = categoryIn["fgreen"] as? CGFloat,
-                let falpha = categoryIn["falpha"] as? CGFloat,
-                let isSelected = categoryIn["isSelected"] as? Int,
-                let friendID = categoryIn["friendID"] as? String,
-                let friendName = categoryIn["friendName"] as? String {
-                    let category = CategoryModel.init(id: catid, name: name, fred: fred,
-                                                  fgreen: fgreen, fblue: fblue,
-                                                  falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
-                self.categoriesArray.append(category)
+                let value = snapshot.value as? NSDictionary
+                for (categoryID, categoryInfo) in value ?? [:] {
+                    if  let categoryIn = categoryInfo as? NSDictionary,
+                    let catid = categoryID as? String,
+                    let name = categoryIn["name"] as? String,
+                    let fred = categoryIn["fred"] as? CGFloat,
+                    let fblue = categoryIn["fblue"] as? CGFloat,
+                    let fgreen = categoryIn["fgreen"] as? CGFloat,
+                    let falpha = categoryIn["falpha"] as? CGFloat,
+                    let isSelected = categoryIn["isSelected"] as? Int,
+                    let friendID = categoryIn["friendID"] as? String,
+                    let friendName = categoryIn["friendName"] as? String {
+                        let category = CategoryModel.init(id: catid, name: name, fred: fred,
+                                                      fgreen: fgreen, fblue: fblue,
+                                                      falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
+                    self.categoriesArray.append(category)
+                }
             }
-        }
-
             for category in self.categoriesArray {
-
                 if self.freindsDict[category.friendName] == nil {
                     self.freindsDict[category.friendName] = [category]
                 } else {
                     self.freindsDict[category.friendName]?.append(category)
                 }
-
             }
-
                 self.downloadFriendsCategories()
-
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -293,44 +287,40 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
                     for (_, catDict) in friendcatsDict {
                         if let catdict = catDict as? NSDictionary {
                             for (categoryID, categoriesDict) in catdict {
-                        if  let catid = categoryID as? String,
-                        let categoriesDict = categoriesDict as? NSDictionary {
-
-                           if let name = categoriesDict["name"] as? String,
-                            let fred = categoriesDict["fred"] as? CGFloat,
-                            let fblue = categoriesDict["fblue"] as? CGFloat,
-                            let fgreen = categoriesDict["fgreen"] as? CGFloat,
-                            let falpha = categoriesDict["falpha"] as? CGFloat,
-                                let isSelected = categoriesDict["isSelected"] as? Int,
-                                let friendID = categoriesDict["friendID"] as? String,
-                                let friendName = categoriesDict["friendName"] as? String {
-
+                                if  let catid = categoryID as? String,
+                                let categoriesDict = categoriesDict as? NSDictionary {
+                                 if let name = categoriesDict["name"] as? String,
+                                    let fred = categoriesDict["fred"] as? CGFloat,
+                                    let fblue = categoriesDict["fblue"] as? CGFloat,
+                                    let fgreen = categoriesDict["fgreen"] as? CGFloat,
+                                    let falpha = categoriesDict["falpha"] as? CGFloat,
+                                    let isSelected = categoriesDict["isSelected"] as? Int,
+                                    let friendID = categoriesDict["friendID"] as? String,
+                                    let friendName = categoriesDict["friendName"] as? String {
                                         let friendCategory = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen,
-                                                                                fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
+                                                                                        fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
                                         arr.append(friendCategory)
 
+                                    }
+                                }
+                            }
                         }
                     }
-                        }
                 }
-                }
-                }
-                        for category in arr {
-                            if self.freindsDict[category.friendName] == nil {
-                                self.freindsDict[category.friendName] = [category]
-                            } else {
-                                self.freindsDict[category.friendName]?.append(category)
+                for category in arr {
+                    if self.freindsDict[category.friendName] == nil {
+                        self.freindsDict[category.friendName] = [category]
+                    } else {
+                        self.freindsDict[category.friendName]?.append(category)
                             }
                         }
 
-                            self.friendNames.removeAll()
-                            for (key, _) in self.freindsDict {
-                                    self.friendNames.append(key)
-                            }
-                            self.tableView.reloadData()
-
+                self.friendNames.removeAll()
+                for (key, _) in self.freindsDict {
+                    self.friendNames.append(key)
+                }
+                self.tableView.reloadData()
             }
-
         }
     }
 
@@ -342,63 +332,59 @@ class CategoriesTableViewController: UITableViewController, AddCategoryDelegate 
 
     @objc func saveTaped() {
         if let user  = Auth.auth().currentUser {
-        let userID = user.uid
+            let userID = user.uid
             let categoriesDictionary = NSMutableDictionary()
-        for category in self.categoriesArray {
-            if category.id == "" {
-            guard let key = ref.child("\(String(describing: userID))/categories/user").childByAutoId().key else { return }
-                let categorysend = ["name": category.name,
-                                    "fred": category.fred,
-                                    "fgreen": category.fgreen,
-                                    "fblue": category.fblue,
-                                    "falpha": category.falpha,
-                                    "isSelected": category.isSelected,
-                                    "friendID": userID,
-                                    "friendName": "Me"] as [String: Any]
-                categoriesDictionary[key] = categorysend
-            } else if category.friendID == userID {
-                 guard let key = ref.child("\(String(describing: userID))/categories/user").child(category.id).key else { return }
-                let categorysend = ["name": category.name,
-                                    "fred": category.fred,
-                                    "fgreen": category.fgreen,
-                                    "fblue": category.fblue,
-                                    "falpha": category.falpha,
-                                    "isSelected": category.isSelected,
+            for category in self.categoriesArray {
+                if category.id == "" {
+                    guard let key = ref.child("\(String(describing: userID))/categories/user").childByAutoId().key else { return }
+                    let categorysend = ["name": category.name,
+                                        "fred": category.fred,
+                                        "fgreen": category.fgreen,
+                                        "fblue": category.fblue,
+                                        "falpha": category.falpha,
+                                        "isSelected": category.isSelected,
                                         "friendID": userID,
                                         "friendName": "Me"] as [String: Any]
-                categoriesDictionary[category.id] = categorysend
+                    categoriesDictionary[key] = categorysend
+                } else if category.friendID == userID {
+                    guard let key = ref.child("\(String(describing: userID))/categories/user").child(category.id).key else { return }
+                    let categorysend = ["name": category.name,
+                                        "fred": category.fred,
+                                        "fgreen": category.fgreen,
+                                        "fblue": category.fblue,
+                                        "falpha": category.falpha,
+                                        "isSelected": category.isSelected,
+                                        "friendID": userID,
+                                        "friendName": "Me"] as [String: Any]
+                    categoriesDictionary[category.id] = categorysend
+                }
             }
-        }
-        let childUpdates = ["/\(String(describing: userID))/categories/user/": categoriesDictionary]
-        ref.updateChildValues(childUpdates)
-       saveFriendsCategories()
-       self.navigationController?.popViewController(animated: true)
+            let childUpdates = ["/\(String(describing: userID))/categories/user/": categoriesDictionary]
+            ref.updateChildValues(childUpdates)
+            saveFriendsCategories()
+            self.navigationController?.popViewController(animated: true)
         }
     }
 
     func saveFriendsCategories() {
         if let userID = Auth.auth().currentUser?.uid {
-        for key in self.friendNames {
-            if let arr = self.freindsDict[key] {
-                for category in arr {
-                    let categorysend = ["name": category.name,
-                                            "fred": category.fred,
-                                            "fgreen": category.fgreen,
-                                            "fblue": category.fblue,
-                                            "falpha": category.falpha,
-                                            "isSelected": category.isSelected,
-                                            "friendID": category.friendID,
-                                            "friendName": category.friendName
-                                                            ] as [String: Any]
-
-                    let childUpdates = ["/\(String(describing: userID))/categories/friends/\(category.friendID)/\(category.id)": categorysend]
-
+            for key in self.friendNames {
+                if let arr = self.freindsDict[key] {
+                    for category in arr {
+                        let categorysend = ["name": category.name,
+                                                "fred": category.fred,
+                                                "fgreen": category.fgreen,
+                                                "fblue": category.fblue,
+                                                "falpha": category.falpha,
+                                                "isSelected": category.isSelected,
+                                                "friendID": category.friendID,
+                                                "friendName": category.friendName
+                                                                ] as [String: Any]
+                        let childUpdates = ["/\(String(describing: userID))/categories/friends/\(category.friendID)/\(category.id)": categorysend]
                         ref.updateChildValues(childUpdates)
-
+                    }
                 }
             }
         }
-        }
     }
-
 }

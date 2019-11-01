@@ -70,7 +70,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapoutside))
         self.mapView.addGestureRecognizer(tap)
         ref = Database.database().reference()
-        setuplala()
+        setupObservers()
         downloadCategories()
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -87,11 +87,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         mapView.showsUserLocation = true
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
-         self.imagePickerController.allowsEditing = true
-       // self.imagePickerController.modalPresentationStyle = .fullScreen
+        self.imagePickerController.allowsEditing = true
         }
 
-    func setuplala() {
+    func setupObservers() {
        if let user = Auth.auth().currentUser {
         let userId = user.uid
         self.ref.child(userId).child("friends").observe(.value) { (_) in
@@ -112,37 +111,36 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                         if let friendId = friendID as? String {
                             self.ref.child(friendId).child("Username").observeSingleEvent(of: .value) { (shot) in
                                 if (shot.value as? String) != nil {
-                        if let friendID = friendID as? String {
-                            let selectedCategoriesRef = self.ref.child(friendID).child("categories").child("user").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
-                            self.ref.child(friendID).child("categories").child("user").queryOrdered(byChild: "isSelected").removeAllObservers()
-                            selectedCategoriesRef.observe( .value, with: { (snapshott) in
-                                self.ref.child(userId).child("categories").child("friends").child(friendID).removeValue()
-                                    if  let value = snapshott.value as? NSDictionary {
-                                        for(categoryID, categoryDict) in value {
-                                            if let categoryID = categoryID as? String,
-                                                let categoryDict = categoryDict as? NSMutableDictionary {
-                                                self.ref.child(friendID).child("Username").observeSingleEvent(of: .value) { (name) in
-                                                    if  let userName = name.value as? String {
-                                                        categoryDict["friendName"] = userName
-                                                        self.ref.child(userId).child("categories").child("friends").child(friendID).child(categoryID).setValue(categoryDict)
+                                    if let friendID = friendID as? String {
+                                        let selectedCategoriesRef = self.ref.child(friendID).child("categories").child("user").queryOrdered(byChild: "isSelected").queryEqual(toValue: 1)
+                                        self.ref.child(friendID).child("categories").child("user").queryOrdered(byChild: "isSelected").removeAllObservers()
+                                        selectedCategoriesRef.observe( .value, with: { (snapshott) in
+                                            self.ref.child(userId).child("categories").child("friends").child(friendID).removeValue()
+                                                if  let value = snapshott.value as? NSDictionary {
+                                                    for(categoryID, categoryDict) in value {
+                                                        if let categoryID = categoryID as? String,
+                                                            let categoryDict = categoryDict as? NSMutableDictionary {
+                                                            self.ref.child(friendID).child("Username").observeSingleEvent(of: .value) { (name) in
+                                                                if  let userName = name.value as? String {
+                                                                    categoryDict["friendName"] = userName
+                                                                    self.ref.child(userId).child("categories").child("friends").child(friendID).child(categoryID).setValue(categoryDict)
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
-                                            }
+                                            }) { (error) in
+                                            print(error.localizedDescription)
                                         }
                                     }
-                                }) { (error) in
-                                print(error.localizedDescription)
+                                }
                             }
                         }
-                            }
-                    }
-                }
 
-            }
+                    }
                 }
             }
         }
-
     }
 
     func setupphotomodelsObservers() {
@@ -171,7 +169,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     }
     @objc func tapoutside() {
         movePopupVC()
-        print("fjjfferfefr")
     }
 
     @objc func keyboardWillShow(notification: Notification) {
@@ -205,7 +202,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         if touch?.view != self.popupVC?.descriptionTextView {
             self.view.endEditing(true)
         } else {
-            //self.view.endEditing(true)
             return
         }
     }
@@ -398,7 +394,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                                         let customAnnotation = Custom(coordinate: CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude))
                                         customAnnotation.color = UIColor.init(red: category.fred, green: category.fgreen, blue: category.fblue, alpha: category.falpha)
                                         customAnnotation.photoModel = model
-                                        customAnnotation.isFriend = true
+                                        customAnnotation.isFriendAnnotation = true
                                             self.friendsMapAnnotations.append(customAnnotation)
                                             }
                                         }
@@ -417,8 +413,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             self.mapView.addAnnotation(myannotation)
         }
         for myannotation in friendsMapAnnotations {
-                   self.mapView.addAnnotation(myannotation)
-               }
+            self.mapView.addAnnotation(myannotation)
+        }
     }
 
     func moveMap(zoomRegion: MKCoordinateRegion) {
@@ -442,7 +438,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-            
+
             if status == .denied {
                 let alert = UIAlertController(title: "Camera", message: "Camera access is absolutely necessary to use this app", preferredStyle: .alert)
 
@@ -463,17 +459,16 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 
     func openGallery() {
         let status = PHPhotoLibrary.authorizationStatus()
-     
+
         switch status {
         case .authorized:
              self.imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
              self.imagePickerController.allowsEditing = false
-            // self.imagePickerController.modalPresentationStyle = .
                  self.present(self.imagePickerController, animated: true, completion: nil)
-            
+
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization { (PHAuthorizationStatus) in
-                           switch PHAuthorizationStatus{
+                           switch PHAuthorizationStatus {
                            case .authorized:
                                DispatchQueue.main.async {
                                    self.openGallery()
@@ -481,18 +476,15 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                            default: return
                            }
                        }
-            
-            
+
         default:
                let alert = UIAlertController(title: "Camera", message: "Camera access is absolutely necessary to use this app", preferredStyle: .alert)
-
                          alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
                              UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)  }))
                          alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-
                               self.present(alert, animated: true)
         }
-    
+
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -513,7 +505,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
                 currentdate = asset.creationDate
             } else {
-                
                 currentdate = Date.init()
             }
         }
@@ -550,12 +541,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             popupVC?.view.translatesAutoresizingMaskIntoConstraints = false
             if let leadingConstraint = popupVC?.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35),
                 let topConstraint = popupVC?.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height / 4.5),
-            let xConstraint = popupVC?.view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
+                let xConstraint = popupVC?.view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
                 let ylConstraint = popupVC?.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20) {
 
-                self.ylConstraint = ylConstraint
-                self.topConstraint = topConstraint
-            self.view.addConstraints([leadingConstraint, topConstraint, xConstraint, ylConstraint])
+                    self.ylConstraint = ylConstraint
+                    self.topConstraint = topConstraint
+                    self.view.addConstraints([leadingConstraint, topConstraint, xConstraint, ylConstraint])
 
             }
             popupVC?.didMove(toParent: self)
@@ -566,9 +557,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         if let photomodel = model {
             let chVC = FullImageViewController(id: photomodel.id, description: photomodel.description, friendId: photomodel.category.friendID)
             chVC.photoDescription = photomodel.description
-        chVC.hastags = photomodel.hashtags
+            chVC.hastags = photomodel.hashtags
             chVC.date = photomodel.date
-        self.navigationController?.pushViewController(chVC, animated: true)
+            self.navigationController?.pushViewController(chVC, animated: true)
         }
     }
 
@@ -576,8 +567,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         movePopupVC()
         addPhoto()
         if let point = currentCoordinate {
-    let ann = MKPointAnnotation()
-        ann.coordinate = point
+            let ann = MKPointAnnotation()
+            ann.coordinate = point
             self.annotation = ann
         }
             }
@@ -608,36 +599,35 @@ extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate, Phot
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-         guard let annotation = annotation as? Custom else { return nil }
+         guard let annotation = annotation as? Custom
+            else {
+                return nil }
 
         let customAnnotationViewIdentifier = "MyAnnotation"
 
         var pin = mapView.dequeueReusableAnnotationView(withIdentifier: customAnnotationViewIdentifier) as? PhotoAnnotationView
         if let photoModel = annotation.photoModel {
-                pin = PhotoAnnotationView(annotation: annotation, reuseIdentifier: customAnnotationViewIdentifier, model: photoModel)
-
-                pin?.delegate = self
-                pin?.calloutDelegate = self
-                }
+            pin = PhotoAnnotationView(annotation: annotation, reuseIdentifier: customAnnotationViewIdentifier, model: photoModel)
+            pin?.delegate = self
+            pin?.calloutDelegate = self
+        }
 
         pin?.markerTintColor = annotation.color
-        if annotation.isFriend {
+        if annotation.isFriendAnnotation {
             if   let str = annotation.photoModel?.category.friendName {
-            let index = str.index(str.startIndex, offsetBy: 3)
-              pin?.glyphText = String(str.prefix(upTo: index))
-                pin?.isFriend = true
+                let index = str.index(str.startIndex, offsetBy: 3)
+                  pin?.glyphText = String(str.prefix(upTo: index))
+                    pin?.isFriend = true
             }
         } else {
-        pin?.glyphText = "Me"
+            pin?.glyphText = "Me"
         }
         return pin
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Did get latest location")
-
         guard let latestLocation = locations.first else { return }
-
         if currentCoordinate == nil {
             zoomToLatestLocation(with: latestLocation.coordinate)
         }

@@ -246,7 +246,12 @@ class TimeLineViewController: UIViewController {
 
         let arr = self.myPhotoModelsCells + self.friendsPhotoModelsCells
         let sortedArr = arr.sorted {
-            if let first = formater.date(from: $0.date), let second = formater.date(from: $1.date) {return first > second} else {return true}
+            if let first = formater.date(from: $0.date),
+                let second = formater.date(from: $1.date){
+                return first > second
+            }else {
+                return true
+            }
         }
         for modelCell in sortedArr {
             let date = formater.date(from: modelCell.date)
@@ -261,8 +266,13 @@ class TimeLineViewController: UIViewController {
             self.headers.append(key)
         }
         self.headers.sort{
-            if let first = formater2.date(from: $0), let second = formater2.date(from: $1){return first > second}
-            else {return true}
+            if let first = formater2.date(from: $0),
+                let second = formater2.date(from: $1){
+                return first > second
+            }
+            else {
+                return true
+            }
         }
 
         if self.isSeaerchBar {

@@ -147,36 +147,12 @@ class TimeLineViewController: UIViewController {
                       }
                     let photoModel: PhotoModellcell = (photomodelID, category, description, date, hastags, false)
                     self.myPhotoModelsCells.append(photoModel)
-//                      let date = formater.date(from: photoModel.date)
-//                      let dateStr = formater2.string(from: date ?? Date.init())
-//                      if self.sections.index(forKey: dateStr) != nil {
-//                          self.sections[dateStr]?.append(photoModel)
-//                      } else {
-//                          self.sections[dateStr] = [photoModel]
-//                      }
+
                   }
               }
           } else {print("Cant make dictionary from DataPhotomodel")}
           }
-//          let sortSections = self.sections.sorted {
-//          if let first = formater2.date(from: $0.key), let second = formater2.date(from: $1.key) {return first > second} else {return true}
-//              }
-//          self.headers.removeAll()
-//          for(key, value) in sortSections {
-//              let sortedArrforKey = value.sorted {
-//                  if let first =  formater.date(from: $0.date), let second =  formater.date(from: $1.date) {
-//                      return first>second} else {return true}
-//              }
-//              self.headers.append(key)
-//              self.sortedSections[key] = sortedArrforKey
-//
-//          }
-//          self.sections.removeAll()
-//          if self.isSeaerchBar {
-//          self.photoTableView.reloadData()
-//          } else {
-//              self.changeTable(whithSearchText: self.searchMessage)
-//          }
+
         self.downloadFriendsCategories()
       }) { (error) in
           print(error.localizedDescription)
@@ -255,8 +231,8 @@ class TimeLineViewController: UIViewController {
                         }
                     }
                 }
-                    self.makeSections()
             }
+                self.makeSections()
         }
     }
     }
@@ -283,6 +259,10 @@ class TimeLineViewController: UIViewController {
         }
         for (key, _) in self.sortedSections {
             self.headers.append(key)
+        }
+        self.headers.sort{
+            if let first = formater2.date(from: $0), let second = formater2.date(from: $1){return first > second}
+            else {return true}
         }
 
         if self.isSeaerchBar {

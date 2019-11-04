@@ -1470,7 +1470,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
             endingLineNumber = "176"
-            landmarkName = "sortAllUsers()"
+            landmarkName = "downloadAllUsers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1486,8 +1486,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
             endingLineNumber = "191"
-            landmarkName = "FriendsViewController"
-            landmarkType = "3">
+            landmarkName = "sortAllUsers()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1710,8 +1710,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
             endingLineNumber = "109"
-            landmarkName = "FriendsViewController"
-            landmarkType = "3">
+            landmarkName = "downloadFriendsID()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1742,8 +1742,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "341"
             endingLineNumber = "341"
-            landmarkName = "FriendsViewController"
-            landmarkType = "21">
+            landmarkName = "searchFriends(searchtext:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1758,7 +1758,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "340"
             endingLineNumber = "340"
-            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkName = "searchFriends(searchtext:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1790,8 +1790,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
             endingLineNumber = "190"
-            landmarkName = "FriendsViewController"
-            landmarkType = "3">
+            landmarkName = "sortAllUsers()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "3E87D3D1-22C5-4E53-A0EE-191226AFFF44 - 2dbe6570b3cc7dcb"
@@ -1854,8 +1854,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "320"
             endingLineNumber = "320"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
+            landmarkName = "FriendsViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "2F1D97AE-3DB3-446C-A552-711BBA049F5B - 387d62af3e07d0e7"
@@ -1902,7 +1902,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "325"
             endingLineNumber = "325"
-            landmarkName = "searchBarSearchButtonClicked(_:)"
+            landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2703,22 +2703,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1166797D-DA57-4680-8002-3C477B82B689"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoApp/MainViewController/Timeline/TimeLineViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "downloadPhotoModels()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "90EF890E-0B40-499E-9301-4BEABF6A80A7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -2728,7 +2712,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
             endingLineNumber = "130"
-            landmarkName = "downloadCategories()"
+            landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2744,7 +2728,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "downloadCategories()"
+            landmarkName = "downloadPhotoModels()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -2807,7 +2791,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "268"
             endingLineNumber = "268"
-            landmarkName = "downloadFriendsPhotomodels()"
+            landmarkName = "makeSections()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2887,8 +2871,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "294"
             endingLineNumber = "294"
-            landmarkName = "makeSections()"
-            landmarkType = "7">
+            landmarkName = "TimeLineViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

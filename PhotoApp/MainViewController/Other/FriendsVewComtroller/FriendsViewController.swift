@@ -26,7 +26,7 @@ struct User: Comparable {
 }
 
     let friendCellId = "FriendTableViewCell"
-   let friendsCellHeight = 105
+    let friendsCellHeight:CGFloat = 105
 
 class FriendsViewController: UIViewController {
 

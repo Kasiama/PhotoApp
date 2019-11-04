@@ -418,7 +418,7 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate, UI
             if self.searching {
                 if let cellls = self.sections[self.headers2[indexPath.section]] {
                 let item = cellls[indexPath.row]
-                self.ref.child(userID).child("photomodels").child(item.id).removeValue()
+                    self.ref.child(userID).child("photomodels").child("user").child(item.id).removeValue()
                 self.storageRef.child(userID).child(item.id).delete { error in
                     if let error = error {
                         print(error.localizedDescription)
@@ -428,7 +428,7 @@ extension TimeLineViewController: UITableViewDataSource, UITableViewDelegate, UI
             } else {
                 if let cellls = self.sortedSections[self.headers[indexPath.section]] {
                 let item = cellls[indexPath.row]
-                 self.ref.child(userID).child("photomodels").child(item.id).removeValue()
+                    self.ref.child(userID).child("photomodels").child("user").child(item.id).removeValue()
                 self.storageRef.child(userID).child(item.id).delete { error in
                     if let error = error {
                         print(error.localizedDescription)

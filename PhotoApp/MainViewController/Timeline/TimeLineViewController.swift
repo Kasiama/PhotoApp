@@ -109,7 +109,7 @@ class TimeLineViewController: UIViewController {
                 let fgreen = categoryData["fgreen"] as? CGFloat,
                 let falpha = categoryData["falpha"] as? CGFloat,
                 let isSelected = categoryData["isSelected"] as? Int,
-                    let friendID = categoryData["friendID"] as? String,
+                let friendID = categoryData["friendID"] as? String,
                 let friendName = categoryData["friendName"] as? String {
                 let category = CategoryModel.init(id: catid, name: name, fred: fred, fgreen: fgreen, fblue: fblue, falpha: falpha, isSelected: isSelected, friendID: friendID, friendName: friendName)
                 self.selectedCategoriesArray.append(category)
@@ -249,7 +249,7 @@ class TimeLineViewController: UIViewController {
             if let first = formater.date(from: $0.date),
                 let second = formater.date(from: $1.date){
                 return first > second
-            }else {
+            } else {
                 return true
             }
         }
@@ -269,8 +269,7 @@ class TimeLineViewController: UIViewController {
             if let first = formater2.date(from: $0),
                 let second = formater2.date(from: $1){
                 return first > second
-            }
-            else {
+            } else {
                 return true
             }
         }

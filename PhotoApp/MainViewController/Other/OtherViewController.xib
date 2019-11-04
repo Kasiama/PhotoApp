@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +12,7 @@
             <connections>
                 <outlet property="emailLaibel" destination="VXv-aV-sP5" id="2De-VL-LYx"/>
                 <outlet property="imageView" destination="qyq-GR-iVQ" id="nR3-7Y-qRU"/>
+                <outlet property="userNameLabel" destination="oa7-4Q-uni" id="taA-0S-3gu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,16 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-CV-fKb">
-                    <rect key="frame" x="98" y="382" width="179" height="34"/>
-                    <color key="backgroundColor" red="1" green="0.10832243799999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Sign Out">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="signOutButtonTapped:" destination="-1" eventType="touchUpInside" id="Lrr-lE-k7u"/>
-                    </connections>
-                </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qyq-GR-iVQ" customClass="CachedImageView" customModule="PhotoApp" customModuleProvider="target">
                     <rect key="frame" x="97" y="48" width="180" height="180"/>
                     <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,34 +34,130 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXv-aV-sP5">
-                    <rect key="frame" x="67" y="313.5" width="240" height="22.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXv-aV-sP5">
+                    <rect key="frame" x="67" y="287" width="240" height="22.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22.5" id="mmm-oB-vWw"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KbL-0r-1wm">
-                    <rect key="frame" x="97" y="509" width="180" height="30"/>
-                    <state key="normal" title="About"/>
+                    <rect key="frame" x="215" y="337" width="140" height="30"/>
+                    <color key="backgroundColor" name="subfrietintcolor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="5l7-H1-Bq3"/>
+                        <constraint firstAttribute="height" constant="30" id="kxb-SE-VpX"/>
+                    </constraints>
+                    <state key="normal" title="Friends">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="aboutTaped:" destination="-1" eventType="touchUpInside" id="Lt8-e6-g7C"/>
+                        <action selector="friendsTaped:" destination="-1" eventType="touchUpInside" id="Lt8-e6-g7C"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oa7-4Q-uni">
+                    <rect key="frame" x="67" y="245" width="240" height="22.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22.5" id="alc-HA-ehw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0O-80-sLi">
+                    <rect key="frame" x="97" y="397" width="179" height="36"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Change Name">
+                        <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="changeNameTaped:" destination="-1" eventType="touchUpInside" id="Etl-LD-fGP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIj-eS-vSb">
+                    <rect key="frame" x="20" y="337" width="140" height="30"/>
+                    <color key="backgroundColor" name="subfribackground-1"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="Q4t-Px-d5Z"/>
+                        <constraint firstAttribute="height" constant="30" id="nrc-Im-DLI"/>
+                    </constraints>
+                    <state key="normal" title="subscribes">
+                        <color key="titleColor" name="subfrietintcolor"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="subscribesTaped:" destination="-1" eventType="touchUpInside" id="mrf-EO-QOg"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9zd-9v-ESl">
+                    <rect key="frame" x="160" y="337" width="55" height="30"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-CV-fKb">
+                    <rect key="frame" x="117" y="453" width="139" height="34"/>
+                    <color key="backgroundColor" red="0.89088277284263961" green="0.095443362475128579" blue="0.003517728737064579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Sign Out">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="signOutButtonTapped:" destination="-1" eventType="touchUpInside" id="Lrr-lE-k7u"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="LWK-CV-fKb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="98" id="54i-2a-BnP"/>
-                <constraint firstItem="KbL-0r-1wm" firstAttribute="top" secondItem="LWK-CV-fKb" secondAttribute="bottom" constant="73" id="Ap7-3p-caY"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KbL-0r-1wm" secondAttribute="trailing" constant="98" id="D9X-6K-9F5"/>
-                <constraint firstItem="VXv-aV-sP5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="67" id="DLa-XR-F5b"/>
-                <constraint firstItem="LWK-CV-fKb" firstAttribute="top" secondItem="VXv-aV-sP5" secondAttribute="bottom" constant="46" id="Ht1-Jf-p6i"/>
-                <constraint firstItem="KbL-0r-1wm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="97" id="IRH-Y6-ov8"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LWK-CV-fKb" secondAttribute="trailing" constant="98" id="WCc-gv-NHI"/>
-                <constraint firstItem="VXv-aV-sP5" firstAttribute="top" secondItem="qyq-GR-iVQ" secondAttribute="bottom" constant="53" id="Wtk-gx-6vr"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VXv-aV-sP5" secondAttribute="trailing" constant="68" id="iKV-N2-GuA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LWK-CV-fKb" secondAttribute="trailing" constant="117" id="151-E2-6Uj"/>
+                <constraint firstItem="9zd-9v-ESl" firstAttribute="top" secondItem="VXv-aV-sP5" secondAttribute="bottom" constant="20" id="19A-FU-fPV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KbL-0r-1wm" secondAttribute="trailing" constant="20" id="1GD-3r-2XN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VXv-aV-sP5" secondAttribute="trailing" constant="68" id="8ml-l1-AL8"/>
+                <constraint firstItem="VIj-eS-vSb" firstAttribute="top" secondItem="VXv-aV-sP5" secondAttribute="bottom" constant="20" id="Et2-8x-t0n"/>
+                <constraint firstItem="KbL-0r-1wm" firstAttribute="leading" secondItem="9zd-9v-ESl" secondAttribute="trailing" id="HBj-l6-2sl"/>
+                <constraint firstItem="VXv-aV-sP5" firstAttribute="top" secondItem="oa7-4Q-uni" secondAttribute="bottom" constant="12" id="KSo-OV-Lwb"/>
+                <constraint firstItem="VIj-eS-vSb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="KlD-58-P4d"/>
+                <constraint firstItem="d0O-80-sLi" firstAttribute="top" secondItem="9zd-9v-ESl" secondAttribute="bottom" constant="30" id="Rrs-li-Ui8"/>
+                <constraint firstItem="d0O-80-sLi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="97" id="S25-vo-WCU"/>
+                <constraint firstItem="d0O-80-sLi" firstAttribute="top" secondItem="KbL-0r-1wm" secondAttribute="bottom" constant="30" id="Sbg-cO-ILg"/>
+                <constraint firstItem="LWK-CV-fKb" firstAttribute="top" secondItem="d0O-80-sLi" secondAttribute="bottom" constant="20" id="WM0-Ly-DOi"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="d0O-80-sLi" secondAttribute="trailing" constant="99" id="Wvx-Qe-KEK"/>
+                <constraint firstItem="oa7-4Q-uni" firstAttribute="top" secondItem="qyq-GR-iVQ" secondAttribute="bottom" constant="12" id="Z7c-cI-Jfs"/>
+                <constraint firstItem="LWK-CV-fKb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="117" id="doc-nf-JVh"/>
+                <constraint firstItem="VXv-aV-sP5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="67" id="dqL-Fb-1lY"/>
+                <constraint firstItem="9zd-9v-ESl" firstAttribute="leading" secondItem="VIj-eS-vSb" secondAttribute="trailing" id="lyu-4k-aLK"/>
+                <constraint firstItem="KbL-0r-1wm" firstAttribute="top" secondItem="VXv-aV-sP5" secondAttribute="bottom" constant="20" id="oDo-oc-zGj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oa7-4Q-uni" secondAttribute="trailing" constant="68" id="p9n-od-dPb"/>
+                <constraint firstItem="oa7-4Q-uni" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="67" id="sXL-Np-c3J"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-226.40000000000001" y="-36.431784107946029"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="subfribackground-1">
+            <color red="0.83399999141693115" green="0.99800002574920654" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subfrietintcolor">
+            <color red="0.18199999630451202" green="0.49399998784065247" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -15,7 +15,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var githubButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.imageView.image = UIImage.init(named: "me")
         self.imageView.contentMode = .scaleAspectFill
         let xConstraint = self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
@@ -25,9 +25,9 @@ class AboutViewController: UIViewController {
     }
 
     @IBAction func vkbuttonTaped(_ sender: Any) {
-        UIApplication.shared.open(URL(string:"https://vk.com/fukakasiama")!)
+        UIApplication.shared.open(URL(string: "https://vk.com/fukakasiama")!)
     }
     @IBAction func githubButtonTaped(_ sender: Any) {
-       UIApplication.shared.open(URL(string:"https://github.com/Kasiama/PhotoApp")!)
+       UIApplication.shared.open(URL(string: "https://github.com/Kasiama/PhotoApp")!)
     }
 }

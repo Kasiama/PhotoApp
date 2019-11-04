@@ -129,9 +129,9 @@ class AddCategoryViewController: UIViewController {
             self.nameCategoryTextField.layer.borderWidth = 1
             return
         }
-
+        if let uId = Auth.auth().currentUser?.uid {
         let category = CategoryModel.init(id: "", name: self.nameCategoryTextField.text ?? "",
-                                          fred: fRed, fgreen: fGreen, fblue: fBlue, falpha: fAlpha, isSelected: 0)
+                                          fred: fRed, fgreen: fGreen, fblue: fBlue, falpha: fAlpha, isSelected: 0, friendID: uId, friendName: "ME")
         if self.row == nil {
       delegate?.addCategory(category: category)
         } else {
@@ -147,6 +147,7 @@ class AddCategoryViewController: UIViewController {
             }
         }
         self.navigationController?.popViewController(animated: true)
+    }
     }
     deinit {
         NotificationCenter.default.removeObserver(self)

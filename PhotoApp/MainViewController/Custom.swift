@@ -14,7 +14,7 @@ class Custom: NSObject, MKAnnotation {
     var image: UIImage?
     var photoModel: Photomodel?
     var color  = UIColor.clear
-
+    var isFriendAnnotation = false
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
         super.init()

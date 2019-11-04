@@ -12,12 +12,12 @@ import Firebase
 
 class PhotoAnnotationView: MKMarkerAnnotationView {
 
-        var calloutView: CalloutView?
+    var calloutView: CalloutView?
     weak var delegate: PhotoAnnotationDelegate?
-   weak var calloutDelegate: CalloutDelegate?
+    weak var calloutDelegate: CalloutDelegate?
     var photoModel: Photomodel?
     var storageRef: StorageReference!
-
+    var isFriend = false
     override var annotation: MKAnnotation? {
         willSet {
             calloutView?.removeFromSuperview()
@@ -43,32 +43,35 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        guard let annotationCoordinate = self.annotation?.coordinate else { return  }
+        guard let annotationCoordinate = self.annotation?.coordinate else {
+            return
+        }
         let zoomRegion = MKCoordinateRegion(center: annotationCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         self.delegate?.moveMap(zoomRegion: zoomRegion)
         if selected {
             self.calloutView?.removeFromSuperview()
             if let photoModel = self.photoModel {
-            calloutView =  CalloutView.init(frame: CGRect.init(x: -90, y: -115, width: 210, height: 70), model: photoModel)
-
-            calloutView?.calloutDelegate = self.calloutDelegate
-            self.calloutView?.add(to: self)
-        if animated {
-                self.calloutView?.alpha = 0
-                UIView.animate(withDuration: animationDuration) {
-                   self.calloutView?.alpha = 1
+                calloutView =  CalloutView.init(frame: CGRect.init(x: -90, y: -115, width: 210, height: 70), model: photoModel)
+                calloutView?.calloutDelegate = self.calloutDelegate
+                self.calloutView?.add(to: self)
+                if animated {
+                    self.calloutView?.alpha = 0
+                    UIView.animate(withDuration: animationDuration) {
+                        self.calloutView?.alpha = 1
+                    }
                 }
             }
-        }
         } else {
-            guard let calloutView = calloutView else { return }
-                if animated {
+            guard let calloutView = calloutView else{
+                return
+            }
+            if animated {
                 UIView.animate(withDuration: animationDuration, animations: {
                     calloutView.alpha = 0
                 }, completion: { _ in
                     calloutView.removeFromSuperview()
                 })
-            } else {
+            }else {
                 calloutView.removeFromSuperview()
             }
         }
@@ -80,13 +83,13 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
     }
 
      override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-            if let hitView = super.hitTest(point, with: event) { return hitView }
-
+            if let hitView = super.hitTest(point, with: event) {
+                return hitView
+        }
             if let calloutView = calloutView {
                 let pointInCalloutView = convert(point, to: calloutView)
                 return calloutView.hitTest(pointInCalloutView, with: event)
             }
-
             return nil
         }
 

@@ -14,7 +14,7 @@ class CalloutView: UIView {
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     @IBOutlet var contentView: UIView!
     @IBOutlet  var imageView: CachedImageView!
-       weak var calloutDelegate: CalloutDelegate?
+    weak var calloutDelegate: CalloutDelegate?
 
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -39,11 +39,15 @@ class CalloutView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addBackgroundButton(to: contentView)
         if let model = self.model {
+            if model.isFriend {
+                self.imageView.loadImageWhithoutUser(idString: "\(model.category.friendID)/\(model.id)")
+            } else {
         self.imageView.loadImage(idString: model.id)
+            }
         self.descriptionLabel.text = model.description
         let formater = DateFormatter()
         formater.dateFormat = "yyyy:MM:dd HH:mm:ss"
-        let date = formater.date(from: model.date ?? "")
+            let date = formater.date(from: model.date )
         formater.dateFormat = "dd-MM-yyyy"
         self.dateLabel.text = formater.string(from: date ?? Date.init())
 
@@ -71,8 +75,13 @@ class CalloutView: UIView {
         button.addTarget(self, action: #selector(didTouchUpInCallout(_:)), for: .touchUpInside)
     }
     @objc func didTouchUpInCallout(_ sender: Any) {
-        if let img =  imageView.image {
-       self.calloutDelegate?.addPopupVC(whithImage: img, model: self.model, date: nil)
+        if let img =  imageView.image,
+            let model = self.model {
+            if model.isFriend {
+                self.calloutDelegate?.addFullImageVC( model: self.model, date: nil)
+            } else {
+                self.calloutDelegate?.addPopupVC(whithImage: img, model: self.model, date: nil)
+            }
         } else {
 
         }

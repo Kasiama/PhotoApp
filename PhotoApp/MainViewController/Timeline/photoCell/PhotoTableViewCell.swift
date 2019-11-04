@@ -15,6 +15,7 @@ class PhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var hastagshLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
+    @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,5 +33,5 @@ class PhotoTableViewCell: UITableViewCell {
         }
         //self.photoImageView.image = nil
     }
-    
+
 }

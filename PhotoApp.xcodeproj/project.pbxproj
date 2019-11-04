@@ -46,6 +46,24 @@
 		7602D5112327EC8700FA9A05 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7602D50D2327EC8700FA9A05 /* MainViewController.xib */; };
 		7602D5122327EC8700FA9A05 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7602D50D2327EC8700FA9A05 /* MainViewController.xib */; };
 		7602D5132327EC8700FA9A05 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7602D50D2327EC8700FA9A05 /* MainViewController.xib */; };
+		76043EC32359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043EC12359DD2A00EF7387 /* ChangeNameViewController.swift */; };
+		76043EC42359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043EC12359DD2A00EF7387 /* ChangeNameViewController.swift */; };
+		76043EC52359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043EC12359DD2A00EF7387 /* ChangeNameViewController.swift */; };
+		76043EC62359DD2A00EF7387 /* ChangeNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043EC22359DD2A00EF7387 /* ChangeNameViewController.xib */; };
+		76043EC72359DD2A00EF7387 /* ChangeNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043EC22359DD2A00EF7387 /* ChangeNameViewController.xib */; };
+		76043EC82359DD2A00EF7387 /* ChangeNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043EC22359DD2A00EF7387 /* ChangeNameViewController.xib */; };
+		76043ECD2359E82900EF7387 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043ECB2359E82900EF7387 /* FriendsViewController.swift */; };
+		76043ECE2359E82900EF7387 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043ECB2359E82900EF7387 /* FriendsViewController.swift */; };
+		76043ECF2359E82900EF7387 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043ECB2359E82900EF7387 /* FriendsViewController.swift */; };
+		76043ED02359E82900EF7387 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043ECC2359E82900EF7387 /* FriendsViewController.xib */; };
+		76043ED12359E82900EF7387 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043ECC2359E82900EF7387 /* FriendsViewController.xib */; };
+		76043ED22359E82900EF7387 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043ECC2359E82900EF7387 /* FriendsViewController.xib */; };
+		76043ED52359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043ED32359E8DC00EF7387 /* FriendTableViewCell.swift */; };
+		76043ED62359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043ED32359E8DC00EF7387 /* FriendTableViewCell.swift */; };
+		76043ED72359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76043ED32359E8DC00EF7387 /* FriendTableViewCell.swift */; };
+		76043ED82359E8DC00EF7387 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043ED42359E8DC00EF7387 /* FriendTableViewCell.xib */; };
+		76043ED92359E8DC00EF7387 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043ED42359E8DC00EF7387 /* FriendTableViewCell.xib */; };
+		76043EDA2359E8DC00EF7387 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76043ED42359E8DC00EF7387 /* FriendTableViewCell.xib */; };
 		7605D2BF233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
 		7605D2C0233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
 		7605D2C1233B62290054031C /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7605D2BE233B62290054031C /* CachedImageView.swift */; };
@@ -80,6 +98,12 @@
 		7610C49C233DFD330037943A /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7610C498233DFD330037943A /* FullImageViewController.xib */; };
 		7610C49D233DFD330037943A /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7610C498233DFD330037943A /* FullImageViewController.xib */; };
 		7610C49E233DFD330037943A /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7610C498233DFD330037943A /* FullImageViewController.xib */; };
+		7612D6C2235F15CA00F0831E /* SubskribesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612D6C0235F15CA00F0831E /* SubskribesViewController.swift */; };
+		7612D6C3235F15CA00F0831E /* SubskribesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612D6C0235F15CA00F0831E /* SubskribesViewController.swift */; };
+		7612D6C4235F15CA00F0831E /* SubskribesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612D6C0235F15CA00F0831E /* SubskribesViewController.swift */; };
+		7612D6C5235F15CA00F0831E /* SubskribesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7612D6C1235F15CA00F0831E /* SubskribesViewController.xib */; };
+		7612D6C6235F15CA00F0831E /* SubskribesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7612D6C1235F15CA00F0831E /* SubskribesViewController.xib */; };
+		7612D6C7235F15CA00F0831E /* SubskribesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7612D6C1235F15CA00F0831E /* SubskribesViewController.xib */; };
 		76143133232A2F4F001756A9 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76143131232A2F4F001756A9 /* CategoriesTableViewController.swift */; };
 		76143134232A2F4F001756A9 /* CategoriesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76143132232A2F4F001756A9 /* CategoriesTableViewController.xib */; };
 		76143138232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76143136232A30D7001756A9 /* CategoryTableViewCell.swift */; };
@@ -103,8 +127,13 @@
 		7614591D2357394D001038A5 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614591C2357394D001038A5 /* StringExtention.swift */; };
 		7614591E2357394D001038A5 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614591C2357394D001038A5 /* StringExtention.swift */; };
 		7614591F2357394D001038A5 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614591C2357394D001038A5 /* StringExtention.swift */; };
+		761B2B64235D93DB00EDECF2 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761B2B62235D93DB00EDECF2 /* UserViewController.swift */; };
+		761B2B65235D93DB00EDECF2 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761B2B62235D93DB00EDECF2 /* UserViewController.swift */; };
+		761B2B66235D93DB00EDECF2 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761B2B62235D93DB00EDECF2 /* UserViewController.swift */; };
+		761B2B67235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
+		761B2B68235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
+		761B2B69235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
 		769927902338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
-		769927912338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
 		769927922338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
 		769927932338B190002F056E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7699278F2338B190002F056E /* PopupViewController.xib */; };
 		769927942338B190002F056E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7699278F2338B190002F056E /* PopupViewController.xib */; };
@@ -162,6 +191,12 @@
 		7602D4F52327E56B00FA9A05 /* OtherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherViewController.xib; sourceTree = "<group>"; };
 		7602D50C2327EC8700FA9A05 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7602D50D2327EC8700FA9A05 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		76043EC12359DD2A00EF7387 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
+		76043EC22359DD2A00EF7387 /* ChangeNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeNameViewController.xib; sourceTree = "<group>"; };
+		76043ECB2359E82900EF7387 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		76043ECC2359E82900EF7387 /* FriendsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsViewController.xib; sourceTree = "<group>"; };
+		76043ED32359E8DC00EF7387 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		76043ED42359E8DC00EF7387 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		7605D2BE233B62290054031C /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
 		760B6E112355EB4700A57C34 /* UITableViewCellExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtention.swift; sourceTree = "<group>"; };
 		760E715A2345E99C005FAE30 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +209,8 @@
 		761023F22334E91000650754 /* calloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = calloutView.xib; sourceTree = "<group>"; };
 		7610C497233DFD330037943A /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		7610C498233DFD330037943A /* FullImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullImageViewController.xib; sourceTree = "<group>"; };
+		7612D6C0235F15CA00F0831E /* SubskribesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubskribesViewController.swift; sourceTree = "<group>"; };
+		7612D6C1235F15CA00F0831E /* SubskribesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubskribesViewController.xib; sourceTree = "<group>"; };
 		76143131232A2F4F001756A9 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		76143132232A2F4F001756A9 /* CategoriesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesTableViewController.xib; sourceTree = "<group>"; };
 		76143136232A30D7001756A9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -183,6 +220,8 @@
 		7614591323571A9D001038A5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		7614591423571A9D001038A5 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		7614591C2357394D001038A5 /* StringExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
+		761B2B62235D93DB00EDECF2 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		761B2B63235D93DB00EDECF2 /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		7699278E2338B190002F056E /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		7699278F2338B190002F056E /* PopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
 		7699279623392528002F056E /* Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
@@ -323,6 +362,8 @@
 		7602D4E62327E4E500FA9A05 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				76043EC92359E7A400EF7387 /* FriendsVewComtroller */,
+				76043EC02359DD1200EF7387 /* ChangeNameVC */,
 				7602D4F42327E56B00FA9A05 /* OtherViewController.swift */,
 				7602D4F52327E56B00FA9A05 /* OtherViewController.xib */,
 				7614591323571A9D001038A5 /* AboutViewController.swift */,
@@ -340,6 +381,37 @@
 				7602D4E92327E54900FA9A05 /* TimeLineViewController.xib */,
 			);
 			path = Timeline;
+			sourceTree = "<group>";
+		};
+		76043EC02359DD1200EF7387 /* ChangeNameVC */ = {
+			isa = PBXGroup;
+			children = (
+				76043EC12359DD2A00EF7387 /* ChangeNameViewController.swift */,
+				76043EC22359DD2A00EF7387 /* ChangeNameViewController.xib */,
+			);
+			path = ChangeNameVC;
+			sourceTree = "<group>";
+		};
+		76043EC92359E7A400EF7387 /* FriendsVewComtroller */ = {
+			isa = PBXGroup;
+			children = (
+				761B2B61235D939F00EDECF2 /* UserViewController */,
+				76043ECB2359E82900EF7387 /* FriendsViewController.swift */,
+				76043ECC2359E82900EF7387 /* FriendsViewController.xib */,
+				76043ECA2359E7F300EF7387 /* FriendTableViewCell */,
+				7612D6C0235F15CA00F0831E /* SubskribesViewController.swift */,
+				7612D6C1235F15CA00F0831E /* SubskribesViewController.xib */,
+			);
+			path = FriendsVewComtroller;
+			sourceTree = "<group>";
+		};
+		76043ECA2359E7F300EF7387 /* FriendTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				76043ED32359E8DC00EF7387 /* FriendTableViewCell.swift */,
+				76043ED42359E8DC00EF7387 /* FriendTableViewCell.xib */,
+			);
+			path = FriendTableViewCell;
 			sourceTree = "<group>";
 		};
 		7605D2BD233B58EC0054031C /* CashImages */ = {
@@ -427,6 +499,15 @@
 				7614591C2357394D001038A5 /* StringExtention.swift */,
 			);
 			path = StringExtention;
+			sourceTree = "<group>";
+		};
+		761B2B61235D939F00EDECF2 /* UserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				761B2B62235D93DB00EDECF2 /* UserViewController.swift */,
+				761B2B63235D93DB00EDECF2 /* UserViewController.xib */,
+			);
+			path = UserViewController;
 			sourceTree = "<group>";
 		};
 		B60F01A0AD37689D5786A300 /* Frameworks */ = {
@@ -519,6 +600,9 @@
 		7602D4792327A3D100FA9A05 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Ivan Zhurauski";
@@ -562,18 +646,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				761023F32334E91000650754 /* calloutView.xib in Resources */,
+				7612D6C5235F15CA00F0831E /* SubskribesViewController.xib in Resources */,
+				76043EC62359DD2A00EF7387 /* ChangeNameViewController.xib in Resources */,
 				7610C49C233DFD330037943A /* FullImageViewController.xib in Resources */,
 				7614313B232A30D7001756A9 /* CategoryTableViewCell.xib in Resources */,
 				7602D4D02327BC3400FA9A05 /* LoginViewController.xib in Resources */,
 				760E715F2345E99C005FAE30 /* PhotoTableViewCell.xib in Resources */,
 				769927932338B190002F056E /* PopupViewController.xib in Resources */,
+				761B2B67235D93DB00EDECF2 /* UserViewController.xib in Resources */,
 				7602D4ED2327E54900FA9A05 /* TimeLineViewController.xib in Resources */,
 				7602D48F2327A3D300FA9A05 /* LaunchScreen.storyboard in Resources */,
 				76143134232A2F4F001756A9 /* CategoriesTableViewController.xib in Resources */,
+				76043ED02359E82900EF7387 /* FriendsViewController.xib in Resources */,
 				7602D4DA2327C95400FA9A05 /* CreateAccountViewController.xib in Resources */,
 				7602D5112327EC8700FA9A05 /* MainViewController.xib in Resources */,
 				7602D4F92327E56B00FA9A05 /* OtherViewController.xib in Resources */,
 				76143144232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */,
+				76043ED82359E8DC00EF7387 /* FriendTableViewCell.xib in Resources */,
 				7602D4C02327AD2A00FA9A05 /* GoogleService-Info.plist in Resources */,
 				7614591823571A9D001038A5 /* AboutViewController.xib in Resources */,
 				7602D48C2327A3D300FA9A05 /* Assets.xcassets in Resources */,
@@ -588,16 +677,21 @@
 				760E71602345E99C005FAE30 /* PhotoTableViewCell.xib in Resources */,
 				7602D4D12327BC3400FA9A05 /* LoginViewController.xib in Resources */,
 				7614313C232A30D7001756A9 /* CategoryTableViewCell.xib in Resources */,
+				76043ED92359E8DC00EF7387 /* FriendTableViewCell.xib in Resources */,
 				7610C49D233DFD330037943A /* FullImageViewController.xib in Resources */,
 				7602D5122327EC8700FA9A05 /* MainViewController.xib in Resources */,
 				7602D4FA2327E56B00FA9A05 /* OtherViewController.xib in Resources */,
 				7614591923571A9D001038A5 /* AboutViewController.xib in Resources */,
 				76143145232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */,
+				7612D6C6235F15CA00F0831E /* SubskribesViewController.xib in Resources */,
 				7602D4C12327AD2A00FA9A05 /* GoogleService-Info.plist in Resources */,
 				7602D4DB2327C95400FA9A05 /* CreateAccountViewController.xib in Resources */,
 				769927942338B190002F056E /* PopupViewController.xib in Resources */,
+				76043ED12359E82900EF7387 /* FriendsViewController.xib in Resources */,
+				761B2B68235D93DB00EDECF2 /* UserViewController.xib in Resources */,
 				7602D4EE2327E54900FA9A05 /* TimeLineViewController.xib in Resources */,
 				761023F42334E91000650754 /* calloutView.xib in Resources */,
+				76043EC72359DD2A00EF7387 /* ChangeNameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,16 +702,21 @@
 				760E71612345E99C005FAE30 /* PhotoTableViewCell.xib in Resources */,
 				7602D4D22327BC3400FA9A05 /* LoginViewController.xib in Resources */,
 				7614313D232A30D7001756A9 /* CategoryTableViewCell.xib in Resources */,
+				76043EDA2359E8DC00EF7387 /* FriendTableViewCell.xib in Resources */,
 				7610C49E233DFD330037943A /* FullImageViewController.xib in Resources */,
 				7602D5132327EC8700FA9A05 /* MainViewController.xib in Resources */,
 				7602D4FB2327E56B00FA9A05 /* OtherViewController.xib in Resources */,
 				7614591A23571A9D001038A5 /* AboutViewController.xib in Resources */,
 				76143146232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */,
+				7612D6C7235F15CA00F0831E /* SubskribesViewController.xib in Resources */,
 				7602D4C22327AD2A00FA9A05 /* GoogleService-Info.plist in Resources */,
 				7602D4DC2327C95400FA9A05 /* CreateAccountViewController.xib in Resources */,
 				769927952338B190002F056E /* PopupViewController.xib in Resources */,
+				76043ED22359E82900EF7387 /* FriendsViewController.xib in Resources */,
+				761B2B69235D93DB00EDECF2 /* UserViewController.xib in Resources */,
 				7602D4EF2327E54900FA9A05 /* TimeLineViewController.xib in Resources */,
 				761023F52334E91000650754 /* calloutView.xib in Resources */,
+				76043EC82359DD2A00EF7387 /* ChangeNameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,7 +799,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n";
 		};
 		A87073E5B6F8B522D5C93F1E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -732,20 +831,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				760E715C2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
+				761B2B64235D93DB00EDECF2 /* UserViewController.swift in Sources */,
 				7602D50E2327EC8700FA9A05 /* MainViewController.swift in Sources */,
 				7614591523571A9D001038A5 /* AboutViewController.swift in Sources */,
 				7610C499233DFD330037943A /* FullImageViewController.swift in Sources */,
 				7614591D2357394D001038A5 /* StringExtention.swift in Sources */,
 				760B6E122355EB4700A57C34 /* UITableViewCellExtention.swift in Sources */,
 				7602D4D72327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
+				76043ED52359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */,
 				7602D4CD2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				761023E72334E4E500650754 /* PhotoAnnotation.swift in Sources */,
 				76143133232A2F4F001756A9 /* CategoriesTableViewController.swift in Sources */,
 				7602D4F62327E56B00FA9A05 /* OtherViewController.swift in Sources */,
+				76043ECD2359E82900EF7387 /* FriendsViewController.swift in Sources */,
 				7605D2BF233B62290054031C /* CachedImageView.swift in Sources */,
 				7602D4872327A3D100FA9A05 /* ViewController.swift in Sources */,
 				76143141232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
+				7612D6C2235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
 				761023EB2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
+				76043EC32359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */,
 				7602D4852327A3D100FA9A05 /* AppDelegate.swift in Sources */,
 				7602D4EA2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
 				761023EF2334E8FA00650754 /* CalloutView.swift in Sources */,
@@ -761,23 +865,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				769927912338B190002F056E /* PopupViewController.swift in Sources */,
 				7614591E2357394D001038A5 /* StringExtention.swift in Sources */,
 				7602D4D82327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				760ED5B3234384CC00CF74AB /* ActiveLabel.swift in Sources */,
+				76043ECE2359E82900EF7387 /* FriendsViewController.swift in Sources */,
 				7699279823392528002F056E /* Custom.swift in Sources */,
 				7602D4CE2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				7602D50F2327EC8700FA9A05 /* MainViewController.swift in Sources */,
+				76043EC42359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */,
 				761023F02334E8FA00650754 /* CalloutView.swift in Sources */,
 				7602D49A2327A3D300FA9A05 /* PhotoAppTests.swift in Sources */,
 				7610C49A233DFD330037943A /* FullImageViewController.swift in Sources */,
 				7602D4EB2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
+				7612D6C3235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
 				760E715D2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
 				761023EC2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
+				76043ED62359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */,
 				7614591623571A9D001038A5 /* AboutViewController.swift in Sources */,
 				760ED5AF234383EB00CF74AB /* HashtagParser.swift in Sources */,
 				7605D2C0233B62290054031C /* CachedImageView.swift in Sources */,
 				761023E82334E4E500650754 /* PhotoAnnotation.swift in Sources */,
+				761B2B65235D93DB00EDECF2 /* UserViewController.swift in Sources */,
 				76143142232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
 				76143139232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
 			);
@@ -791,19 +899,24 @@
 				7614591F2357394D001038A5 /* StringExtention.swift in Sources */,
 				7602D4D92327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				760ED5B4234384CC00CF74AB /* ActiveLabel.swift in Sources */,
+				76043ECF2359E82900EF7387 /* FriendsViewController.swift in Sources */,
 				7699279923392528002F056E /* Custom.swift in Sources */,
 				7602D4CF2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				7602D5102327EC8700FA9A05 /* MainViewController.swift in Sources */,
+				76043EC52359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */,
 				761023F12334E8FA00650754 /* CalloutView.swift in Sources */,
 				7602D4A52327A3D300FA9A05 /* PhotoAppUITests.swift in Sources */,
 				7610C49B233DFD330037943A /* FullImageViewController.swift in Sources */,
 				7602D4EC2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
+				7612D6C4235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
 				760E715E2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
 				761023ED2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
+				76043ED72359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */,
 				7614591723571A9D001038A5 /* AboutViewController.swift in Sources */,
 				760ED5B0234383EB00CF74AB /* HashtagParser.swift in Sources */,
 				7605D2C1233B62290054031C /* CachedImageView.swift in Sources */,
 				761023E92334E4E500650754 /* PhotoAnnotation.swift in Sources */,
+				761B2B66235D93DB00EDECF2 /* UserViewController.swift in Sources */,
 				76143143232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
 				7614313A232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
 			);

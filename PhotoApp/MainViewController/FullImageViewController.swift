@@ -18,16 +18,20 @@ class FullImageViewController: UIViewController {
     var hastags: [String]?
     var date: String?
     var imageForStatusbar: UIImage?
-     
 
     convenience init(id: String, description: String?) {
         self.init()
          Bundle.main.loadNibNamed("FullImageViewController", owner: self, options: nil)
-        
             self.imageView.loadImage(idString: id)
-        
-        photoDescription = description ?? ""
+            photoDescription = description ?? ""
             load()
+    }
+    convenience init(id: String, description: String?, friendId: String) {
+        self.init()
+                Bundle.main.loadNibNamed("FullImageViewController", owner: self, options: nil)
+                   self.imageView.loadImageWhithoutUser(idString: "\(friendId)/\(id)")
+                   photoDescription = description ?? ""
+                   load()
     }
 
     func load() {
@@ -46,7 +50,7 @@ class FullImageViewController: UIViewController {
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
-        
+
         self.imageView.layer.addSublayer(gradient)
 
         let gradientе = CAGradientLayer()
@@ -55,7 +59,7 @@ class FullImageViewController: UIViewController {
         gradientе.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
         gradientе.startPoint = CGPoint(x: 0, y: 1)
         gradientе.endPoint = CGPoint(x: 0, y: 0)
-        
+
         self.imageView.layer.addSublayer(gradientе)
         }
     override func viewDidLoad() {

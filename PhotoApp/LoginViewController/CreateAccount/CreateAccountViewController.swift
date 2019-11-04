@@ -12,6 +12,7 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
 
     @IBOutlet weak var alertLabel: UILabel!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -28,6 +29,7 @@ class CreateAccountViewController: UIViewController {
         emailTextfield.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
          repeatPasswordTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+        userNameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
 
     }
 
@@ -57,12 +59,14 @@ class CreateAccountViewController: UIViewController {
            self.passwordTextField.layer.borderWidth = 0
            self.emailTextfield.layer.borderWidth = 0
            self.repeatPasswordTextField.layer.borderWidth = 0
+        self.userNameTextField.layer.borderWidth = 0
        }
 
     @IBAction func createBtnTapped(_ sender: Any) {
 
         if let email = emailTextfield.text, let password = passwordTextField.text, let repeatPassword = repeatPasswordTextField.text {
-            if(password == repeatPassword) {
+
+            if(password == repeatPassword)  && (self.emailTextfield.text != "") && (self.userNameTextField.text != "") {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 guard let _ = authResult?.user, error == nil else {
                 print(error!.localizedDescription)
@@ -73,17 +77,50 @@ class CreateAccountViewController: UIViewController {
                 self.repeatPasswordTextField.layer.borderWidth = 1.0
                 self.emailTextfield.layer.borderColor =  UIColor.red.cgColor
                 self.emailTextfield.layer.borderWidth = 1.0
+                self.userNameTextField.layer.borderColor =  UIColor.red.cgColor
+                self.userNameTextField.layer.borderWidth = 1.0
                 return
             }
+            if let user  = Auth.auth().currentUser {
+
+                   let userID = user.uid
+                    let ref = Database.database().reference()
+
+                guard ref.child("\(String(describing: userID))").key != nil else { return }
+                let usernameSend = ["Username": self.userNameTextField.text!] as [String: Any]
+                           let childUpdates = ["/\(String(describing: userID))": usernameSend]
+
+                           ref.updateChildValues(childUpdates)
+
             self.navigationController?.popViewController(animated: true)
+                }
         }
             } else {
+                if(password != repeatPassword) {
                 print("passwords are not the same")
                 self.alertLabel.text = "password are not the same"
                 self.passwordTextField.layer.borderColor = UIColor.red.cgColor
                 self.passwordTextField.layer.borderWidth = 1.0
                 self.repeatPasswordTextField.layer.borderColor = UIColor.red.cgColor
                 self.repeatPasswordTextField.layer.borderWidth = 1.0
+            }
+                if(self.userNameTextField.text == "") {
+                                    self.alertLabel.text = "username cant be empty"
+                                   self.userNameTextField.layer.borderColor = UIColor.red.cgColor
+                                   self.userNameTextField.layer.borderWidth = 1.0
+                    self.passwordTextField.layer.borderWidth = 0.0
+                                       self.repeatPasswordTextField.layer.borderWidth = 0.0
+
+                }
+                if (self.emailTextfield.text == "") {
+                    self.alertLabel.text = "email cant be empty"
+                    self.emailTextfield.layer.borderColor = UIColor.red.cgColor
+                    self.emailTextfield.layer.borderWidth = 1.0
+                    self.passwordTextField.layer.borderWidth = 0.0
+                    self.repeatPasswordTextField.layer.borderWidth = 0.0
+                    self.userNameTextField.layer.borderWidth = 0.0
+                }
+
             }
         } else {
             print("emptyFields")

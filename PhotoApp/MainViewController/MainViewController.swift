@@ -28,6 +28,8 @@ struct Photomodel {
 
 protocol PhotoAnnotationDelegate: AnyObject {
     func moveMap(zoomRegion: MKCoordinateRegion)
+    func makeDestinationMKItem(coordinate: CLLocationCoordinate2D)
+    func setChoosenAnnotation(annotation:MKAnnotation)
 
 }
 protocol PopupDelegate: AnyObject {
@@ -38,6 +40,7 @@ protocol CalloutDelegate: AnyObject {
     func addPopupVC(whithImage image: UIImage, model: Photomodel?, date: Date?)
     func addFullImageVC(model: Photomodel?, date: Date?)
 }
+
 
 class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CalloutDelegate {
     @IBOutlet weak var currentLocationButton: UIButton!
@@ -64,6 +67,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     var friendsMapAnnotations = [Custom]()
      var friendsSelectedCategoriesArray = [CategoryModel]()
 
+    var destinationMapItem : MKMapItem?
+    var choosenannotation : MKAnnotation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -225,7 +231,41 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             self.mapView.removeAnnotation(coordinate)
         }
     }
-
+    @IBAction func makeRouteTapped(_ sender: Any) {
+        self.mapView.removeOverlays(self.mapView.overlays)
+        if let destinationItem = self.destinationMapItem{
+            if let currentCoord = self.currentCoordinate{
+            let directionRequest = MKDirections.Request()
+            let currentplaceMark = MKPlacemark(coordinate: currentCoord, addressDictionary: nil)
+            let sourceMapItem = MKMapItem(placemark: currentplaceMark)
+            
+            
+            directionRequest.source = sourceMapItem
+            directionRequest.destination = destinationItem
+                directionRequest.transportType = .walking
+            let directions = MKDirections(request: directionRequest)
+            directions.calculate {
+                (response, error) -> Void in
+                guard let response = response else {
+                    if let error = error {
+                        print("Error: \(error)")
+                    }
+                    return
+                }
+                let route = response.routes[0]
+                self.mapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
+                
+                let rect = route.polyline.boundingMapRect
+                if let choosenAnnotation = self.choosenannotation{
+                self.mapView.deselectAnnotation(choosenAnnotation, animated: true)
+                    self.destinationMapItem = nil
+                }
+               // self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+            }
+        }
+    }
+    }
+    
     let geocoder = CLGeocoder()
     func addAnnotation(for coordinate: CLLocationCoordinate2D) {
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -365,6 +405,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
             }
         }
     }
+    
 
     func downloadFriendsPhotomodels() {
         if let user = Auth.auth().currentUser {
@@ -578,6 +619,18 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
 }
 
 extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate, PhotoAnnotationDelegate, PopupDelegate {
+    func setChoosenAnnotation(annotation: MKAnnotation) {
+        self.choosenannotation = annotation
+    }
+    
+    func makeDestinationMKItem(coordinate: CLLocationCoordinate2D) {
+       let destinationPlacemark = MKPlacemark(coordinate: coordinate, addressDictionary: nil)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+        self.destinationMapItem = destinationMapItem
+    }
+    
+    
+
 
     func addAnnotation(model: Photomodel, image: UIImage) {
         let cat = model.category
@@ -630,6 +683,7 @@ extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate, Phot
         guard let latestLocation = locations.first else { return }
         if currentCoordinate == nil {
             zoomToLatestLocation(with: latestLocation.coordinate)
+           
         }
         currentCoordinate = latestLocation.coordinate
     }
@@ -639,5 +693,12 @@ extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate, Phot
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             beginLocationUpdates(locationManager: manager)
         }
+    }
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .red
+        renderer.lineWidth = 4.0
+    
+        return renderer
     }
 }

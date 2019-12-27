@@ -40,7 +40,9 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+/*----------
+    Pragma Mark
+    ------*/
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         guard let annotationCoordinate = self.annotation?.coordinate else {
@@ -48,6 +50,10 @@ class PhotoAnnotationView: MKMarkerAnnotationView {
         }
         let zoomRegion = MKCoordinateRegion(center: annotationCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         self.delegate?.moveMap(zoomRegion: zoomRegion)
+        if let annotation = self.annotation{
+        self.delegate?.setChoosenAnnotation(annotation: annotation)
+        }
+        self.delegate?.makeDestinationMKItem(coordinate: annotationCoordinate)
         if selected {
             self.calloutView?.removeFromSuperview()
             if let photoModel = self.photoModel {

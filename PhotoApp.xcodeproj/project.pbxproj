@@ -133,6 +133,24 @@
 		761B2B67235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
 		761B2B68235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
 		761B2B69235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
+		7675289E23CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */; };
+		7675289F23CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */; };
+		767528A023CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */; };
+		76770DE823CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */; };
+		76770DE923CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */; };
+		76770DEA23CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */; };
+		76770DEC23CDD68A00814F39 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DEB23CDD68A00814F39 /* Extentions.swift */; };
+		76770DED23CDD68A00814F39 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DEB23CDD68A00814F39 /* Extentions.swift */; };
+		76770DEE23CDD68A00814F39 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DEB23CDD68A00814F39 /* Extentions.swift */; };
+		76770DF123CDDEDA00814F39 /* NativeLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF023CDDEDA00814F39 /* NativeLocationManager.swift */; };
+		76770DF223CDDEDA00814F39 /* NativeLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF023CDDEDA00814F39 /* NativeLocationManager.swift */; };
+		76770DF323CDDEDA00814F39 /* NativeLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF023CDDEDA00814F39 /* NativeLocationManager.swift */; };
+		76770DF523CDE11700814F39 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF423CDE11700814F39 /* LocationManager.swift */; };
+		76770DF623CDE11700814F39 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF423CDE11700814F39 /* LocationManager.swift */; };
+		76770DF723CDE11700814F39 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF423CDE11700814F39 /* LocationManager.swift */; };
+		76770DFA23CDE26200814F39 /* Notifiier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF923CDE26200814F39 /* Notifiier.swift */; };
+		76770DFB23CDE26200814F39 /* Notifiier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF923CDE26200814F39 /* Notifiier.swift */; };
+		76770DFC23CDE26200814F39 /* Notifiier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DF923CDE26200814F39 /* Notifiier.swift */; };
 		769927902338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
 		769927922338B190002F056E /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699278E2338B190002F056E /* PopupViewController.swift */; };
 		769927932338B190002F056E /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7699278F2338B190002F056E /* PopupViewController.xib */; };
@@ -141,6 +159,8 @@
 		7699279723392528002F056E /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699279623392528002F056E /* Custom.swift */; };
 		7699279823392528002F056E /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699279623392528002F056E /* Custom.swift */; };
 		7699279923392528002F056E /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699279623392528002F056E /* Custom.swift */; };
+		76E5D9A423B6001900CE1895 /* ARNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E5D9A223B6001900CE1895 /* ARNavigationViewController.swift */; };
+		76E5D9A523B6001900CE1895 /* ARNavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E5D9A323B6001900CE1895 /* ARNavigationViewController.xib */; };
 		A8A82B55B469EAAFF7100421 /* Pods_PhotoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163D246806C650ECB53D00D8 /* Pods_PhotoAppUITests.framework */; };
 		D958507611BE3409BF79B616 /* Pods_PhotoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0C0F2B1A650411C307382FB /* Pods_PhotoAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -222,9 +242,17 @@
 		7614591C2357394D001038A5 /* StringExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
 		761B2B62235D93DB00EDECF2 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		761B2B63235D93DB00EDECF2 /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
+		7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
+		76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitCoreLocationEngine.swift; sourceTree = "<group>"; };
+		76770DEB23CDD68A00814F39 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		76770DF023CDDEDA00814F39 /* NativeLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeLocationManager.swift; sourceTree = "<group>"; };
+		76770DF423CDE11700814F39 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		76770DF923CDE26200814F39 /* Notifiier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifiier.swift; sourceTree = "<group>"; };
 		7699278E2338B190002F056E /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		7699278F2338B190002F056E /* PopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
 		7699279623392528002F056E /* Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
+		76E5D9A223B6001900CE1895 /* ARNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARNavigationViewController.swift; sourceTree = "<group>"; };
+		76E5D9A323B6001900CE1895 /* ARNavigationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARNavigationViewController.xib; sourceTree = "<group>"; };
 		7FDD900F66D7BD652996FF5F /* Pods-PhotoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoAppUITests.release.xcconfig"; path = "Target Support Files/Pods-PhotoAppUITests/Pods-PhotoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B22CAD5C11C7CA7D0C5BAA7 /* Pods-PhotoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoAppTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoAppTests/Pods-PhotoAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B377815364385429E93D2270 /* Pods-PhotoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PhotoAppUITests/Pods-PhotoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -338,6 +366,7 @@
 		7602D4DD2327DC8200FA9A05 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				76E5D9A123B5FF4E00CE1895 /* ARNavigation */,
 				7614591B2357391D001038A5 /* StringExtention */,
 				760B6E132355EBA400A57C34 /* UItableViewCellExtention */,
 				760ED5AB23437FED00CF74AB /* ActiveLabel */,
@@ -510,6 +539,53 @@
 			path = UserViewController;
 			sourceTree = "<group>";
 		};
+		7675289C23CF0F9000FD0A2A /* LocationEstimatesHolder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocationEstimatesHolder;
+			sourceTree = "<group>";
+		};
+		76770DE623CDD04A00814F39 /* ARKitCoreLocationEngine */ = {
+			isa = PBXGroup;
+			children = (
+				76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */,
+				76770DEB23CDD68A00814F39 /* Extentions.swift */,
+			);
+			path = ARKitCoreLocationEngine;
+			sourceTree = "<group>";
+		};
+		76770DEF23CDDE9900814F39 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				76770DF023CDDEDA00814F39 /* NativeLocationManager.swift */,
+				76770DF423CDE11700814F39 /* LocationManager.swift */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
+		76770DF823CDE24900814F39 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				76770DF923CDE26200814F39 /* Notifiier.swift */,
+				7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		76E5D9A123B5FF4E00CE1895 /* ARNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				7675289C23CF0F9000FD0A2A /* LocationEstimatesHolder */,
+				76770DF823CDE24900814F39 /* Utils */,
+				76770DEF23CDDE9900814F39 /* LocationManager */,
+				76770DE623CDD04A00814F39 /* ARKitCoreLocationEngine */,
+				76E5D9A223B6001900CE1895 /* ARNavigationViewController.swift */,
+				76E5D9A323B6001900CE1895 /* ARNavigationViewController.xib */,
+			);
+			path = ARNavigation;
+			sourceTree = "<group>";
+		};
 		B60F01A0AD37689D5786A300 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,6 +735,7 @@
 				76143134232A2F4F001756A9 /* CategoriesTableViewController.xib in Resources */,
 				76043ED02359E82900EF7387 /* FriendsViewController.xib in Resources */,
 				7602D4DA2327C95400FA9A05 /* CreateAccountViewController.xib in Resources */,
+				76E5D9A523B6001900CE1895 /* ARNavigationViewController.xib in Resources */,
 				7602D5112327EC8700FA9A05 /* MainViewController.xib in Resources */,
 				7602D4F92327E56B00FA9A05 /* OtherViewController.xib in Resources */,
 				76143144232A6C5E001756A9 /* AddCategoryViewController.xib in Resources */,
@@ -839,20 +916,27 @@
 				760B6E122355EB4700A57C34 /* UITableViewCellExtention.swift in Sources */,
 				7602D4D72327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				76043ED52359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */,
+				7675289E23CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */,
 				7602D4CD2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				761023E72334E4E500650754 /* PhotoAnnotation.swift in Sources */,
 				76143133232A2F4F001756A9 /* CategoriesTableViewController.swift in Sources */,
 				7602D4F62327E56B00FA9A05 /* OtherViewController.swift in Sources */,
 				76043ECD2359E82900EF7387 /* FriendsViewController.swift in Sources */,
+				76770DF523CDE11700814F39 /* LocationManager.swift in Sources */,
+				76770DFA23CDE26200814F39 /* Notifiier.swift in Sources */,
 				7605D2BF233B62290054031C /* CachedImageView.swift in Sources */,
 				7602D4872327A3D100FA9A05 /* ViewController.swift in Sources */,
 				76143141232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
+				76770DF123CDDEDA00814F39 /* NativeLocationManager.swift in Sources */,
+				76E5D9A423B6001900CE1895 /* ARNavigationViewController.swift in Sources */,
 				7612D6C2235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
 				761023EB2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
 				76043EC32359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */,
 				7602D4852327A3D100FA9A05 /* AppDelegate.swift in Sources */,
 				7602D4EA2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
+				76770DE823CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */,
 				761023EF2334E8FA00650754 /* CalloutView.swift in Sources */,
+				76770DEC23CDD68A00814F39 /* Extentions.swift in Sources */,
 				76143138232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
 				760ED5B2234384CC00CF74AB /* ActiveLabel.swift in Sources */,
 				760ED5AE234383EB00CF74AB /* HashtagParser.swift in Sources */,
@@ -865,6 +949,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7675289F23CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */,
 				7614591E2357394D001038A5 /* StringExtention.swift in Sources */,
 				7602D4D82327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				760ED5B3234384CC00CF74AB /* ActiveLabel.swift in Sources */,
@@ -876,6 +961,7 @@
 				761023F02334E8FA00650754 /* CalloutView.swift in Sources */,
 				7602D49A2327A3D300FA9A05 /* PhotoAppTests.swift in Sources */,
 				7610C49A233DFD330037943A /* FullImageViewController.swift in Sources */,
+				76770DE923CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */,
 				7602D4EB2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
 				7612D6C3235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
 				760E715D2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
@@ -886,8 +972,12 @@
 				7605D2C0233B62290054031C /* CachedImageView.swift in Sources */,
 				761023E82334E4E500650754 /* PhotoAnnotation.swift in Sources */,
 				761B2B65235D93DB00EDECF2 /* UserViewController.swift in Sources */,
+				76770DED23CDD68A00814F39 /* Extentions.swift in Sources */,
 				76143142232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
 				76143139232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
+				76770DF223CDDEDA00814F39 /* NativeLocationManager.swift in Sources */,
+				76770DF623CDE11700814F39 /* LocationManager.swift in Sources */,
+				76770DFB23CDE26200814F39 /* Notifiier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,13 +993,17 @@
 				7699279923392528002F056E /* Custom.swift in Sources */,
 				7602D4CF2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				7602D5102327EC8700FA9A05 /* MainViewController.swift in Sources */,
+				76770DEE23CDD68A00814F39 /* Extentions.swift in Sources */,
+				767528A023CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */,
 				76043EC52359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */,
 				761023F12334E8FA00650754 /* CalloutView.swift in Sources */,
 				7602D4A52327A3D300FA9A05 /* PhotoAppUITests.swift in Sources */,
 				7610C49B233DFD330037943A /* FullImageViewController.swift in Sources */,
 				7602D4EC2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
+				76770DEA23CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */,
 				7612D6C4235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
 				760E715E2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
+				76770DFC23CDE26200814F39 /* Notifiier.swift in Sources */,
 				761023ED2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
 				76043ED72359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */,
 				7614591723571A9D001038A5 /* AboutViewController.swift in Sources */,
@@ -917,8 +1011,10 @@
 				7605D2C1233B62290054031C /* CachedImageView.swift in Sources */,
 				761023E92334E4E500650754 /* PhotoAnnotation.swift in Sources */,
 				761B2B66235D93DB00EDECF2 /* UserViewController.swift in Sources */,
+				76770DF723CDE11700814F39 /* LocationManager.swift in Sources */,
 				76143143232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
 				7614313A232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
+				76770DF323CDDEDA00814F39 /* NativeLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

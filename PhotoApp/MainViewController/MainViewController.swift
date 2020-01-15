@@ -68,7 +68,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
      var friendsSelectedCategoriesArray = [CategoryModel]()
 
     var destinationMapItem : MKMapItem?
+    var destinationCoordinate: CLLocationCoordinate2D?
     var choosenannotation : MKAnnotation?
+    var route: MKRoute?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -233,8 +235,15 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     }
     @IBAction func makeRouteTapped(_ sender: Any) {
         self.mapView.removeOverlays(self.mapView.overlays)
+        if self.destinationMapItem == nil{
+                                             self.destinationCoordinate = nil
+                                         }
         if let destinationItem = self.destinationMapItem{
             if let currentCoord = self.currentCoordinate{
+                if let choosenAnnotation = self.choosenannotation{
+                               self.mapView.deselectAnnotation(choosenAnnotation, animated: true)
+                                   self.destinationMapItem = nil
+                               }
             let directionRequest = MKDirections.Request()
             let currentplaceMark = MKPlacemark(coordinate: currentCoord, addressDictionary: nil)
             let sourceMapItem = MKMapItem(placemark: currentplaceMark)
@@ -253,17 +262,24 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
                     return
                 }
                 let route = response.routes[0]
+                self.route = route
                 self.mapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
                 
-                let rect = route.polyline.boundingMapRect
-                if let choosenAnnotation = self.choosenannotation{
-                self.mapView.deselectAnnotation(choosenAnnotation, animated: true)
-                    self.destinationMapItem = nil
-                }
+                //let rect = route.polyline.boundingMapRect
+               
+                self.destinationCoordinate = destinationItem.placemark.coordinate
                // self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
         }
     }
+    }
+    @IBAction func ARTaped(_ sender: Any) {
+        if let destinationCoordinater = self.destinationCoordinate{
+            let arnavVC = ARNavigationViewController()
+            arnavVC.destination2D = destinationCoordinater
+            arnavVC.route = self.route
+            self.navigationController?.pushViewController(arnavVC, animated: true)
+        }
     }
     
     let geocoder = CLGeocoder()

@@ -52,7 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navLoginVC = UINavigationController.init(rootViewController: loginVC)
             self.window?.rootViewController = navLoginVC
         }
-
+        
+         NativeLocationManager.sharedInstance.resume()
+        
         return true
     }
     func setupNavBar() {

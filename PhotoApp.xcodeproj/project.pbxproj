@@ -133,9 +133,31 @@
 		761B2B67235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
 		761B2B68235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
 		761B2B69235D93DB00EDECF2 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761B2B63235D93DB00EDECF2 /* UserViewController.xib */; };
+		76484DEE23D0325400AAA4F4 /* TimerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DED23D0325400AAA4F4 /* TimerAction.swift */; };
+		76484DF123D0566D00AAA4F4 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF023D0566D00AAA4F4 /* Math.swift */; };
+		76484DF223D0566D00AAA4F4 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF023D0566D00AAA4F4 /* Math.swift */; };
+		76484DF323D0566D00AAA4F4 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF023D0566D00AAA4F4 /* Math.swift */; };
+		76484DF523D0578D00AAA4F4 /* Math+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF423D0578D00AAA4F4 /* Math+SceneKit.swift */; };
+		76484DF623D0578D00AAA4F4 /* Math+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF423D0578D00AAA4F4 /* Math+SceneKit.swift */; };
+		76484DF723D0578D00AAA4F4 /* Math+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF423D0578D00AAA4F4 /* Math+SceneKit.swift */; };
+		76484DF923D0582900AAA4F4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF823D0582900AAA4F4 /* Geometry.swift */; };
+		76484DFA23D0582900AAA4F4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF823D0582900AAA4F4 /* Geometry.swift */; };
+		76484DFB23D0582900AAA4F4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76484DF823D0582900AAA4F4 /* Geometry.swift */; };
 		7675289E23CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */; };
 		7675289F23CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */; };
 		767528A023CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */; };
+		767528A223CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A123CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift */; };
+		767528A323CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A123CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift */; };
+		767528A423CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A123CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift */; };
+		767528A623CF363000FD0A2A /* LocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A523CF363000FD0A2A /* LocationEstimatesHolder.swift */; };
+		767528A723CF363000FD0A2A /* LocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A523CF363000FD0A2A /* LocationEstimatesHolder.swift */; };
+		767528A823CF363000FD0A2A /* LocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A523CF363000FD0A2A /* LocationEstimatesHolder.swift */; };
+		767528AA23CF365000FD0A2A /* BasicLocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A923CF365000FD0A2A /* BasicLocationEstimatesHolder.swift */; };
+		767528AB23CF365000FD0A2A /* BasicLocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A923CF365000FD0A2A /* BasicLocationEstimatesHolder.swift */; };
+		767528AC23CF365000FD0A2A /* BasicLocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528A923CF365000FD0A2A /* BasicLocationEstimatesHolder.swift */; };
+		767528AE23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528AD23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift */; };
+		767528AF23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528AD23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift */; };
+		767528B023CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767528AD23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift */; };
 		76770DE823CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */; };
 		76770DE923CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */; };
 		76770DEA23CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */; };
@@ -242,7 +264,15 @@
 		7614591C2357394D001038A5 /* StringExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
 		761B2B62235D93DB00EDECF2 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		761B2B63235D93DB00EDECF2 /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
+		76484DED23D0325400AAA4F4 /* TimerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAction.swift; sourceTree = "<group>"; };
+		76484DF023D0566D00AAA4F4 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		76484DF423D0578D00AAA4F4 /* Math+SceneKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Math+SceneKit.swift"; sourceTree = "<group>"; };
+		76484DF823D0582900AAA4F4 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
+		767528A123CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneLocationEstimate+Extensions.swift"; sourceTree = "<group>"; };
+		767528A523CF363000FD0A2A /* LocationEstimatesHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEstimatesHolder.swift; sourceTree = "<group>"; };
+		767528A923CF365000FD0A2A /* BasicLocationEstimatesHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLocationEstimatesHolder.swift; sourceTree = "<group>"; };
+		767528AD23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLocationEstimatesHolder.swift; sourceTree = "<group>"; };
 		76770DE723CDD61E00814F39 /* ARKitCoreLocationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitCoreLocationEngine.swift; sourceTree = "<group>"; };
 		76770DEB23CDD68A00814F39 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		76770DF023CDDEDA00814F39 /* NativeLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeLocationManager.swift; sourceTree = "<group>"; };
@@ -539,9 +569,24 @@
 			path = UserViewController;
 			sourceTree = "<group>";
 		};
+		76484DEF23D0565500AAA4F4 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				76484DF023D0566D00AAA4F4 /* Math.swift */,
+				76484DF423D0578D00AAA4F4 /* Math+SceneKit.swift */,
+				76484DF823D0582900AAA4F4 /* Geometry.swift */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
 		7675289C23CF0F9000FD0A2A /* LocationEstimatesHolder */ = {
 			isa = PBXGroup;
 			children = (
+				767528A123CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift */,
+				767528A523CF363000FD0A2A /* LocationEstimatesHolder.swift */,
+				767528A923CF365000FD0A2A /* BasicLocationEstimatesHolder.swift */,
+				767528AD23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift */,
+				76770DEF23CDDE9900814F39 /* LocationManager */,
 			);
 			path = LocationEstimatesHolder;
 			sourceTree = "<group>";
@@ -567,8 +612,10 @@
 		76770DF823CDE24900814F39 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				76484DEF23D0565500AAA4F4 /* Math */,
 				76770DF923CDE26200814F39 /* Notifiier.swift */,
 				7675289D23CF1D3A00FD0A2A /* SCNVector3Extensions.swift */,
+				76484DED23D0325400AAA4F4 /* TimerAction.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -578,7 +625,6 @@
 			children = (
 				7675289C23CF0F9000FD0A2A /* LocationEstimatesHolder */,
 				76770DF823CDE24900814F39 /* Utils */,
-				76770DEF23CDDE9900814F39 /* LocationManager */,
 				76770DE623CDD04A00814F39 /* ARKitCoreLocationEngine */,
 				76E5D9A223B6001900CE1895 /* ARNavigationViewController.swift */,
 				76E5D9A323B6001900CE1895 /* ARNavigationViewController.xib */,
@@ -910,15 +956,19 @@
 				760E715C2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
 				761B2B64235D93DB00EDECF2 /* UserViewController.swift in Sources */,
 				7602D50E2327EC8700FA9A05 /* MainViewController.swift in Sources */,
+				76484DF523D0578D00AAA4F4 /* Math+SceneKit.swift in Sources */,
+				76484DEE23D0325400AAA4F4 /* TimerAction.swift in Sources */,
 				7614591523571A9D001038A5 /* AboutViewController.swift in Sources */,
 				7610C499233DFD330037943A /* FullImageViewController.swift in Sources */,
 				7614591D2357394D001038A5 /* StringExtention.swift in Sources */,
 				760B6E122355EB4700A57C34 /* UITableViewCellExtention.swift in Sources */,
+				767528A623CF363000FD0A2A /* LocationEstimatesHolder.swift in Sources */,
 				7602D4D72327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				76043ED52359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */,
 				7675289E23CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */,
 				7602D4CD2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				761023E72334E4E500650754 /* PhotoAnnotation.swift in Sources */,
+				767528AA23CF365000FD0A2A /* BasicLocationEstimatesHolder.swift in Sources */,
 				76143133232A2F4F001756A9 /* CategoriesTableViewController.swift in Sources */,
 				7602D4F62327E56B00FA9A05 /* OtherViewController.swift in Sources */,
 				76043ECD2359E82900EF7387 /* FriendsViewController.swift in Sources */,
@@ -932,15 +982,19 @@
 				7612D6C2235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
 				761023EB2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
 				76043EC32359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */,
+				767528AE23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift in Sources */,
 				7602D4852327A3D100FA9A05 /* AppDelegate.swift in Sources */,
 				7602D4EA2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
+				76484DF123D0566D00AAA4F4 /* Math.swift in Sources */,
 				76770DE823CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */,
 				761023EF2334E8FA00650754 /* CalloutView.swift in Sources */,
 				76770DEC23CDD68A00814F39 /* Extentions.swift in Sources */,
 				76143138232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
+				767528A223CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift in Sources */,
 				760ED5B2234384CC00CF74AB /* ActiveLabel.swift in Sources */,
 				760ED5AE234383EB00CF74AB /* HashtagParser.swift in Sources */,
 				769927902338B190002F056E /* PopupViewController.swift in Sources */,
+				76484DF923D0582900AAA4F4 /* Geometry.swift in Sources */,
 				7699279723392528002F056E /* Custom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -952,26 +1006,33 @@
 				7675289F23CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */,
 				7614591E2357394D001038A5 /* StringExtention.swift in Sources */,
 				7602D4D82327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
+				76484DF623D0578D00AAA4F4 /* Math+SceneKit.swift in Sources */,
 				760ED5B3234384CC00CF74AB /* ActiveLabel.swift in Sources */,
 				76043ECE2359E82900EF7387 /* FriendsViewController.swift in Sources */,
 				7699279823392528002F056E /* Custom.swift in Sources */,
 				7602D4CE2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				7602D50F2327EC8700FA9A05 /* MainViewController.swift in Sources */,
 				76043EC42359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */,
+				767528AF23CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift in Sources */,
 				761023F02334E8FA00650754 /* CalloutView.swift in Sources */,
 				7602D49A2327A3D300FA9A05 /* PhotoAppTests.swift in Sources */,
 				7610C49A233DFD330037943A /* FullImageViewController.swift in Sources */,
 				76770DE923CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */,
+				767528A323CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift in Sources */,
 				7602D4EB2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
 				7612D6C3235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
+				767528A723CF363000FD0A2A /* LocationEstimatesHolder.swift in Sources */,
 				760E715D2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
 				761023EC2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
 				76043ED62359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */,
 				7614591623571A9D001038A5 /* AboutViewController.swift in Sources */,
 				760ED5AF234383EB00CF74AB /* HashtagParser.swift in Sources */,
 				7605D2C0233B62290054031C /* CachedImageView.swift in Sources */,
+				76484DFA23D0582900AAA4F4 /* Geometry.swift in Sources */,
 				761023E82334E4E500650754 /* PhotoAnnotation.swift in Sources */,
 				761B2B65235D93DB00EDECF2 /* UserViewController.swift in Sources */,
+				767528AB23CF365000FD0A2A /* BasicLocationEstimatesHolder.swift in Sources */,
+				76484DF223D0566D00AAA4F4 /* Math.swift in Sources */,
 				76770DED23CDD68A00814F39 /* Extentions.swift in Sources */,
 				76143142232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
 				76143139232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
@@ -989,10 +1050,12 @@
 				7614591F2357394D001038A5 /* StringExtention.swift in Sources */,
 				7602D4D92327C95400FA9A05 /* CreateAccountViewController.swift in Sources */,
 				760ED5B4234384CC00CF74AB /* ActiveLabel.swift in Sources */,
+				76484DFB23D0582900AAA4F4 /* Geometry.swift in Sources */,
 				76043ECF2359E82900EF7387 /* FriendsViewController.swift in Sources */,
 				7699279923392528002F056E /* Custom.swift in Sources */,
 				7602D4CF2327BC3400FA9A05 /* LoginViewController.swift in Sources */,
 				7602D5102327EC8700FA9A05 /* MainViewController.swift in Sources */,
+				767528B023CF366900FD0A2A /* AdvancedLocationEstimatesHolder.swift in Sources */,
 				76770DEE23CDD68A00814F39 /* Extentions.swift in Sources */,
 				767528A023CF1D3A00FD0A2A /* SCNVector3Extensions.swift in Sources */,
 				76043EC52359DD2A00EF7387 /* ChangeNameViewController.swift in Sources */,
@@ -1002,10 +1065,13 @@
 				7602D4EC2327E54900FA9A05 /* TimeLineViewController.swift in Sources */,
 				76770DEA23CDD61E00814F39 /* ARKitCoreLocationEngine.swift in Sources */,
 				7612D6C4235F15CA00F0831E /* SubskribesViewController.swift in Sources */,
+				767528A423CF35E700FD0A2A /* SceneLocationEstimate+Extensions.swift in Sources */,
 				760E715E2345E99C005FAE30 /* PhotoTableViewCell.swift in Sources */,
 				76770DFC23CDE26200814F39 /* Notifiier.swift in Sources */,
 				761023ED2334E88F00650754 /* PhotoAnnotationView.swift in Sources */,
+				767528AC23CF365000FD0A2A /* BasicLocationEstimatesHolder.swift in Sources */,
 				76043ED72359E8DC00EF7387 /* FriendTableViewCell.swift in Sources */,
+				76484DF323D0566D00AAA4F4 /* Math.swift in Sources */,
 				7614591723571A9D001038A5 /* AboutViewController.swift in Sources */,
 				760ED5B0234383EB00CF74AB /* HashtagParser.swift in Sources */,
 				7605D2C1233B62290054031C /* CachedImageView.swift in Sources */,
@@ -1014,6 +1080,8 @@
 				76770DF723CDE11700814F39 /* LocationManager.swift in Sources */,
 				76143143232A6C5E001756A9 /* AddCategoryViewController.swift in Sources */,
 				7614313A232A30D7001756A9 /* CategoryTableViewCell.swift in Sources */,
+				76484DF723D0578D00AAA4F4 /* Math+SceneKit.swift in Sources */,
+				767528A823CF363000FD0A2A /* LocationEstimatesHolder.swift in Sources */,
 				76770DF323CDDEDA00814F39 /* NativeLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

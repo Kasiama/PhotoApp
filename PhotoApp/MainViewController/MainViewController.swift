@@ -72,6 +72,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
     var choosenannotation : MKAnnotation?
     var route: MKRoute?
     
+    private var userLocationAnnotation: MKPointAnnotation = MKPointAnnotation()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -96,6 +97,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, UIImage
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
         self.imagePickerController.allowsEditing = true
+         NativeLocationManager.sharedInstance.addListener(self)
         }
 
     func setupObservers() {
@@ -718,3 +720,19 @@ extension MainViewController: CLLocationManagerDelegate, MKMapViewDelegate, Phot
         return renderer
     }
 }
+extension MainViewController: LocationManagerListener {
+
+    func onLocationUpdate(_ location: CLLocation) {
+        updateUserLocationAnnotation(withCoordinate: location.coordinate)
+
+    }
+
+    func onAuthorizationStatusUpdate(_ authorizationStatus: CLAuthorizationStatus) {
+    }
+
+    func updateUserLocationAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+        userLocationAnnotation.coordinate = coordinate
+    }
+
+}
+

@@ -11,10 +11,11 @@ public class WeakObject: Hashable {
 
     public weak var obj: AnyObject?
     
-    public func hash(into hasher: inout Hasher) {
-        guard let obj = obj else { return }
+    public var hashValue: Int {
+        guard let obj = obj else { return 0 }
+        return unsafeBitCast(obj, to: Int.self)
     }
-
+    
     public init(_ obj: AnyObject) {
         self.obj = obj
     }

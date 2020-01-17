@@ -14,6 +14,9 @@ import MapKit
 public struct GeometryConstants {
     public static let EarthRadius = Double(6_371_000)
     public static let LatLonEps = 1e-6
+    static let sceneRadiusLimit: CGFloat = 100
+
+    static let distanceBetweenArrows: Float = 5.0
 }
 
 public extension Double {
@@ -175,6 +178,30 @@ public extension CLLocationCoordinate2D {
         return LocationTranslation(dLat: dLat * metersInOneLatDegree, dLon: dLon * metersInOneLonDegree(lat))
     }
 }
+extension CGPoint {
+    /// Здесь x - по оси Z в SceneKit, y - по оси X в SceneKit (ось Y SceneKit смотрит при этом вверх)
+    /// на плоскость Y = 0
+    var positionIn3D: SCNVector3 {
+        return SCNVector3(y, 0.0, x)
+    }
 
+    init(position: SCNVector3) {
+        self.init(x: CGFloat(position.z), y: CGFloat(position.x))
+    }
+}
+public extension NSAttributedString {
 
+    func boundingRect(size: CGSize) -> CGRect {
+        let rect = self.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
+        return rect.integral
+    }
 
+    func boundingRect(width: CGFloat) -> CGRect {
+        return boundingRect(size: CGSize(width: width, height: .infinity))
+    }
+
+    func boundingSize(width: CGFloat) -> CGSize {
+        return boundingRect(width: width).size
+    }
+
+}
